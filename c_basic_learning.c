@@ -1,8 +1,27 @@
 #include <stdio.h>
 
-int g()
+// void means no return value
+void g()
 {
-	return 3;
+    int myNum = 15; // Define an integer variable and initialize
+    
+    int myNum2; // Define an integer variable (random number)
+    myNum2 = 15; // assign a value
+    
+    char myLetter = 'a'; // define a character variable and initialize
+    char myLetter2; // define a character variable (random number)
+    myLetter2 = 'b'; // assign a value 'b';
+    
+    float myFloatNum = 5.1;
+    
+    double myDoubleNum = 6.1;
+    
+    printf("%d\n", myNum);
+    printf("%c\n", myLetter);
+    printf("%f\n", myFloatNum);
+    printf("%lf\n", myDoubleNum);
+    
+	return ;
 }
 
 int f(int x)
@@ -78,6 +97,7 @@ int printFiveXNotTenNumber() {
 
 int main()
 {
+    g();
     f(3);
 /*
     printFiveXNumber();
