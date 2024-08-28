@@ -1,5 +1,21 @@
 #include <stdio.h>
 
+void practiceprinting()
+{
+    int myNum=21;//defining an integer
+    float myFloat=21.99;//definning decimal
+    char myLetter='A';
+    
+    printf("%d\n",myNum);
+    printf("%f\n",myFloat);
+    printf("%c\n",myLetter);
+}
+
+int Sum(int a, int b)
+{
+    return a+b;
+}
+
 // void means no return value
 void g()
 {
@@ -97,9 +113,15 @@ int printFiveXNotTenNumber() {
 
 int main()
 {
+    practiceprinting();
+    practiceprinting();
+    
+    int result = Sum(3, 4);
+    printf("%d\n", result);
+/*
     g();
     f(3);
-/*
+
     printFiveXNumber();
 
     printf("hhhhhhhhhhhh\n");
