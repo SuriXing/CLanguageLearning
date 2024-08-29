@@ -9,11 +9,32 @@ void practiceprinting()
     printf("%d\n",myNum);
     printf("%f\n",myFloat);
     printf("%c\n",myLetter);
+    
 }
 
 int Sum(int a, int b)
 {
     return a+b;
+}
+
+
+// AbsoluteSum(-1, -1, -1) == AbsoluteSum(1, 1, 1);
+// AbsoluteSum(1, 2, 3) === AbsoluteSum(1, 2, 3);
+int AbsoluteSum(int a,int b,int c)
+{
+    if (a < 0) {
+        a = -a;
+    }
+    
+    if (b < 0) {
+        b = -b;
+    }
+    
+    if (c < 0) {
+        c = -c;
+    }
+
+    return (a+b+c);
 }
 
 // void means no return value
@@ -114,9 +135,11 @@ int printFiveXNotTenNumber() {
 int main()
 {
     practiceprinting();
-    practiceprinting();
     
     int result = Sum(3, 4);
+    printf("%d\n", result);
+    
+    result = AbsoluteSum(-45, -23, -37);
     printf("%d\n", result);
 /*
     g();
