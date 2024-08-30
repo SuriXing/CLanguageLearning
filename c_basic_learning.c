@@ -17,6 +17,10 @@ int Sum(int a, int b)
     return a+b;
 }
 
+int difference(int a, int b)
+{
+    return a-b;
+}
 
 // AbsoluteSum(-1, -1, -1) == AbsoluteSum(1, 1, 1);
 // AbsoluteSum(1, 2, 3) === AbsoluteSum(1, 2, 3);
@@ -57,8 +61,6 @@ void g()
     printf("%c\n", myLetter);
     printf("%f\n", myFloatNum);
     printf("%lf\n", myDoubleNum);
-    
-	return ;
 }
 
 int f(int x)
@@ -82,6 +84,34 @@ int f(int x)
     }
     
 	return a*x+b;
+}
+
+int isPrime(int num)
+{
+    for (int i=2; i<=num/2; i=i+1)
+    {
+        if (num%i == 0)
+        {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+void printOddOrEven()
+{
+    for (int i=1; i<=100; i=i+1)
+    {
+        if (i%2 == 1)
+        {
+            printf("odd\n");
+        }
+        else if (i%2 == 0)
+        {
+            printf("even\n");
+        }
+    }
 }
 
 int printOddNumber() {
@@ -134,6 +164,18 @@ int printFiveXNotTenNumber() {
 
 int main()
 {
+    for (int i=2; i<=100; i=i+1)
+    {
+        int result = isPrime(i);
+
+        if (result == 1)
+        {
+            printf("%d\n", i);
+        }
+    } 
+
+
+/*
     practiceprinting();
     
     int result = Sum(3, 4);
@@ -141,7 +183,12 @@ int main()
     
     result = AbsoluteSum(-45, -23, -37);
     printf("%d\n", result);
-/*
+
+    result = difference(5,8);
+    printf("%d\n",result);
+
+    printOddOrEven();
+
     g();
     f(3);
 
