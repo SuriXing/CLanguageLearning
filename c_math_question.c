@@ -191,14 +191,60 @@ int fasterCalcFrom1To100()
     return n*(a1+an)/2 - n*(a2+an2)/2;
 }
 
-int main()
+int SumOfArithmeticSequence(int from, int to)
 {
-    printPrimeNum(1,234);
+    // && : and
+    // || : or
+    if (from > to || from < 0 || to < 0)
+    {
+        return -1;
+    }
+    
+    int n = to-from+1;
+    int a1 = from;
+    int an = to;
+
+    return n*(a1+an)/2;    
+}
+
+int SlowVerSum(int from, int to)
+{
+    if (from > to || from < 0 || to < 0)
+    {
+        return -1;
+    }
+    
+    int sumOfArth=0;
+    
+    for (int i=from; i<=to; i=i+1)
+    {
+        sumOfArth=sumOfArth+i;
+    }
+    return sumOfArth;
+}
+
+void testFunctions()
+{
+    if (SumOfArithmeticSequence(69,3456) == SlowVerSum(69,3456))
+    {
+        printf("YES!\n");
+    }
+    else 
+    {
+        printf("%s\n", "OhNo!");
+    }
+}
+
+int main()
+{   
+    testFunctions();
+
+/*     printPrimeNum(1,234);
 
     printPrimeNum2(1,234);
 
     printPrimeNum3(1,765);
-/*    
+   
     int result = isPrime2(23437);
     printf("%d\n", result);
     result3 = fasterCalcFrom1To100();
