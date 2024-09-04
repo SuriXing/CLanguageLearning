@@ -235,11 +235,46 @@ void testFunctions()
     }
 }
 
+/*
+    1*1=1
+    1*2=2
+    ..
+    9*9=81
+ */
+
+void printTimesTable()
+{
+    for (int i=1; i<10; i+=1)
+    {
+        for(int j=1; j<10; j+=1)
+        {
+            printf("%d*%d=%d\n", i, j, i*j);
+        }
+    }
+}
+
+void printLine(int i)
+{
+    for(int j=1; j<10; j+=1)
+    {
+        printf("%d*%d=%d\n", i, j, i*j);
+    }
+}
+ 
+void printTimesTable2()
+{
+    for(int i=1; i<10; i+=1)
+    {
+        printLine(i);
+    }
+}
+
 int main()
 {   
-    testFunctions();
+    printTimesTable2();
 
-/*     printPrimeNum(1,234);
+/*  
+    printPrimeNum(1,234);
 
     printPrimeNum2(1,234);
 
