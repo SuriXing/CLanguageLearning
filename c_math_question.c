@@ -269,11 +269,52 @@ void printTimesTable2()
     }
 }
 
-int main()
-{   
-    printTimesTable2();
+void swapInteger(int a, int b)
+{
+    printf("a=%d, b=%d\n", a, b);
 
+    int c = b;
+    int d = a;
+    a = c;
+    b = d;
+
+    printf("a=%d, b=%d\n", a, b);
+
+    int temp = a;
+    a = b;
+    b = temp;
+
+    printf("a=%d, b=%d\n", a, b);
+}
+
+// 1, 1, 2, 3, 5, 8..
+void printFibonacci(int count)
+{
+    if (count<3)
+    {
+        return;
+    } 
+
+    int start1 = 1;
+    int start2 = 1;
+    int tmp = 0;
+    
+    for (int i=3; i<=count; i+=1)
+    {
+        printf("%d+%d=%d\n", start1, start2, start1+start2);
+
+        tmp = start1;
+        start1 = start2;
+        start2 = tmp + start2;
+    }
+}
+
+int main()
+{
+//  swapInteger(3, 4); 
+    printFibonacci(25);
 /*  
+    printTimesTable2();
     printPrimeNum(1,234);
 
     printPrimeNum2(1,234);
