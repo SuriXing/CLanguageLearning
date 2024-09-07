@@ -269,6 +269,15 @@ void printTimesTable2()
     }
 }
 
+void swapInteger2(int a, int b)
+{
+    printf("a=%d,b=%d\n",a,b);
+    int c = a;
+    a = b;
+    b = c;
+    printf("a=%d,b=%d\n", a, b);
+}
+
 void swapInteger(int a, int b)
 {
     printf("a=%d, b=%d\n", a, b);
@@ -309,11 +318,102 @@ void printFibonacci(int count)
     }
 }
 
+void printFibonacci2(int count)
+{
+    if (count<3)
+    {
+        return;
+    }
+
+    int start1 = 1;
+    int start2 = 1;
+    int temp = 0;
+
+    for (int i=3; i<=count; i+=1)
+    {
+        printf("%d+%d=%d\n", start1, start2, start1+start2);
+
+        temp = start1;
+        start1 = start2;
+        start2 = start1 + temp;
+    }
+
+}
+
+int factorialFormula(int num)
+{
+    if (num<0)
+    {
+        return -1;
+    }
+    
+    int factorialOfNum = 1;
+    
+    for (int i=num; i>=1; i-=1)
+    {
+        factorialOfNum = factorialOfNum*i;
+    }
+    
+    return factorialOfNum;
+}
+
+int factorialFormula2(int num)
+{
+    if (num<0)
+    {
+        return -1;
+    }
+    
+    int factorialOfNum = 1;
+
+    while (num>=1)
+    {
+        factorialOfNum *= num;
+        num -= 1;
+    }
+
+    return factorialOfNum;
+}
+
+void printPAndC(int m, int n)
+{
+    if ( m<=0 || n<=0 || n>m)
+    {
+        return ;
+    }
+    
+    int combination = factorialFormula(m)/(factorialFormula(n)*factorialFormula(m-n));
+    int permutation = factorialFormula(m)/factorialFormula(m-n);
+
+    printf("combination==%d, permutaion==%d\n", combination, permutation);
+}
+
 int main()
 {
-//  swapInteger(3, 4); 
-    printFibonacci(25);
-/*  
+    if (factorialFormula(66) == factorialFormula2(66))
+    {
+        printf("%s\n","OH YESSSSS!");
+    }
+    else
+    {
+        printf("OH NO\n");
+    }
+
+    int tmp = 0;
+    printf("Give me an integer:");
+    scanf("%d", &tmp);
+    while (tmp > 0)
+    {
+        printf("Give me an integer:");
+        scanf("%d", &tmp);
+        printf("%d\n", tmp);
+    }
+
+/*    printPAndC(4,3);
+    swapInteger2(345,645);
+    swapInteger(3, 4); 
+    printFibonacci2(25);
+ 
     printTimesTable2();
     printPrimeNum(1,234);
 
