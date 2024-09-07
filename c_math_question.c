@@ -375,6 +375,23 @@ int factorialFormula2(int num)
     return factorialOfNum;
 }
 
+int factorialFormula3(int num)
+{
+    if (num<0)
+    {
+        return -1;
+    }
+    
+    int factorialOfNum = 1;
+
+    do
+    {
+        factorialOfNum *= num;
+    } while (num-- >= 1);
+
+    return factorialOfNum;
+}
+
 void printPAndC(int m, int n)
 {
     if ( m<=0 || n<=0 || n>m)
@@ -390,7 +407,7 @@ void printPAndC(int m, int n)
 
 int main()
 {
-    if (factorialFormula(66) == factorialFormula2(66))
+    if ((factorialFormula(66) == factorialFormula2(66)) && (factorialFormula2(66) == factorialFormula3(66)))
     {
         printf("%s\n","OH YESSSSS!");
     }
