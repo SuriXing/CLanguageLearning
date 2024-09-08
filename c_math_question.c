@@ -405,18 +405,56 @@ void printPAndC(int m, int n)
     printf("combination==%d, permutaion==%d\n", combination, permutation);
 }
 
-int main()
+void functionTesting()
 {
     if ((factorialFormula(66) == factorialFormula2(66)) && (factorialFormula2(66) == factorialFormula3(66)))
     {
-        printf("%s\n","OH YESSSSS!");
+        printf("%s\n", "OH YESSSSSS :)");
     }
     else
     {
-        printf("OH NO\n");
+        printf("%s\n","Oh No :(");
+    }    
+}
+
+int geometricSequenceSum(int from, int to, int q)
+{
+    if (q == 0)
+    {
+        return 0;
     }
 
-    int tmp = 0;
+    int sum = 0;
+
+    for (int i = from; i <= to; i *= q)
+    {
+        sum += i;
+    }
+    
+    return sum;
+}
+
+int geometricSequenceSum2(int from, int to, int q)
+{
+    if (q == 0)
+    {
+        return 0;
+    }
+
+    int n = to - from + 1;
+
+    // a1 * (1 - q(n)) / (1-q)
+
+    return 0;
+}
+
+int main()
+{
+    int result = geometricSequenceSum(3,243,3);
+    printf("%d\n",result);
+
+/*
+   int tmp = 0;
     printf("Give me an integer:");
     scanf("%d", &tmp);
     while (tmp > 0)
@@ -426,7 +464,7 @@ int main()
         printf("%d\n", tmp);
     }
 
-/*    printPAndC(4,3);
+    printPAndC(4,3);
     swapInteger2(345,645);
     swapInteger(3, 4); 
     printFibonacci2(25);
