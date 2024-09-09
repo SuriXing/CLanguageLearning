@@ -440,20 +440,49 @@ int geometricSequenceSum2(int from, int to, int q)
     {
         return 0;
     }
-
-    int n = to - from + 1;
+    
+    int qn = 1;
+    
+    for(int n = from; n <= to; n *= q)
+    {
+        qn *= q;//qn = qn * q
+    }
 
     // a1 * (1 - q(n)) / (1-q)
 
-    return 0;
+    return from * (1-qn)/(1-q);
+}
+
+int sumOfConsequtiveNum(int from, int to)
+{
+    int sum = 0;
+    
+    for (int i = from; i <= to; i +=1)
+    {
+        sum += i;
+    }
+
+    return sum;
+}
+
+int sumOfConsequtiveNum2(int from, int to)
+{
+    int n = to - from + 1;
+    
+    return n * ( from + to )/2;
 }
 
 int main()
 {
-    int result = geometricSequenceSum(3,243,3);
-    printf("%d\n",result);
 
-/*
+    if (geometricSequenceSum2(1, 2048, 2) == geometricSequenceSum(1, 2048, 2))
+    {
+        printf("%s\n","YESSSSSSSS");
+    }
+    
+    
+/*    int result = geometricSequenceSum(3,243,3);
+    printf("%d\n",result);
    int tmp = 0;
     printf("Give me an integer:");
     scanf("%d", &tmp);
@@ -494,4 +523,3 @@ int main()
 	return 0;
 */
 }
-
