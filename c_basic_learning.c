@@ -162,8 +162,37 @@ int printFiveXNotTenNumber() {
     return 0;
 }
 
+void printPrimeNum(int from, int to)
+{
+    if (from <= 1)
+    {
+        from = 2;
+    }
+    
+    for (int i = from; i <= to; i++)
+    {
+        if ( isPrime(i) == 1)
+        {
+            printf("%d\n", i);
+        }
+    }
+}
+
 int main()
 {
+//    printPrimeNum(1, 100);
+
+    int i = 0;
+    printf("%d\n", i);
+    printf("%d\n", i++);
+    printf("%d\n", i);
+    printf("%d\n", ++i);
+    printf("%d\n", i);
+    printf("%d\n", --i);
+    printf("%d\n", i);
+    printf("%d\n", i--);
+    printf("%d\n", i);
+/*    
     for (int i=2; i<=100; i=i+1)
     {
         int result = isPrime(i);
@@ -174,8 +203,6 @@ int main()
         }
     } 
 
-
-/*
     practiceprinting();
     
     int result = Sum(3, 4);
@@ -204,23 +231,3 @@ int main()
 */
 	return 0;
 }
-
-
-//	float f = getRandomFloat(3);
-//	fprintf(stdout, "Suri is smart!\t%f\n", f);
-//	fprintf(stdout, "Suri is smart!\n");
-
-// This is a function
-// Function name: get RandomFloat
-// Return value: a double
-// Input : an integer
-float getRandomFloat(int suri)
-{
-	return suri+1.0;
-}
-
-double getRandomDouble()
-{
-	return 1.0;
-}
-
