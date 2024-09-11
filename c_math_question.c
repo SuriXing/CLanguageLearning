@@ -50,34 +50,23 @@ int isPrime3(int Num)
         }
     }
 
-    /*
-    int k=2;
-    if (k <= num/2) {
-        if (num % k == 0) {
-            return 0;
-        }
-    } else {
-        break;
-    }
-    k=k+1;
-    if (k <= num/2) {
-        if (num % k == 0) {
-            return 0;
-        }
-    } else {
-        break;
-    }
-    k=k+1;
-    if (k <= num/2) {
-        if (num % k == 0) {
-            return 0;
-        }
-    } else {
-        break;
-    }
-    ......
-     */
+    return 1;
+}
 
+int isPrime4 (int num)
+{
+    if (num <= 1)
+    {
+        return 0;
+    }
+
+    for (int i = 2; i <= num/2; i++)
+    {
+        if (num % i == 0)
+        {
+            return 0;
+        }
+    }
     return 1;
 }
 
@@ -474,12 +463,14 @@ int sumOfConsequtiveNum2(int from, int to)
 
 int main()
 {
-
-    if (geometricSequenceSum2(1, 2048, 2) == geometricSequenceSum(1, 2048, 2))
-    {
-        printf("%s\n","YESSSSSSSS");
-    }
+    int result = isPrime4( 346563 );
+    printf ("%d\n",result);
     
+
+//if (geometricSequenceSum2(1, 2048, 2) == geometricSequenceSum(1, 2048, 2))
+//{
+//    printf("%s\n","YESSSSSSSS");
+//}
     
 /*    int result = geometricSequenceSum(3,243,3);
     printf("%d\n",result);
