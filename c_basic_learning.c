@@ -178,10 +178,8 @@ void printPrimeNum(int from, int to)
     }
 }
 
-int main()
+void practicePlusAndMinus()
 {
-//    printPrimeNum(1, 100);
-
     int i = 0;
     printf("%d\n", i);
     printf("%d\n", i++);
@@ -192,7 +190,79 @@ int main()
     printf("%d\n", i);
     printf("%d\n", i--);
     printf("%d\n", i);
-/*    
+}
+
+void learnArray()
+{
+    int myArray[5] = {0, 25, 50, 75, 100};
+
+    for (int i=0; i<5; i++)
+    {
+        printf("%d\n", myArray[i]);
+    }
+
+    printf("---------------------\n");
+    printf("%d\n", myArray[0]);    
+    printf("%d\n", myArray[1]);
+    printf("%d\n", myArray[2]);
+    printf("%d\n", myArray[3]);            
+    printf("%d\n", myArray[4]);   
+
+    printf("---------------------\n");
+    
+    int temp;
+
+    temp = myArray[0];
+    myArray[0] = myArray[4];
+    myArray[4] = temp;
+    temp = myArray[1];
+    myArray[1] = myArray[3];
+    myArray[3] = temp;
+    // swap array 
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d\n", myArray[i]);
+    }
+
+    printf("---------------------\n");
+    
+    for (int i = 0; i <= 5/2; i++)
+    {
+        int temp = myArray[i];
+        myArray[i] = myArray[5-i-1];
+        myArray[5-i-1] = temp;
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d\n", myArray[i]);
+    }
+
+    printf("---------------------\n");    
+
+    for (int i = 4; i >= 5/2; i--)
+    {
+        int temp = myArray[i];
+        myArray[i] = myArray[5-i-1];
+        myArray[5-i-1] = temp;
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d\n", myArray[i]);
+    }
+
+}
+
+int main()
+{
+    learnArray();
+/* 
+    practicePlusAndMinus();
+
+    printPrimeNum(1, 100);
+   
     for (int i=2; i<=100; i=i+1)
     {
         int result = isPrime(i);
