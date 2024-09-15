@@ -88,6 +88,11 @@ int f(int x)
 
 int isPrime(int num)
 {
+    if (num <= 1)
+    {
+        return 0;
+    }
+    
     for (int i=2; i<=num/2; i=i+1)
     {
         if (num%i == 0)
@@ -192,6 +197,37 @@ void practicePlusAndMinus()
     printf("%d\n", i);
 }
 
+void printArray(int array[], int count)
+{
+    for (int i=0; i<count; i++)
+    {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
+void printPrimeNumFrom1To100()
+{
+    int myArray[50] = {0};
+    int myArrayIndex = 0;
+
+    for (int i = 1; i <= 100; i++)
+    {
+        if (isPrime(i) == 1)
+        {
+            myArray[myArrayIndex++] = i;
+//          printArray(myArray, 50);
+        }
+    }
+    
+    for (int k = 0; k < myArrayIndex; k++)
+    {
+        printf("%d\n", myArray[k]);
+    }
+
+    printf("there is %d prime numbers in total\n", myArrayIndex);
+}
+
 void learnArray()
 {
     int myArray[5] = {0, 25, 50, 75, 100};
@@ -257,8 +293,11 @@ void learnArray()
 
 int main()
 {
+    printPrimeNumFrom1To100();
+
+/*
     learnArray();
-/* 
+ 
     practicePlusAndMinus();
 
     printPrimeNum(1, 100);
