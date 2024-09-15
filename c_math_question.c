@@ -1,15 +1,5 @@
 #include <stdio.h>
 
-int Sum(int a, int b)
-{
-    return a+b;
-}
-
-int difference(int a, int b)
-{
-    return a-b;
-}
-
 int isPrime(int num)
 {
     if (num <= 1)
@@ -28,63 +18,6 @@ int isPrime(int num)
     return 1;
 }
 
-int isPrime2(int num)
-{
-    for (int n=2; n<=num/2; n=n+1)
-    {
-        if (num%n == 0)
-        {
-            return 0;
-        }
-    }
-    return 1;
-}
-
-int isPrime3(int Num)
-{
-    for (int k=2; k<=Num/2; k=k+1)
-    {
-        if (Num%k == 0)
-        {
-            return 0;
-        }
-    }
-
-    return 1;
-}
-
-int isPrime4 (int num)
-{
-    if (num <= 1)
-    {
-        return 0;
-    }
-
-    for (int i = 2; i <= num/2; i++)
-    {
-        if (num % i == 0)
-        {
-            return 0;
-        }
-    }
-    return 1;
-}
-
-void printOddOrEven()
-{
-    for (int i=1; i<=100; i=i+1)
-    {
-        if (i%2 == 1)
-        {
-            printf("odd\n");
-        }
-        else if (i%2 == 0)
-        {
-            printf("even\n");
-        }
-    }
-}
-
 void printPrimeNum(int from, int to)
 {
     int countOfPrimeNum=0;
@@ -100,55 +33,8 @@ void printPrimeNum(int from, int to)
     printf("%d\n",countOfPrimeNum);
 }
 
-void printPrimeNum3(int from, int to)
+int calcFrom1To100()
 {
-    if (from>=to)
-    {
-        return ;
-    }
-    
-    for (int i=from; i<=to; i=i+1)
-    {
-        if (isPrime(i) == 1)
-        {
-            printf("%d\n",i);
-        }
-    }
-}
-
-void printPrimrNum2(int from, int to)
-{
-    for (int i=from; i<=to; i=i+1)
-    {
-        int j = 0;
-        for (j=2; j<=i/2; j=j+1)
-        {
-            if (i%j == 0)
-            {
-                break;
-            }
-        }
-
-        if (j>i/2)
-        {
-            printf("%d\n", i);
-        }
-    }
-}
-
-void printPrimeNum2(int from, int to)
-{
-    for (int i=from; i<=to; i=i+1)
-    {
-        if (isPrime(i) == 1)
-        {
-            printf("%d\n", i);
-        }
-    }
-}
-
- int calcFrom1To100()
- {
     int sumOfOddNumber = 0;
     int sumOfEvenNumber = 0;
 
@@ -267,22 +153,14 @@ void swapInteger2(int a, int b)
     printf("a=%d,b=%d\n", a, b);
 }
 
-void swapInteger(int a, int b)
+int Sum(int a, int b)
 {
-    printf("a=%d, b=%d\n", a, b);
+    return a+b;
+}
 
-    int c = b;
-    int d = a;
-    a = c;
-    b = d;
-
-    printf("a=%d, b=%d\n", a, b);
-
-    int temp = a;
-    a = b;
-    b = temp;
-
-    printf("a=%d, b=%d\n", a, b);
+int difference(int a, int b)
+{
+    return a-b;
 }
 
 // 1, 1, 2, 3, 5, 8..
@@ -394,17 +272,6 @@ void printPAndC(int m, int n)
     printf("combination==%d, permutaion==%d\n", combination, permutation);
 }
 
-void functionTesting()
-{
-    if ((factorialFormula(66) == factorialFormula2(66)) && (factorialFormula2(66) == factorialFormula3(66)))
-    {
-        printf("%s\n", "OH YESSSSSS :)");
-    }
-    else
-    {
-        printf("%s\n","Oh No :(");
-    }    
-}
 
 int geometricSequenceSum(int from, int to, int q)
 {
@@ -444,35 +311,23 @@ int geometricSequenceSum2(int from, int to, int q)
 
 int sumOfConsequtiveNum(int from, int to)
 {
-    int sum = 0;
-    
-    for (int i = from; i <= to; i +=1)
-    {
-        sum += i;
-    }
-
-    return sum;
-}
-
-int sumOfConsequtiveNum2(int from, int to)
-{
     int n = to - from + 1;
     
     return n * ( from + to )/2;
 }
 
-int main()
+void testFunction()
 {
-    int result = isPrime4( 346563 );
-    printf ("%d\n",result);
-    
+    if ((factorialFormula(66) == factorialFormula2(66)) && (factorialFormula2(66) == factorialFormula3(66)))
+    {
+        printf("%s\n", "OH YESSSSSS :)");
+    }
+    else
+    {
+        printf("%s\n","Oh No :(");
+    }    
 
-//if (geometricSequenceSum2(1, 2048, 2) == geometricSequenceSum(1, 2048, 2))
-//{
-//    printf("%s\n","YESSSSSSSS");
-//}
-    
-/*    int result = geometricSequenceSum(3,243,3);
+    int result = geometricSequenceSum(3,243,3);
     printf("%d\n",result);
    int tmp = 0;
     printf("Give me an integer:");
@@ -483,34 +338,69 @@ int main()
         scanf("%d", &tmp);
         printf("%d\n", tmp);
     }
+}
 
-    printPAndC(4,3);
-    swapInteger2(345,645);
-    swapInteger(3, 4); 
-    printFibonacci2(25);
- 
-    printTimesTable2();
-    printPrimeNum(1,234);
-
-    printPrimeNum2(1,234);
-
-    printPrimeNum3(1,765);
-   
-    int result = isPrime2(23437);
-    printf("%d\n", result);
-    result3 = fasterCalcFrom1To100();
-    printf("%d\n", result3); 
-    
-    int result = calcFrom1To100();
-    printf("%d\n", result);
-    printPrimeNum(1, 1000);
-
-    result = Sum(35, 78);
-
-    int result2;
-    result2 = Sum(35, 78);
-    
-
+int main()
+{
 	return 0;
-*/
+}
+
+
+int slowSumOfConsequtiveNum(int from, int to)
+{
+    int sum = 0;
+    
+    for (int i = from; i <= to; i +=1)
+    {
+        sum += i;
+    }
+
+    return sum;
+}
+
+void printPrimeNum3(int from, int to)
+{
+    if (from>=to)
+    {
+        return ;
+    }
+    
+    for (int i=from; i<=to; i=i+1)
+    {
+        if (isPrime(i) == 1)
+        {
+            printf("%d\n",i);
+        }
+    }
+}
+
+void printPrimrNum2(int from, int to)
+{
+    for (int i=from; i<=to; i=i+1)
+    {
+        int j = 0;
+        for (j=2; j<=i/2; j=j+1)
+        {
+            if (i%j == 0)
+            {
+                break;
+            }
+        }
+
+        if (j>i/2)
+        {
+            printf("%d\n", i);
+        }
+    }
+}
+
+void printPrimeNum2(int from, int to)
+{
+    for (int i=from; i<=to; i=i+1)
+    {
+        if (isPrime(i) == 1)
+        {
+            printf("%d\n", i);
+        }
+    }
 }

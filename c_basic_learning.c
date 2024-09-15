@@ -11,15 +11,37 @@ void practiceprinting()
     printf("%c\n",myLetter);
     
 }
-
-int Sum(int a, int b)
+void swapInteger(int a, int b)
 {
-    return a+b;
+    printf("a=%d, b=%d\n", a, b);
+
+    int c = b;
+    int d = a;
+    a = c;
+    b = d;
+
+    printf("a=%d, b=%d\n", a, b);
+
+    int temp = a;
+    a = b;
+    b = temp;
+
+    printf("a=%d, b=%d\n", a, b);
 }
 
-int difference(int a, int b)
+void printOddOrEven()
 {
-    return a-b;
+    for (int i=1; i<=100; i=i+1)
+    {
+        if (i%2 == 1)
+        {
+            printf("odd\n");
+        }
+        else if (i%2 == 0)
+        {
+            printf("even\n");
+        }
+    }
 }
 
 // AbsoluteSum(-1, -1, -1) == AbsoluteSum(1, 1, 1);
