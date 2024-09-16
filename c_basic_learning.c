@@ -11,6 +11,7 @@ void practiceprinting()
     printf("%c\n",myLetter);
     
 }
+
 void swapInteger(int a, int b)
 {
     printf("a=%d, b=%d\n", a, b);
@@ -126,21 +127,6 @@ int isPrime(int num)
     return 1;
 }
 
-void printOddOrEven()
-{
-    for (int i=1; i<=100; i=i+1)
-    {
-        if (i%2 == 1)
-        {
-            printf("odd\n");
-        }
-        else if (i%2 == 0)
-        {
-            printf("even\n");
-        }
-    }
-}
-
 int printOddNumber() {
     for (int i=1; i<100; i+=2)
     {
@@ -228,6 +214,23 @@ void printArray(int array[], int count)
     printf("\n");
 }
 
+void printSumOfArray(int array[], int count)
+{
+    if (count <= 0)
+    {
+        return;
+    }
+
+    int sum = 0;
+
+    for (int i=0; i<count; i++)
+    {
+        sum += array[i];
+    }
+
+    printf("sum of the array is %d\n", sum);
+}
+
 void printPrimeNumFrom1To100()
 {
     int myArray[50] = {0};
@@ -248,6 +251,8 @@ void printPrimeNumFrom1To100()
     }
 
     printf("there is %d prime numbers in total\n", myArrayIndex);
+
+    printSumOfArray(myArray, myArrayIndex);
 }
 
 void learnArray()
