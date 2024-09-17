@@ -231,6 +231,101 @@ void printSumOfArray(int array[], int count)
     printf("sum of the array is %d\n", sum);
 }
 
+void printArraySum2(int array[], int count)
+{
+    if (count <= 0)
+    {
+        return;
+    }
+
+    int sum = 0;
+
+    for (int i = 0; i <= count; i++)
+    {
+        sum += array[i];
+    }
+    
+    printf("sum of array is%d\n", sum);
+}
+
+int findGreatestNumInArray(int array[], int count)
+{
+     if (count <= 0)
+    {
+        return -1;
+    }
+
+    int greatestValue = array[0];
+
+    for (int i = 0; i <= count; i++)
+    {
+        if (array[i] > greatestValue)
+        {
+            greatestValue = array[i];
+        }
+    }
+    return greatestValue;
+}
+
+int findGreatestNumInArray2(int array[], int count)
+{
+     if (count <= 0)
+    {
+        return -1;
+    }
+
+    int greatestIndex = 0;
+
+    for (int i = 0; i <= count; i++)
+    {
+        if (array[i] > array[greatestIndex])
+        {
+            greatestIndex = i;
+        }
+    }
+
+    return array[greatestIndex];
+}
+
+int findSmallestValue(int array[], int count)
+{
+     if (count <= 0)
+    {
+        return -1;
+    }
+
+    int smallestValue = array[0];
+
+    for (int i = 0; i <= count; i++)
+    {
+        if (array[i] < array[smallestValue])
+        {
+            smallestValue = i;
+        }
+    }
+    return smallestValue;
+}
+
+int findSmallestIndex(int array[], int count)
+{
+     if (count <= 0)
+    {
+        return -1;
+    }
+
+    int smallestIndex = 0;
+
+    for (int i = 0; i <= count; i++)
+    {
+        if (array[i] < array[smallestIndex])
+        {
+            smallestIndex = i;
+        }
+    }
+
+    return array[smallestIndex];
+}
+
 void printPrimeNumFrom1To100()
 {
     int myArray[50] = {0};
@@ -253,6 +348,17 @@ void printPrimeNumFrom1To100()
     printf("there is %d prime numbers in total\n", myArrayIndex);
 
     printSumOfArray(myArray, myArrayIndex);
+
+    printArraySum2(myArray, myArrayIndex);
+
+    if (findGreatestNumInArray(myArray, myArrayIndex) == findGreatestNumInArray2(myArray, myArrayIndex))
+    {
+        printf("YEAH\n");
+    }
+    else
+    {
+        printf("WHATTTTTTT?!\n");
+    }
 }
 
 void learnArray()
@@ -365,5 +471,5 @@ int main()
 		printf("Suri is smart!\t%d:%d\n", x, f(x));
 	}
 */
-	return 0;
+	
 }
