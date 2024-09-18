@@ -1,5 +1,101 @@
 #include <stdio.h>
 
+int findGreatestNumInArray2(int array[], int count)
+{
+     if (count <= 0)
+    {
+        return -1;
+    }
+
+    int greatestValue = array[0];
+
+    for (int i = 0; i <= count; i++)
+    {
+        if (array[i] > greatestValue)
+        {
+            greatestValue = array[i];
+        }
+    }
+    return greatestValue;
+}
+
+int findGreatestIndexInArray(int array[], int count)
+{
+     if (count <= 0)
+    {
+        return -1;
+    }
+
+    int greatestIndex = 0;
+
+    for (int i = 0; i <= count; i++)
+    {
+        if (array[i] > array[greatestIndex])
+        {
+            greatestIndex = i;
+        }
+    }
+
+    return array[greatestIndex];
+}
+
+int findSmallestValue2(int array[], int count)
+{
+     if (count <= 0)
+    {
+        return -1;
+    }
+
+    int smallestValue = array[0];
+
+    for (int i = 0; i <= count; i++)
+    {
+        if (array[i] < array[smallestValue])
+        {
+            smallestValue = i;
+        }
+    }
+    return smallestValue;
+}
+
+int findSmallestIndex2(int array[], int count)
+{
+     if (count <= 0)
+    {
+        return -1;
+    }
+
+    int smallestIndex = 0;
+
+    for (int i = 0; i < count; i++)
+    {
+        if (array[i] < array[smallestIndex])
+        {
+            smallestIndex = i;
+        }
+    }
+
+    return array[smallestIndex];
+}
+
+float findAverageNumInArray(int array[], int count)
+{
+    if (count <= 0)
+    {
+        return -1;
+    }
+
+    int sum = 0;
+    
+    for (int i = 0; i < count; i++)
+    {
+        sum += array[i];
+    }
+
+  return 1.0*sum/count; // implicit type casting    
+//    return (float)sum/count;    // explicit type casting
+}
+
 void practiceprinting()
 {
     int myNum=21;//defining an integer
@@ -267,7 +363,7 @@ int findGreatestNumInArray(int array[], int count)
     return greatestValue;
 }
 
-int findGreatestNumInArray2(int array[], int count)
+int findGreatestNumInArray3(int array[], int count)
 {
      if (count <= 0)
     {
@@ -359,6 +455,9 @@ void printPrimeNumFrom1To100()
     {
         printf("WHATTTTTTT?!\n");
     }
+
+    float result = findAverageNumInArray(myArray, myArrayIndex);
+    printf("The average number of the array is %0.2f\n", result);
 }
 
 void learnArray()
@@ -428,7 +527,7 @@ int main()
 {
     printPrimeNumFrom1To100();
 
-/*
+/* 
     learnArray();
  
     practicePlusAndMinus();
