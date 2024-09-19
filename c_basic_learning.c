@@ -20,6 +20,44 @@ int findGreatestIndexInArray(int array[], int count)
     return array[greatestIndex];
 }
 
+void twoDimensionArrayLearning()
+{
+    int test[3][3] = {0};
+    for (int i=0; i<3; i++)
+    {
+        for (int j=0; j<3; j++)
+        {
+            test[i][j] = i+j;
+        }
+    }
+
+    for (int i=0; i<3; i++)
+    {
+        for (int j=0; j<3; j++)
+        {
+            printf("%d ", test[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int sumOfArray(int array[], int count)
+{
+    if (count <= 0)
+    {
+        return -1;
+    }
+
+    int sum = 0;
+    
+    for (int i = 0; i < count; i++)
+    {
+        sum += array[i];
+    }
+
+  return sum;
+}
+
 float findAverageNumInArray(int array[], int count)
 {
     if (count <= 0)
@@ -273,15 +311,6 @@ void printPrimeNumFrom1To100()
 
     printArraySum2(myArray, myArrayIndex);
 
-    if (findGreatestNumInArray(myArray, myArrayIndex) == findGreatestNumInArray2(myArray, myArrayIndex))
-    {
-        printf("YEAH\n");
-    }
-    else
-    {
-        printf("WHATTTTTTT?!\n");
-    }
-
     float result = findAverageNumInArray(myArray, myArrayIndex);
     printf("The average number of the array is %0.2f\n", result);
 }
@@ -289,6 +318,8 @@ void printPrimeNumFrom1To100()
 int main()
 {
     printPrimeNumFrom1To100();
+
+    twoDimensionArrayLearning();
 
 /* 
     learnArray();
