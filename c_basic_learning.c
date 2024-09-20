@@ -2,7 +2,7 @@
 
 int findGreatestIndexInArray(int array[], int count)
 {
-     if (count <= 0)
+    if (count <= 0)
     {
         return -1;
     }
@@ -23,6 +23,7 @@ int findGreatestIndexInArray(int array[], int count)
 void twoDimensionArrayLearning()
 {
     int test[3][3] = {0};
+
     for (int i=0; i<3; i++)
     {
         for (int j=0; j<3; j++)
@@ -39,6 +40,26 @@ void twoDimensionArrayLearning()
         }
         printf("\n");
     }
+}
+
+void swapArray(int array[], int count)
+{
+    if (count <= 0)
+    {
+        return -1;
+    }
+
+	int temp = 0;
+	for (int i=0; i<count/2; i++)
+	{
+		temp array[i];
+
+		array[i] = array[count-1-i];
+
+		array[count-1-i] = array[i];
+	}
+
+	return;
 }
 
 int sumOfArray(int array[], int count)
@@ -317,52 +338,9 @@ void printPrimeNumFrom1To100()
 
 int main()
 {
-    printPrimeNumFrom1To100();
+//  printPrimeNumFrom1To100();
 
     twoDimensionArrayLearning();
 
-/* 
-    learnArray();
- 
-    practicePlusAndMinus();
-
-    printPrimeNum(1, 100);
-   
-    for (int i=2; i<=100; i=i+1)
-    {
-        int result = isPrime(i);
-
-        if (result == 1)
-        {
-            printf("%d\n", i);
-        }
-    } 
-
-    practiceprinting();
-    
-    int result = Sum(3, 4);
-    printf("%d\n", result);
-    
-    result = AbsoluteSum(-45, -23, -37);
-    printf("%d\n", result);
-
-    result = difference(5,8);
-    printf("%d\n",result);
-
-    printOddOrEven();
-
-    g();
-    f(3);
-
-    printFiveXNumber();
-
-    printf("hhhhhhhhhhhh\n");
-    
-    printFiveXNotTenNumber();
-
-	for (int x=1; x<10; ++x) {
-		printf("Suri is smart!\t%d:%d\n", x, f(x));
-	}
-*/
-	
+	return 0;
 }
