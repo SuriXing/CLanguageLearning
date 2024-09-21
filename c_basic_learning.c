@@ -1,5 +1,27 @@
 #include <stdio.h>
 
+int find2ndGreatestIndexInArray(int array[], int count)
+{
+    if (count <= 0)
+    {
+        return -1;
+    }
+
+    int greatestIndex = 0;
+    int 2ndGreatestIndex = 0;
+
+    for (int i = 0; i <= count; i++)
+    {
+        if (array[i] > array[greatestIndex])
+        {
+            2ndGreatestIndex = greatestIndex;
+            greatestIndex = i;
+        }
+    }
+
+    return array[2ndGreatestIndex];
+}
+
 int findGreatestIndexInArray(int array[], int count)
 {
     if (count <= 0)
