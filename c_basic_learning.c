@@ -115,40 +115,6 @@ void swapInteger(int a, int b)
     printf("a=%d, b=%d\n", a, b);
 }
 
-void printOddOrEven()
-{
-    for (int i=1; i<=100; i=i+1)
-    {
-        if (i%2 == 1)
-        {
-            printf("odd\n");
-        }
-        else if (i%2 == 0)
-        {
-            printf("even\n");
-        }
-    }
-}
-
-// AbsoluteSum(-1, -1, -1) == AbsoluteSum(1, 1, 1);
-// AbsoluteSum(1, 2, 3) === AbsoluteSum(1, 2, 3);
-int AbsoluteSum(int a,int b,int c)
-{
-    if (a < 0) {
-        a = -a;
-    }
-    
-    if (b < 0) {
-        b = -b;
-    }
-    
-    if (c < 0) {
-        c = -c;
-    }
-
-    return (a+b+c);
-}
-
 int isPrime(int num)
 {
     if (num <= 1)
@@ -192,20 +158,6 @@ void printPrimeNum(int from, int to)
     }
 }
 
-void practicePlusAndMinus()
-{
-    int i = 0;
-    printf("%d\n", i);
-    printf("%d\n", i++);
-    printf("%d\n", i);
-    printf("%d\n", ++i);
-    printf("%d\n", i);
-    printf("%d\n", --i);
-    printf("%d\n", i);
-    printf("%d\n", i--);
-    printf("%d\n", i);
-}
-
 void printArray(int array[], int count)
 {
     for (int i=0; i<count; i++)
@@ -230,23 +182,6 @@ void printSumOfArray(int array[], int count)
     }
 
     printf("sum of the array is %d\n", sum);
-}
-
-void printArraySum2(int array[], int count)
-{
-    if (count <= 0)
-    {
-        return;
-    }
-
-    int sum = 0;
-
-    for (int i = 0; i <= count; i++)
-    {
-        sum += array[i];
-    }
-    
-    printf("sum of array is%d\n", sum);
 }
 
 int findGreatestNumInArray(int array[], int count)

@@ -278,6 +278,56 @@ void learnArray()
 
 }
 
+void printArraySum2(int array[], int count)
+{
+    if (count <= 0)
+    {
+        return;
+    }
+
+    int sum = 0;
+
+    for (int i = 0; i <= count; i++)
+    {
+        sum += array[i];
+    }
+    
+    printf("sum of array is%d\n", sum);
+}
+
+// AbsoluteSum(-1, -1, -1) == AbsoluteSum(1, 1, 1);
+// AbsoluteSum(1, 2, 3) === AbsoluteSum(1, 2, 3);
+int AbsoluteSum(int a,int b,int c)
+{
+    if (a < 0) {
+        a = -a;
+    }
+    
+    if (b < 0) {
+        b = -b;
+    }
+    
+    if (c < 0) {
+        c = -c;
+    }
+
+    return (a+b+c);
+}
+
+void practicePlusAndMinus()
+{
+    int i = 0;
+    printf("%d\n", i);
+    printf("%d\n", i++);
+    printf("%d\n", i);
+    printf("%d\n", ++i);
+    printf("%d\n", i);
+    printf("%d\n", --i);
+    printf("%d\n", i);
+    printf("%d\n", i--);
+    printf("%d\n", i);
+}
+
 void swapInt(int a, int b)
 {
     int temp = 0;
