@@ -8,18 +8,18 @@ int find2ndGreatestIndexInArray(int array[], int count)
     }
 
     int greatestIndex = 0;
-    int 2ndGreatestIndex = 0;
+    int secondGreatestIndex = 0;
 
     for (int i = 0; i <= count; i++)
     {
         if (array[i] > array[greatestIndex])
         {
-            2ndGreatestIndex = greatestIndex;
+            secondGreatestIndex = greatestIndex;
             greatestIndex = i;
         }
     }
 
-    return array[2ndGreatestIndex];
+    return array[secondGreatestIndex];
 }
 
 int findGreatestIndexInArray(int array[], int count)
@@ -44,37 +44,74 @@ int findGreatestIndexInArray(int array[], int count)
 
 void twoDimensionArrayLearning()
 {
-    int test[3][3] = {0};
+    int test[3][5] = {0};
 
     for (int i=0; i<3; i++)
     {
-        for (int j=0; j<3; j++)
+        for (int j=0; j<5; j++)
         {
-            test[i][j] = i+j;
+            test[i][j] = 10*i+j;
         }
     }
-
-    for (int i=0; i<3; i++)
+    
+    for (int i = 0; i < 3; i++)
     {
-        for (int j=0; j<3; j++)
+        for (int j = 0; j < 5; j++)
         {
-            printf("%d ", test[i][j]);
+            printf("%d",test[i][j]);
+            
+            if (j <= 3)
+            {
+                printf(",");
+            }
         }
         printf("\n");
     }
+    
+    int transpose[5][3] = {0};
+    
+    for (int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 3; j++)
+        {
+            transpose[i][j] = test[j][i];
+        }
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("%d", transpose[i][j]);
+            
+            if (j <= 1)
+            {
+                printf(",");
+            }        
+        }
+
+        printf("\n");
+    }
+
+    printf("%p\n", test);
+    printf("%p\n", test[0]);
+    printf("%p\n", test[1]);
+    printf("%p\n", test[2]);
+    printf("%d\n", test[1][0]);
+
 }
 
 void swapArray(int array[], int count)
 {
     if (count <= 0)
     {
-        return -1;
+        return;
     }
 
 	int temp = 0;
 	for (int i=0; i<count/2; i++)
 	{
-		temp array[i];
+		int array[i];
 
 		array[i] = array[count-1-i];
 
@@ -286,8 +323,6 @@ void printPrimeNumFrom1To100()
     printf("there is %d prime numbers in total\n", myArrayIndex);
 
     printSumOfArray(myArray, myArrayIndex);
-
-    printArraySum2(myArray, myArrayIndex);
 
     float result = findAverageNumInArray(myArray, myArrayIndex);
     printf("The average number of the array is %0.2f\n", result);
