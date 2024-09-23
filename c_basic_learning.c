@@ -67,12 +67,42 @@ void twoDimensionArrayLearning()
         }
         printf("\n");
     }
+
+    int greatestValInArr = 0;
     
+    for (int i=0; i<3; i++)
+    {
+        for (int j=0; j<5; j++)
+        {
+            if (greatestValInArr < test[i][j])
+            {
+                greatestValInArr = test[i][j];
+            }
+        }
+    }
+
+    printf("The biggest number is%d\n", greatestValInArr);
+
+    int smallestValInArr = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (smallestValInArr > test[i][j])
+            {
+                smallestValInArr = test[i][j];
+            }
+        }
+    }
+
+    printf("The smallest number is%d\n", smallestValInArr);
+
     int transpose[5][3] = {0};
     
     for (int i = 0; i < 5; i++)
     {
-        for(int j = 0; j < 3; j++)
+        for (int j = 0; j < 3; j++)
         {
             transpose[i][j] = test[j][i];
         }
