@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+
+int printOddNumber() {
+    for (int i=1; i<100; i+=2)
+    {
+        printf("%d\n", i);
+    }
+    
+    return 0;
+}
+
 void printTimesTable()
 {
     for (int i = 1; i <= 9; i++)
@@ -351,6 +361,34 @@ int factorialFormula(int num)
     }
     
     return num;
+}
+
+
+void printPrimeNumFrom1To100()
+{
+    int myArray[50] = {0};
+    int myArrayIndex = 0;
+
+    for (int i = 1; i <= 100; i++)
+    {
+        if (isPrime(i) == 1)
+        {
+            myArray[myArrayIndex++] = i;
+//          printArray(myArray, 50);
+        }
+    }
+    
+    for (int k = 0; k < myArrayIndex; k++)
+    {
+        printf("%d\n", myArray[k]);
+    }
+
+    printf("there is %d prime numbers in total\n", myArrayIndex);
+
+    printSumOfArray(myArray, myArrayIndex);
+
+    float result = findAverageNumInArray(myArray, myArrayIndex);
+    printf("The average number of the array is %0.2f\n", result);
 }
 
 int main()
