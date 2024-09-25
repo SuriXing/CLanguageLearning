@@ -322,6 +322,35 @@ int findSmallestIndex(int array[], int count)
     return array[smallestIndex];
 }
 
+void separateArrayIntoOddAndEven(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return;
+    }
+
+    int oddNumbers[length];
+    int evenNumbers[length];
+
+    int lengthOfOddNumbers = 0;
+    int lengthOfEvenNumbers = 0;
+
+    for (int i=0; i<length; i++)
+    {
+        if (array[i] % 2 == 0) // even number
+        {
+            evenNumbers[lengthOfEvenNumbers++] = array[i];
+        }
+        else
+        {
+            oddNumbers[lengthOfOddNumbers++] = array[i];
+        }
+    }
+
+    printArray(evenNumbers, lengthOfEvenNumbers);
+    printArray(oddNumbers, lengthOfOddNumbers);
+}
+
 int main()
 {
     twoDimensionArrayLearning();
