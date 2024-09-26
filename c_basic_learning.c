@@ -322,6 +322,29 @@ int findSmallestIndex(int array[], int count)
     return array[smallestIndex];
 }
 
+void sortArray(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return;
+    }
+
+    for (int i=0; i<length; i++)
+    {
+        int smallestIndex = 0;
+        for (int j=i; j<length; j++)
+        {
+            if (array[j] < array[smallestIndex])
+            {
+                smallestIndex = j;
+            }
+        }
+        int temp = array[i];
+        array[i] = array[smallestIndex];
+        array[smallestIndex] = array[i];
+    }
+}
+
 void separateArrayIntoOddAndEven(int array[], int length)
 {
     if (length <= 0)
