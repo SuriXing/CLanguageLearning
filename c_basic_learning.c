@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int find2ndGreatestIndexInArray(int array[], int count)
 {
@@ -131,6 +133,22 @@ void twoDimensionArrayLearning()
 
 }
 
+void swapArray2(int array[], int count)
+{
+    if (count <= 0)
+    {
+        return;
+    }
+    
+    for (int i = 0; i <= count/2; i++)
+    {
+        int temp = 0;
+        temp = array[i];
+        array[i] = array[count - i -1];
+        array[count - i - 1] = temp;
+    }
+}
+
 void swapArray(int array[], int count)
 {
     if (count <= 0)
@@ -138,14 +156,12 @@ void swapArray(int array[], int count)
         return;
     }
 
-	int temp = 0;
 	for (int i=0; i<count/2; i++)
 	{
-		int array[i];
-
+        int temp = 0;
+		temp = array[i];
 		array[i] = array[count-1-i];
-
-		array[count-1-i] = array[i];
+		array[count-1-i] = temp;
 	}
 
 	return;
@@ -398,9 +414,35 @@ void separateArrayIntoOddAndEven(int array[], int length)
     printArray(oddNumbers, lengthOfOddNumbers);
 }
 
+void generateRandomArray(int randomArray[], int length)
+{
+    if (length <= 0)
+    {
+        return;
+    }
+    
+    srand(time(NULL));
+
+    for (int i=0; i<length; i++)
+    {
+        randomArray[i] = rand();
+    }
+}
+
 int main()
 {
-    twoDimensionArrayLearning();
+    int test[100];
+    generateRandomArray(test, 100);
+    for (int i = 0; i < 100; i++)
+    {
+        printf("%d",test[i]);
 
+        if (i < 99)
+        {
+            printf(",");
+        }
+    }
+//  printf("%ld\n", time(NULL));
+//    twoDimensionArrayLearning();
 	return 0;
 }
