@@ -44,6 +44,31 @@ int findGreatestIndexInArray(int array[], int count)
     return array[greatestIndex];
 }
 
+void sumOfArray2()
+{
+    int array[3][5] = {0};
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            array[i][j] = i * j;
+        }
+    } 
+
+    int sum = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            sum += array[i][j];
+        }
+    }
+
+    printf("%d\n", sum);
+}
+
 void twoDimensionArrayLearning()
 {
     int test[3][5] = {0};
@@ -431,18 +456,12 @@ void generateRandomArray(int randomArray[], int length)
 
 int main()
 {
-    int test[100];
-    generateRandomArray(test, 100);
-    for (int i = 0; i < 100; i++)
-    {
-        printf("%d",test[i]);
+    sumOfArray2();
 
-        if (i < 99)
-        {
-            printf(",");
-        }
-    }
-//  printf("%ld\n", time(NULL));
-//    twoDimensionArrayLearning();
-	return 0;
-}
+    return 0;
+}    
+// int test[100];
+//  generateRandomArray(test, 100);
+//  printArray(test, 100);
+//  twoDimensionArrayLearning();
+// 
