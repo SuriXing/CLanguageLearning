@@ -454,6 +454,24 @@ void generateRandomArray(int randomArray[], int length)
     }
 }
 
+void generateRandom2DArray(int** randomArray, int lengthOfRow, int lengthOfColumn)
+{
+    if ((lengthOfRow <= 0) || (lengthOfColumn <= 0))
+    {
+        return;
+    }
+
+    srand(time(NULL));
+
+    for (int i=0; i<lengthOfRow; i++)
+    {
+        for (int j=0; j<lengthOfColumn; j++)
+        {
+            randomArray[i][j] = rand();
+        }
+    }
+}
+
 int main()
 {
     sumOfArray2();
