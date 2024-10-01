@@ -44,29 +44,24 @@ int findGreatestIndexInArray(int array[], int count)
     return array[greatestIndex];
 }
 
-void sumOfArray2()
+int sumOf2DArray(int array[][100], int lengthOfR, int lengthOfC)
 {
-    int array[3][5] = {0};
-
-    for (int i = 0; i < 3; i++)
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
     {
-        for (int j = 0; j < 5; j++)
-        {
-            array[i][j] = i * j;
-        }
-    } 
+        return -1;
+    }
 
     int sum = 0;
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < lengthOfR; i++)
     {
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < lengthOfC; j++)
         {
             sum += array[i][j];
         }
     }
 
-    printf("%d\n", sum);
+    return sum;
 }
 
 void twoDimensionArrayLearning()
@@ -454,7 +449,7 @@ void generateRandomArray(int randomArray[], int length)
     }
 }
 
-void generateRandom2DArray(int** randomArray, int lengthOfRow, int lengthOfColumn)
+void generateRandom2DArray(int randomArray[][100], int lengthOfRow, int lengthOfColumn)
 {
     if ((lengthOfRow <= 0) || (lengthOfColumn <= 0))
     {
@@ -474,12 +469,16 @@ void generateRandom2DArray(int** randomArray, int lengthOfRow, int lengthOfColum
 
 int main()
 {
-    sumOfArray2();
+    int oneDimensionArray[100];
+    int twoDimensionArray[100][100];
+
+    generateRandomArray(oneDimensionArray, 100);
+    generateRandom2DArray(twoDimensionArray, 100, 100);
+    
+    int res = sumOf2DArray(twoDimensionArray, 100, 100);
+    printf("sumOf2DArray == %d\n", res);
 
     return 0;
 }    
-// int test[100];
-//  generateRandomArray(test, 100);
+
 //  printArray(test, 100);
-//  twoDimensionArrayLearning();
-// 
