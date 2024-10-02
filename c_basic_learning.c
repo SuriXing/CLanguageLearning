@@ -442,10 +442,12 @@ void generateRandomArray(int randomArray[], int length)
     }
     
     srand(time(NULL));
+    const int kMinValue = 1;
+    const int kMaxValue = 1000;
 
     for (int i=0; i<length; i++)
     {
-        randomArray[i] = rand();
+        randomArray[i] = rand() % (kMaxValue - kMinValue) + kMinValue;
     }
 }
 
@@ -457,14 +459,39 @@ void generateRandom2DArray(int randomArray[][100], int lengthOfRow, int lengthOf
     }
 
     srand(time(NULL));
+    const int kMinValue = 1;
+    const int kMaxValue = 1000;
 
     for (int i=0; i<lengthOfRow; i++)
     {
         for (int j=0; j<lengthOfColumn; j++)
         {
-            randomArray[i][j] = rand();
+            randomArray[i][j] = rand() % (kMaxValue - kMinValue) + kMinValue;
         }
     }
+}
+
+int findGreatestValIn2DArr(int array[][100], int lengthOfRow, int lengthOfColumn)
+{
+    if ((lengthOfRow <= 0) || (lengthOfColumn <= 0))
+    {
+        return -1;
+    }
+
+    int greatestValue = array[0][0];
+
+    for (int i=0; i<lengthOfRow; i++)
+    {
+        for(int j=0; j<lengthOfColumn; j++)
+        {
+            if (array[i][j]>greatestValue)
+            {
+                greatestValue = array[i][j];
+            }
+        }
+    }
+
+    return greatestValue;
 }
 
 int main()
@@ -474,9 +501,15 @@ int main()
 
     generateRandomArray(oneDimensionArray, 100);
     generateRandom2DArray(twoDimensionArray, 100, 100);
+
+    int res3 = findGreatestValIn2DArr(twoDimensionArray, 100, 100);
+    printf("findGreatestValIn2DArr = %d\n",  res3);
     
     int res = sumOf2DArray(twoDimensionArray, 100, 100);
     printf("sumOf2DArray == %d\n", res);
+
+    int res2 = sumOfArray(oneDimensionArray, 100);
+    printf("sumOfArray = %d\n", res2);
 
     return 0;
 }    
