@@ -24,6 +24,42 @@ int find2ndGreatestIndexInArray(int array[], int count)
     return array[secondGreatestIndex];
 }
 
+void findNewArrAndSum()
+{
+    int target[5][5] = {0};
+    int src1[5][5], src2[5][5];
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            src1[i][j] = i * j;
+            src2[i][j] = i * j + 1;
+        }
+    } 
+
+    int sum = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            target[i][j] = src1[i][j] * src2[i][j];
+        }
+    } 
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            sum += target[i][j];
+        }
+    } 
+
+    printf("%d\n",sum);
+
+}
+
 int findGreatestIndexInArray(int array[], int count)
 {
     if (count <= 0)
@@ -278,9 +314,36 @@ void printArray(int array[], int count)
 {
     for (int i=0; i<count; i++)
     {
-        printf("%d ", array[i]);
+        printf("%d", array[i]);
+
+        if (i < count-1)
+        {
+            printf(",");
+        }
     }
     printf("\n");
+}
+
+void print2DArray(int array[][100], int lengthOfr, int lengthOfc)
+{
+    if ((lengthOfr <= 0) || (lengthOfc <= 0))
+    {
+        printf("%d", -1);
+    }
+
+    for (int i = 0; i < lengthOfr; i++)
+    {
+        for (int j = 0; j < lengthOfc; j++)
+        {
+            printf("%d", array[i][j]);
+            
+            if (j < lengthOfc - 1)
+            {
+                printf(",");
+            }
+        }
+    }
+
 }
 
 void printSumOfArray(int array[], int count)
@@ -494,6 +557,30 @@ int findGreatestValIn2DArr(int array[][100], int lengthOfRow, int lengthOfColumn
     return greatestValue;
 }
 
+int findSmallestValueIn2DArr(int array[][100], int lengthOfR, int lengthOfC)
+{
+    if ((lengthOfC <= 0) || (lengthOfR <= 0))
+    {
+        return -1;
+    }
+
+    int smallestValue = array[0][0];
+
+    for (int i = 0; i < lengthOfR; i++)
+    {
+        for (int j = 0; j <= lengthOfC; j++)
+        {
+            if (array[i][j] < smallestValue)
+            {
+                smallestValue = array[i][j];
+            }
+        }
+    }
+
+    return smallestValue;
+
+}
+
 int main()
 {
     int oneDimensionArray[100];
@@ -501,6 +588,9 @@ int main()
 
     generateRandomArray(oneDimensionArray, 100);
     generateRandom2DArray(twoDimensionArray, 100, 100);
+
+    int res4 = findSmallestValueIn2DArr(twoDimensionArray, 100, 100);
+    printf("smallest number in this array is %d\n", res4);
 
     int res3 = findGreatestValIn2DArr(twoDimensionArray, 100, 100);
     printf("findGreatestValIn2DArr = %d\n",  res3);
@@ -510,6 +600,10 @@ int main()
 
     int res2 = sumOfArray(oneDimensionArray, 100);
     printf("sumOfArray = %d\n", res2);
+
+    printArray(oneDimensionArray, 100);
+    
+    print2DArray(twoDimensionArray, 100, 100);
 
     return 0;
 }    
