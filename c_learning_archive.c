@@ -1,5 +1,158 @@
 #include <stdio.h>
 
+void findNewArrAndSum()
+{
+    int target[5][5] = {0};
+    int src1[5][5], src2[5][5];
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            src1[i][j] = i * j;
+            src2[i][j] = i * j + 1;
+        }
+    } 
+
+    int sum = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            target[i][j] = src1[i][j] * src2[i][j];
+        }
+    } 
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            sum += target[i][j];
+        }
+    } 
+
+    printf("%d\n",sum);
+
+}
+
+void twoDimensionArrayLearning()
+{
+    int test[3][5] = {0};
+
+    for (int i=0; i<3; i++)
+    {
+        for (int j=0; j<5; j++)
+        {
+            test[i][j] = 10*i+j;
+        }
+    }
+    
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            printf("%d",test[i][j]);
+            
+            if (j <= 3)
+            {
+                printf(",");
+            }
+        }
+        printf("\n");
+    }
+
+    int greatestValInArr = 0;
+    
+    for (int i=0; i<3; i++)
+    {
+        for (int j=0; j<5; j++)
+        {
+            if (greatestValInArr < test[i][j])
+            {
+                greatestValInArr = test[i][j];
+            }
+        }
+    }
+
+    printf("The biggest number is%d\n", greatestValInArr);
+
+    int smallestValInArr = 0;
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (smallestValInArr > test[i][j])
+            {
+                smallestValInArr = test[i][j];
+            }
+        }
+    }
+
+    printf("The smallest number is%d\n", smallestValInArr);
+
+    int transpose[5][3] = {0};
+    
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            transpose[i][j] = test[j][i];
+        }
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("%d", transpose[i][j]);
+            
+            if (j <= 1)
+            {
+                printf(",");
+            }        
+        }
+
+        printf("\n");
+    }
+
+    printf("%p\n", test);
+    printf("%p\n", test[0]);
+    printf("%p\n", test[1]);
+    printf("%p\n", test[2]);
+    printf("%d\n", test[1][0]);
+
+}
+
+void separateArrayIntoOddAndEven(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return;
+    }
+
+    int oddNumbers[length];
+    int evenNumbers[length];
+
+    int lengthOfOddNumbers = 0;
+    int lengthOfEvenNumbers = 0;
+
+    for (int i=0; i<length; i++)
+    {
+        if (array[i] % 2 == 0) // even number
+        {
+            evenNumbers[lengthOfEvenNumbers++] = array[i];
+        }
+        else
+        {
+            oddNumbers[lengthOfOddNumbers++] = array[i];
+        }
+    }
+
+    printArray(evenNumbers, lengthOfEvenNumbers);
+    printArray(oddNumbers, lengthOfOddNumbers);
+}
 
 int printOddNumber() {
     for (int i=1; i<100; i+=2)
