@@ -340,8 +340,34 @@ void testFunction()
     }
 }
 
+int numOfAscendAndDescend()
+{
+    int count = 0;
+    const int midNumber = 8;
+    for (int i=1; i<midNumber; ++i)
+    {
+        for (int j=i+1; j<midNumber; ++j)
+        {
+            for (int k=midNumber-1; k>=0; --k)
+            {
+                for (int m=k-1; m>=0; --m)
+                {
+                    if ((i<j) && (m<k) && (i!=k) && (i!=m) && (j!=k) && (j!=m))
+                    {
+                        count += 1;
+                    }
+                }
+            }
+        }
+    }
+
+    return count;
+}
+
 int main()
 {
+    printf("%d\n", numOfAscendAndDescend());
+    
 	return 0;
 }
 
