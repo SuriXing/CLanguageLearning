@@ -106,6 +106,26 @@ int print2DArray(int array[][10], int lengthOfR, int lengthOfC)
     return 0;
 }
 
+int returnTheSumOf2DArray(int array[][10], int lengthOfRow, int lengthOfColumn)
+{
+    if ((lengthOfRow <= 0) || (lengthOfColumn <= 0))
+    {
+        return -1;
+    }
+
+    int sum = 0;
+
+    for (int i = 0; i < lengthOfRow; i++)
+    {
+        for (int j = 0; j < lengthOfColumn; j++)
+        {
+            sum += array[i][j];
+        }
+    }
+
+    return sum;
+}
+
 int main()
 {
     int oneDimensionalArray[10];
@@ -122,6 +142,9 @@ int main()
 
     int res = returnSumOf1DArray(oneDimensionalArray, 10);
     printf("The sum of this random 1D array is %d\n", res);
+
+    int res2 = returnTheSumOf2DArray(twoDimensionalArray, 10, 10);
+    printf("The sum of this random 2D array is %d\n",res2);
 
     return 0;
 }
