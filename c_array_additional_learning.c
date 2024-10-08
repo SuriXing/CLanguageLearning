@@ -83,6 +83,8 @@ int returnSumOf1DArray(int array[], int length)
     return sum;
 }
 
+
+
 int print2DArray(int array[][10], int lengthOfR, int lengthOfC)
 {
     if ((lengthOfR <= 0) || (lengthOfC <= 0))
@@ -106,7 +108,7 @@ int print2DArray(int array[][10], int lengthOfR, int lengthOfC)
     return 0;
 }
 
-int returnTheSumOf2DArray(int array[][10], int lengthOfRow, int lengthOfColumn)
+int returnSumOf2DArray(int array[][10], int lengthOfRow, int lengthOfColumn)
 {
     if ((lengthOfRow <= 0) || (lengthOfColumn <= 0))
     {
@@ -126,6 +128,27 @@ int returnTheSumOf2DArray(int array[][10], int lengthOfRow, int lengthOfColumn)
     return sum;
 }
 
+double returnAverageOfA1DArr(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return -1;      
+    }
+
+    return returnSumOf1DArray(array, length)/(double)length;
+}
+
+double reutrnAverageOfA2DArr(int array[][10], int lengthOfRow, int lengthOfColumn)
+{
+    if ((lengthOfRow <= 0) || (lengthOfColumn <= 0))
+    {
+        return -1;
+    }
+
+    return returnSumOf2DArray(array, 10, 10)/((double)lengthOfRow * lengthOfColumn);
+
+}
+
 int main()
 {
     int oneDimensionalArray[10];
@@ -143,8 +166,14 @@ int main()
     int res = returnSumOf1DArray(oneDimensionalArray, 10);
     printf("The sum of this random 1D array is %d\n", res);
 
-    int res2 = returnTheSumOf2DArray(twoDimensionalArray, 10, 10);
+    int res2 = returnSumOf2DArray(twoDimensionalArray, 10, 10);
     printf("The sum of this random 2D array is %d\n",res2);
+
+    double res3 = returnAverageOfA1DArr(oneDimensionalArray, 10);
+    printf("The average of this random 1D array is %lf\n", res3);
+
+    double res4 = reutrnAverageOfA2DArr(twoDimensionalArray, 10, 10);
+    printf ("The average of this random 2D array is %lf\n", res4);
 
     return 0;
 }
