@@ -3,12 +3,20 @@
 
 int main()
 {
-    int number = 12;
+    printf("Hello\"world\n");
+    printf("Hello\'world\n");
+
+    int favNum = 25;
+    char favChar = 's';
+    char favNumP[] = "favorite number";
+    printf("My %s is %d\n", favNumP, favNum);
+    
+    /*int number = 12;
     double gpa = 4.0;
     char grade = 'A';
     char schoolGrade[] = "mastering";
     
-    /*char characterName[] = "Cookie";
+    char characterName[] = "Cookie";
     int characterAge = 15;
     printf("His name is %s.\n", characterName);
     printf("He is %d minutes old.\n", characterAge);
