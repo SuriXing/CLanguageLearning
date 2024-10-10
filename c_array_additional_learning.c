@@ -3,6 +3,54 @@
 #include <time.h>
 #include <unistd.h>
 
+#pragma mark -- Macro declaration --
+
+#define LENGTH_OF_1D_ARRAY 20
+#define LENGTH_OF_2D_ROW 15
+#define LENGTH_OF_2D_COL 15
+
+#pragma mark -- function declaration --
+
+int generateRandom1DArray(int array[], int length);
+int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+int print1DArray(int array[], int length);
+int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+int returnSumOf1DArray(int array[], int length);
+int returnSumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+double returnAverageOfA1DArr(int array[], int length);
+double reutrnAverageOfA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+
+int main()
+{
+    int oneDimensionalArray[LENGTH_OF_1D_ARRAY];
+    int twoDimensionalArray[LENGTH_OF_2D_ROW][LENGTH_OF_2D_COL];
+
+    generateRandom1DArray(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+    sleep(1);
+    generateRandom2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+
+    print1DArray(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+    printf("------------------------------\n");
+    print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    printf("------------------------------\n");
+
+    int res = returnSumOf1DArray(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+    printf("The sum of this random 1D array is %d\n", res);
+
+    int res2 = returnSumOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    printf("The sum of this random 2D array is %d\n", res2);
+
+    double res3 = returnAverageOfA1DArr(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+    printf("The average of this random 1D array is %lf\n", res3);
+
+    double res4 = reutrnAverageOfA2DArr(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    printf ("The average of this random 2D array is %lf\n", res4);
+
+    return 0;
+}
+
+#pragma mark -- function implementation --
+
 int generateRandom1DArray(int array[], int length)
 {
     if (length <= 0)
@@ -22,7 +70,7 @@ int generateRandom1DArray(int array[], int length)
     return 0;
 }
 
-int generateRandom2DArray(int array[][10], int lengthOfR, int lengthOfC)
+int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
     if ((lengthOfR <= 0) || (lengthOfC <= 0))
     {
@@ -83,9 +131,7 @@ int returnSumOf1DArray(int array[], int length)
     return sum;
 }
 
-
-
-int print2DArray(int array[][10], int lengthOfR, int lengthOfC)
+int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
     if ((lengthOfR <= 0) || (lengthOfC <= 0))
     {
@@ -108,18 +154,18 @@ int print2DArray(int array[][10], int lengthOfR, int lengthOfC)
     return 0;
 }
 
-int returnSumOf2DArray(int array[][10], int lengthOfRow, int lengthOfColumn)
+int returnSumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
-    if ((lengthOfRow <= 0) || (lengthOfColumn <= 0))
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
     {
         return -1;
     }
 
     int sum = 0;
 
-    for (int i = 0; i < lengthOfRow; i++)
+    for (int i = 0; i < lengthOfR; i++)
     {
-        for (int j = 0; j < lengthOfColumn; j++)
+        for (int j = 0; j < lengthOfC; j++)
         {
             sum += array[i][j];
         }
@@ -138,42 +184,13 @@ double returnAverageOfA1DArr(int array[], int length)
     return returnSumOf1DArray(array, length)/(double)length;
 }
 
-double reutrnAverageOfA2DArr(int array[][10], int lengthOfRow, int lengthOfColumn)
+double reutrnAverageOfA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
-    if ((lengthOfRow <= 0) || (lengthOfColumn <= 0))
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
     {
         return -1;
     }
 
-    return returnSumOf2DArray(array, 10, 10)/((double)lengthOfRow * lengthOfColumn);
-
+    return returnSumOf2DArray(array, lengthOfR, lengthOfC)/((double)lengthOfR * lengthOfC);
 }
 
-int main()
-{
-    int oneDimensionalArray[10];
-    int twoDimensionalArray[10][10];
-
-    generateRandom1DArray(oneDimensionalArray, 10);
-    sleep(1);
-    generateRandom2DArray(twoDimensionalArray, 10, 10);
-
-    print1DArray(oneDimensionalArray, 10);
-    printf("------------------------------\n");
-    print2DArray(twoDimensionalArray, 10, 10);
-    printf("------------------------------\n");
-
-    int res = returnSumOf1DArray(oneDimensionalArray, 10);
-    printf("The sum of this random 1D array is %d\n", res);
-
-    int res2 = returnSumOf2DArray(twoDimensionalArray, 10, 10);
-    printf("The sum of this random 2D array is %d\n",res2);
-
-    double res3 = returnAverageOfA1DArr(oneDimensionalArray, 10);
-    printf("The average of this random 1D array is %lf\n", res3);
-
-    double res4 = reutrnAverageOfA2DArr(twoDimensionalArray, 10, 10);
-    printf ("The average of this random 2D array is %lf\n", res4);
-
-    return 0;
-}
