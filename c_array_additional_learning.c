@@ -17,9 +17,12 @@ int print1DArray(int array[], int length);
 int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 int returnSumOf1DArray(int array[], int length);
 int returnSumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
-double returnAverageOfA1DArr(int array[], int length);
-double reutrnAverageOfA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
-
+double returnAverageOf1DArray(int array[], int length);
+double returnAverageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+int returnSmallestNumberInA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+int returnGreatestNumberInA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+int returnSmallestNumberInA1DArr(int array[], int length);
+int returnGreatestNumberInA1DArr(int array[], int length);
 int main()
 {
     int oneDimensionalArray[LENGTH_OF_1D_ARRAY];
@@ -40,11 +43,23 @@ int main()
     int res2 = returnSumOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     printf("The sum of this random 2D array is %d\n", res2);
 
-    double res3 = returnAverageOfA1DArr(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+    double res3 = returnAverageOf1DArray(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
     printf("The average of this random 1D array is %lf\n", res3);
 
-    double res4 = reutrnAverageOfA2DArr(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    double res4 = returnAverageOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     printf ("The average of this random 2D array is %lf\n", res4);
+
+    int res5 = returnSmallestNumberInA1DArr(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+    printf("The smallest number in this random 1D array is %d\n", res5);
+
+    int res6 = returnGreatestNumberInA1DArr(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+    printf("The greatest number in this random 1D array is %d\n", res6);
+
+    int res7 = returnSmallestNumberInA2DArr(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    printf("The smallest number in this random 2D array is %d\n", res7);
+
+    int res8 = returnGreatestNumberInA2DArr(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    printf("The greatest number in this random 2D array is %d\n", res8);
 
     return 0;
 }
@@ -174,7 +189,7 @@ int returnSumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthO
     return sum;
 }
 
-double returnAverageOfA1DArr(int array[], int length)
+double returnAverageOf1DArray(int array[], int length)
 {
     if (length <= 0)
     {
@@ -184,7 +199,7 @@ double returnAverageOfA1DArr(int array[], int length)
     return returnSumOf1DArray(array, length)/(double)length;
 }
 
-double reutrnAverageOfA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+double returnAverageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
     if ((lengthOfR <= 0) || (lengthOfC <= 0))
     {
@@ -194,3 +209,88 @@ double reutrnAverageOfA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int l
     return returnSumOf2DArray(array, lengthOfR, lengthOfC)/((double)lengthOfR * lengthOfC);
 }
 
+int returnGreatestNumberInA1DArr(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return -1;
+    }
+
+    int greatestNum = 0;
+
+    for (int i = 0; i < length; i++)
+    {
+        if (greatestNum < array[i])
+        {
+            greatestNum = array[i];
+        }
+    }
+
+    return greatestNum;
+}
+
+int returnSmallestNumberInA1DArr(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return -1;
+    }
+
+    int smallestNum = 0;
+
+    for (int i= 0; i < length; i++)
+    {
+        if (smallestNum > length)
+        {
+            smallestNum = length;
+        }
+    }
+
+    return smallestNum;
+}
+
+int returnGreatestNumberInA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+{
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    {
+        return -1;
+    }
+
+    int greatestNum = 0;
+
+    for (int i = 0; i < lengthOfR; i++)
+    {
+        for (int j = 0; j < lengthOfC; j++)
+        {
+            if(greatestNum < array[i][j])
+            {
+                greatestNum = array[i][j];
+            }
+        }
+    }
+
+    return greatestNum;
+}
+
+int returnSmallestNumberInA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+{
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    {
+        return -1;
+    }
+
+    int smallestNum = 0;
+
+    for (int i = 0; i < lengthOfR; i++)
+    {
+        for(int j= 0; j < lengthOfC; j++)
+        {
+            if (smallestNum > array[i][j])
+            {
+                smallestNum = array[i][j];
+            }
+        }
+    }
+    
+    return smallestNum;
+}
