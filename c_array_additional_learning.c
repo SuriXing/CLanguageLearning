@@ -23,6 +23,7 @@ int returnSmallestNumberInA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, i
 int returnGreatestNumberInA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 int returnSmallestNumberInA1DArr(int array[], int length);
 int returnGreatestNumberInA1DArr(int array[], int length);
+int swap1DArray(int array[], int length);
 int main()
 {
     int oneDimensionalArray[LENGTH_OF_1D_ARRAY];
@@ -60,6 +61,14 @@ int main()
 
     int res8 = returnGreatestNumberInA2DArr(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     printf("The greatest number in this random 2D array is %d\n", res8);
+
+    printf("Swap Array: Before\n");
+    print1DArray(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+
+    swap1DArray(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
+
+    printf("Swap Array: After\n");
+    print1DArray(oneDimensionalArray, LENGTH_OF_1D_ARRAY);
 
     return 0;
 }
@@ -293,4 +302,23 @@ int returnSmallestNumberInA2DArr(int array[][LENGTH_OF_2D_COL], int lengthOfR, i
     }
     
     return smallestNum;
+}
+
+int swap1DArray(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return -1;
+    }
+
+    int temporary = 0;
+
+    for (int i = 0; i < length/2; i++)
+    {
+        temporary = array[i];
+        array[i] = array[length - i - 1];
+        array[length - i - 1] = temporary;
+    }
+
+    return 0;
 }
