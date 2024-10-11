@@ -1,11 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 int main()
 {
+    printf("%lf\n", pow(2,3));//2 to the third power
+    printf("%lf\n", sqrt(225));//225's square root
+    printf("%lf\n", ceil(37.13245));//37.13245 向上取整
+    printf("%lf\n", floor(26.897));//26.897 向下取整
+    printf("%lf\n", 25/4.0);//is 4.0 because else it'll return back an integer since it's two integers and computer will assume that the answer is also an integer
+    printf("%d\n",475+75);
+    
+    
     printf("Hello\"world\n");
     printf("Hello\'world\n");
-
     int favNum = 25;
     char favChar = 's';
     char favNumP[] = "favorite number";
