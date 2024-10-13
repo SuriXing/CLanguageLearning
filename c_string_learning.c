@@ -3,7 +3,7 @@
 
 #pragma mark -- function declaration --
 int myLenOfStr(const char* str);
-
+void printString(const char* str);
 
 int main()
 {
@@ -14,14 +14,15 @@ int main()
     int arr[11] = {0};
     arr[0] = 1;
 
-    const char* kTest = kDemoStr;
-    while (*kTest != '\0')
+    for (int i = 0; i < 256; i++)
     {
-        printf("%c", *kTest);
-
-        kTest++;
+        printf("%c\n", (char)i);
     }
-    printf("\n");
+    printf("%c\n", (char)47);
+    printf("%d\n", (int)'1');
+    printf("%d\n", (int)'9');
+    printf("%d\n", (int)'a');
+    printf("%d\n", '\0');
 
     int lenOfStr = strlen(kDemoStr);
     printf("Length of String: %d\n", lenOfStr);
@@ -42,6 +43,18 @@ int main()
 }
 
 #pragma mark -- function implementation --
+
+void printString(const char* str)
+{
+    const char* kTest = str;
+    while (*kTest != '\0')
+    {
+        printf("%c", *kTest);
+
+        kTest++;
+    }
+    printf("\n");
+}
 
 int myLenOfStr(const char* str)
 {
