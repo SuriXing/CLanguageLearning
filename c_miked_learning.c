@@ -4,7 +4,12 @@
 
 int main()
 {
-    printf("%lf\n", pow(2,3));//2 to the third power
+    const int Num = 25;
+    printf("%d\n", Num);
+    const int Number = 26;
+    printf("This number can't be changed; %d\n", Number);
+    
+    /*printf("%lf\n", pow(2,3));//2 to the third power
     printf("%lf\n", sqrt(225));//225's square root
     printf("%lf\n", ceil(37.13245));//37.13245 向上取整
     printf("%lf\n", floor(26.897));//26.897 向下取整
@@ -19,7 +24,7 @@ int main()
     char favNumP[] = "favorite number";
     printf("My %s is %d\n", favNumP, favNum);
     
-    /*int number = 12;
+    int number = 12;
     double gpa = 4.0;
     char grade = 'A';
     char schoolGrade[] = "mastering";
