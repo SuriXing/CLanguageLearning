@@ -96,6 +96,20 @@ int myStrncmp(const char *str1, const char *str2, size_t n)
     return (index == n) ? 0 : (*str1 - *str2);
 }
 
+int myStrncmp2(const char *str1, const char *str2, size_t n)
+{
+    size_t index = 0;
+
+    while((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2) && (index < n))
+    {
+        str1++;
+        str2++;
+        index++;
+    }
+
+    return (index == n) ? 0: (*str1 - *str2);
+}
+
 int myStrcmp(const char *str1, const char *str2)
 {
     // "abcdefgh" vs. "abcdefg"
@@ -109,6 +123,16 @@ int myStrcmp(const char *str1, const char *str2)
         str2++;
     }
 
+    return (*str1 - *str2);
+}
+
+int myStrcmp2(const char *str1, const char *str2)
+{
+    while((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2))
+    {
+        str1 ++;
+        str2 ++;
+    }
     return (*str1 - *str2);
 }
 
