@@ -4,12 +4,24 @@
 
 int main()
 {
-    const int Num = 25;
+    
+    double gpa = 0;
+    printf("Enter your gpa score :");
+    scanf("%lf", &gpa);
+    printf("Your gpa score is %lf\n", gpa);
+
+    char name[20];
+    printf("Enter your name:");
+    scanf("%s", name);
+    printf("Your name is %s\n",name);
+
+    //&name[0] == name;
+    /*const int Num = 25;
     printf("%d\n", Num);
     const int Number = 26;
     printf("This number can't be changed; %d\n", Number);
     
-    /*printf("%lf\n", pow(2,3));//2 to the third power
+    printf("%lf\n", pow(2,3));//2 to the third power
     printf("%lf\n", sqrt(225));//225's square root
     printf("%lf\n", ceil(37.13245));//37.13245 向上取整
     printf("%lf\n", floor(26.897));//26.897 向下取整
