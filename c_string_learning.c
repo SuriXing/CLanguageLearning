@@ -6,7 +6,10 @@ int myLenOfStr(const char* str);
 void printString(const char* str);
 int myStrcmp(const char *str1, const char *str2);
 int myStrncmp(const char *str1, const char *str2, size_t n);
+int myStrcmp2(const char *str1, const char *str2);
+int myStrncmp2(const char *str1, const char *str2, size_t n);
 void testStrcmp();
+char *myStrcat(char *dest, const char *src);
 
 int main()
 {
@@ -160,4 +163,28 @@ void testStrcmp()
     printf("%d\n", myStrncmp("abcdefg","abcdefghijklmn",6));
     printf("%d\n", myStrncmp("opq","opqrst",3));
     printf("%d\n", myStrncmp("uwu","uwuuwu",2));
+}
+
+char *myStrcat(char *dest, const char *src)
+{
+    if ((NULL == dest) || (NULL == src))
+    {
+        return NULL;
+    }
+
+    char *destCopy = dest;
+
+    while (*dest != '\0')
+    {
+        dest++;
+    }
+
+    while (*src != '\0')
+    {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+
+    return destCopy;
 }
