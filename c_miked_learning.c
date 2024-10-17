@@ -4,8 +4,17 @@
 
 int main()
 {
+    double num1;
+    double num2;
+    printf("Enter your first number:");
+    scanf("%lf", &num1);
+    printf("Enter your second number:");
+    scanf("%lf", &num2);
+    printf("The answer is %f", num1 + num2);
+    //                           ^ ^
+    //2 number calculator making | |    
     
-    double gpa = 0;
+    /*double gpa = 0;
     printf("Enter your gpa score :");
     scanf("%lf", &gpa);
     printf("Your gpa score is %lf\n", gpa);
@@ -16,7 +25,7 @@ int main()
     printf("Your name is %s\n",name);
 
     //&name[0] == name;
-    /*const int Num = 25;
+    const int Num = 25;
     printf("%d\n", Num);
     const int Number = 26;
     printf("This number can't be changed; %d\n", Number);
