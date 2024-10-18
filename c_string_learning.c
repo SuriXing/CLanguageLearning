@@ -9,11 +9,13 @@ int myStrncmp(const char *str1, const char *str2, size_t n);
 int myStrcmp2(const char *str1, const char *str2);
 int myStrncmp2(const char *str1, const char *str2, size_t n);
 void testStrcmp();
+void testStrcatAndStrcpy();
 char *myStrcat(char *dest, const char *src);
+char *myStrcpy(char *dest, const char *src);
 
 int main()
 {
-    int strcmp(const char *str1, const char *str2);
+    testStrcmp();
     
     const char* kDemoStr = "I am a demo string";    // a string
     char demoCharArray[] = "I am a demo character array";    // a character array
@@ -47,7 +49,7 @@ int main()
         printf("WHAT\n");
     }
 
-    testStrcmp();
+    testStrcatAndStrcpy();
 
     return 0;
 }
@@ -115,7 +117,7 @@ int myStrncmp2(const char *str1, const char *str2, size_t n)
 
 int myStrcmp(const char *str1, const char *str2)
 {
-    // "abcdefgh" vs. "abcdefg"
+    // "abcdefgh" vs. "abcdtestStrcatAndStrcpyefg"
     // "abc" vs. "cde"
     // "a" vs. "ab"
     // "a" vs. "a"
@@ -137,6 +139,17 @@ int myStrcmp2(const char *str1, const char *str2)
         str2 ++;
     }
     return (*str1 - *str2);
+}
+
+void testStrcatAndStrcpy()
+{
+    char test[256] = {};
+
+    myStrcat(test, "abcde");
+    printf("%s\n", test);
+
+    myStrcpy(test, "abc");
+    printf("%s\n", test);
 }
 
 void testStrcmp()
@@ -165,7 +178,27 @@ void testStrcmp()
     printf("%d\n", myStrncmp("uwu","uwuuwu",2));
 }
 
-char *myStrcat(char *dest, const char *src)
+char *myStrcpy(char* dest, const char* src)
+{
+    if ((NULL == dest) || (NULL == src))
+    {
+        return NULL;
+    }
+
+    char *destCopy = dest;
+
+    while (*src != '\0')
+    {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';
+
+    return destCopy;
+}
+
+char *myStrcat(char* dest, const char* src)
 {
     if ((NULL == dest) || (NULL == src))
     {
@@ -185,6 +218,7 @@ char *myStrcat(char *dest, const char *src)
         dest++;
         src++;
     }
+    *dest = '\0';
 
     return destCopy;
 }
