@@ -12,6 +12,11 @@ void testStrcmp();
 void testStrcatAndStrcpy();
 char *myStrcat(char *dest, const char *src);
 char *myStrcpy(char *dest, const char *src);
+char* myStrcat2(char *dest, const char *src);
+char* myStrCpy2(char *dest, const char *src);
+void testStrcat2AndStrcpy2();
+char* myStrncpy(char* dest, const char* src, size_t n);
+void testMyStrncpy();
 
 int main()
 {
@@ -50,6 +55,10 @@ int main()
     }
 
     testStrcatAndStrcpy();
+
+    testStrcat2AndStrcpy2();
+
+    testMyStrncpy();
 
     return 0;
 }
@@ -185,7 +194,7 @@ char *myStrcpy(char* dest, const char* src)
         return NULL;
     }
 
-    char *destCopy = dest;
+    char* destCopy = dest;
 
     while (*src != '\0')
     {
@@ -194,6 +203,55 @@ char *myStrcpy(char* dest, const char* src)
         src++;
     }
     *dest = '\0';
+
+    return destCopy;
+}
+
+char* myStrncpy(char* dest, const char* src, size_t n)
+{
+    if ((NULL == dest) || (NULL == src))
+    {
+        return NULL;
+    }
+
+    char* destCopy = dest;
+    size_t count = 0;
+    
+    while ((*src != '\0') && (count < n))
+    {
+        *dest = *src;
+        dest++;
+        src++;
+        count++;
+    }
+    *dest = '\0';
+
+    return destCopy;
+}
+
+void testMyStrncpy()
+{
+    char test[256] = {};
+    
+    myStrncpy(test, "Hello World", 9);
+    printf("%s\n", test);
+}
+
+char* myStrcpy2(char *dest, const char *src)
+{
+    if ((NULL == dest) || (NULL == src))
+    {
+        return NULL;
+    }
+
+    char* destCopy = dest;
+
+    while(*src != '\0')
+    {
+        *dest = *src;
+        dest++;
+        src++;
+    }
 
     return destCopy;
 }
@@ -221,4 +279,40 @@ char *myStrcat(char* dest, const char* src)
     *dest = '\0';
 
     return destCopy;
+}
+
+char* myStrcat2(char* dest, const char* src)
+{
+    if ((NULL == dest) || (NULL == src))
+    {
+        return NULL;
+    }
+
+    char* destCopy = dest;
+
+    while(*dest != '\0')
+    {
+        dest++;
+    }
+    while(*src != '\0')
+    {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    
+    *dest ='\0';
+
+    return destCopy;
+}
+
+void testStrcat2AndStrcpy2()
+{
+    char test[256] = {};
+
+    myStrcat2(test, "abcdefg");
+    printf("%s\n", test);
+
+    myStrcpy2(test, "abcdgjk");
+    printf("%s\n", test);
 }
