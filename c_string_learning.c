@@ -17,10 +17,14 @@ char* myStrCpy2(char *dest, const char *src);
 void testStrcat2AndStrcpy2();
 char* myStrncpy(char* dest, const char* src, size_t n);
 void testMyStrncpy();
+char* myStrChar(const char* str, char c);
 
 int main()
 {
-    testStrcmp();
+    char* res2 = myStrChar("wishtree",'r');
+    printf("%s\n", res2);
+    
+    /*testStrcmp();
     
     const char* kDemoStr = "I am a demo string";    // a string
     char demoCharArray[] = "I am a demo character array";    // a character array
@@ -60,7 +64,7 @@ int main()
 
     testMyStrncpy();
 
-    return 0;
+    return 0;*/
 }
 
 #pragma mark -- function implementation --
@@ -315,4 +319,19 @@ void testStrcat2AndStrcpy2()
 
     myStrcpy2(test, "abcdgjk");
     printf("%s\n", test);
+}
+char* myStrChar(const char* str, char c)
+{
+    if((NULL == str))
+    {
+        return NULL;
+    }
+    char* str2 = (char*) str;
+
+    while(*str2 != c)
+    {
+        str2++;
+    }
+    
+    return str2;
 }
