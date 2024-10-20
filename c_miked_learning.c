@@ -2,9 +2,27 @@
 #include <stdlib.h>
 #include <math.h>
 
+// Only array and string need to add a andpersand in a scanf.
+
 int main()
 {
-    double num1;
+    char color[100];
+    char pluralNoun[100];
+    char celebrity[100];
+    printf("Enter the name of a color:");
+    scanf("%s", color);
+    printf("Enter the name of a plural noun:");
+    scanf("%s", pluralNoun);
+    printf("Enter the name of your faverite celebrity:");
+    scanf("%s", celebrity);
+    //实行中：
+    printf("Roses are %s\n", color);
+    printf("%s are blue\n", pluralNoun);
+    printf("And I love %s\n", celebrity);
+    //                    ^^
+    //mad lib game making ||
+    
+    /*double num1;
     double num2;
     printf("Enter your first number:");
     scanf("%lf", &num1);
@@ -14,7 +32,7 @@ int main()
     //                           ^ ^
     //2 number calculator making | |    
     
-    /*double gpa = 0;
+    double gpa = 0;
     printf("Enter your gpa score :");
     scanf("%lf", &gpa);
     printf("Your gpa score is %lf\n", gpa);
