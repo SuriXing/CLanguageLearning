@@ -6,6 +6,12 @@
 
 int main()
 {
+    int luckynumbers[] = {2, 6, 8, 5, 10};
+    printf("My fifth lucky number is %d\n",luckynumbers[4]);
+    char phrase[50] = "My fifth lucky number is";
+    printf("%s %d\n", phrase, luckynumbers[4]);
+
+    /*char color[100];
     char color[100];
     char pluralNoun[100];
     char celebrity[100];
@@ -22,7 +28,7 @@ int main()
     //                    ^^
     //mad lib game making ||
     
-    /*double num1;
+    double num1;
     double num2;
     printf("Enter your first number:");
     scanf("%lf", &num1);
