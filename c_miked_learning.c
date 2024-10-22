@@ -4,14 +4,24 @@
 
 // Only array and string need to add a andpersand in a scanf.
 
+void sayHiAndAge(char name[], int age)
+{
+    printf("Hi %s and your currently %d years old.\n", name, age);
+}
+
 int main()
 {
-    int luckynumbers[] = {2, 6, 8, 5, 10};
+    sayHiAndAge("Jennie", 15);
+    sayHiAndAge("Taylor", 38);
+    sayHiAndAge("Lisa", 23);
+    sayHiAndAge("Minnie", 22);
+    
+    /*int luckynumbers[] = {2, 6, 8, 5, 10};
     printf("My fifth lucky number is %d\n",luckynumbers[4]);
     char phrase[50] = "My fifth lucky number is";
     printf("%s %d\n", phrase, luckynumbers[4]);
 
-    /*char color[100];
+    char color[100];
     char color[100];
     char pluralNoun[100];
     char celebrity[100];
