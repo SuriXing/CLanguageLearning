@@ -9,14 +9,27 @@ void sayHiAndAge(char name[], int age)
     printf("Hi %s and your currently %d years old.\n", name, age);
 }
 
+double cube(double num)
+{
+    double result = num * num * num;
+    return result;
+}
+
 int main()
 {
-    sayHiAndAge("Jennie", 15);
+    double number = 0.0;
+    printf("Enter a random number:");
+    scanf("%lf", &number);
+    double result2 = cube(number);
+    printf("The cube of %lf is %lf\n", number, result2);
+    
+    
+    /*sayHiAndAge("Jennie", 15);
     sayHiAndAge("Taylor", 38);
     sayHiAndAge("Lisa", 23);
     sayHiAndAge("Minnie", 22);
     
-    /*int luckynumbers[] = {2, 6, 8, 5, 10};
+    int luckynumbers[] = {2, 6, 8, 5, 10};
     printf("My fifth lucky number is %d\n",luckynumbers[4]);
     char phrase[50] = "My fifth lucky number is";
     printf("%s %d\n", phrase, luckynumbers[4]);
