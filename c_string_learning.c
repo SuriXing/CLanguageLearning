@@ -18,13 +18,17 @@ void testStrcat2AndStrcpy2();
 char* myStrncpy(char* dest, const char* src, size_t n);
 void testMyStrncpy();
 char* myStrChar(const char* str, char c);
+int myStrRChar(char* str, char a);
 
 int main()
 {
-    char* res2 = myStrChar("wishtree",'r');
+    int res = myStrRChar("Harry Potter and the flying doggy", 'l');
+    printf("%d\n", res);
+    
+    /*char* res2 = myStrChar("wishtree",'r');
     printf("%s\n", res2);
     
-    /*testStrcmp();
+    testStrcmp();
     
     const char* kDemoStr = "I am a demo string";    // a string
     char demoCharArray[] = "I am a demo character array";    // a character array
@@ -326,7 +330,7 @@ char* myStrChar(const char* str, char c)
     {
         return NULL;
     }
-    char* str2 = (char*) str;
+    char* str2 = (char*) str;//Because it was a const
 
     while(*str2 != c)
     {
@@ -334,4 +338,25 @@ char* myStrChar(const char* str, char c)
     }
     
     return str2;
+}
+
+int myStrRChar(char* str, char a)
+{
+    if((NULL == str))
+    {
+        return -1;
+    }
+
+    int index = myLenOfStr(str) - 1;
+
+    while(index >= 0)
+    {
+        if(str[index] == a)
+        {
+            return index;
+        }
+        index--;
+    }
+
+    return -1;
 }
