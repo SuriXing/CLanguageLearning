@@ -17,6 +17,41 @@ double cube(double num)
 
 int main()
 {
+    double num1;
+    double num2;
+    char operator;
+
+    printf("Enter a number:");
+    scanf("%lf\n", &num1);
+    printf("Enter an operator(+ or - or * or/)");
+    scanf("%c\n", &operator);
+    printf("Enter another number:");
+    scanf("%lf\n", &num2);
+
+    if(operator == '+')
+    {
+        printf("%f\n", num1 + num2);
+    }
+    else if(operator == '-')
+    {
+        printf("%f\n", num1 - num2);
+    }
+    else if(operator == '*')
+    {
+        printf("%f\n", num1 * num2);
+    }
+    else if(operator == '/')
+    {
+        printf("%f\n", num1/num2);
+    }
+    else
+    {
+        printf("invalid operator\n");
+    }
+    //                           ^^
+    //improved calculator making ||
+   
+    /*double number = 0.0;
     double number = 0.0;
     printf("Enter a random number:");
     scanf("%lf", &number);
@@ -24,7 +59,7 @@ int main()
     printf("The cube of %lf is %lf\n", number, result2);
     
     
-    /*sayHiAndAge("Jennie", 15);
+    sayHiAndAge("Jennie", 15);
     sayHiAndAge("Taylor", 38);
     sayHiAndAge("Lisa", 23);
     sayHiAndAge("Minnie", 22);
