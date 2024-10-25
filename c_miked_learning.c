@@ -17,7 +17,22 @@ double cube(double num)
 
 int main()
 {
-    double num1;
+    char grade = 'A';
+    switch(grade)
+    {
+        case 'A': printf("You did a great job!\n");
+        break;
+        case 'B': printf("You did fine.");
+        break;
+        case 'C': printf("You'll need more practice.");
+        break;
+        case 'F': printf("You trash.");
+        break;
+        default:printf("Invalid grade.");
+    }
+    
+    
+    /*double num1;
     double num2;
     char operator;
 
@@ -51,7 +66,7 @@ int main()
     //                           ^^
     //improved calculator making ||
    
-    /*double number = 0.0;
+    double number = 0.0;
     double number = 0.0;
     printf("Enter a random number:");
     scanf("%lf", &number);
