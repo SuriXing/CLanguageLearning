@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 // Only array and string need to add a andpersand in a scanf.
 
@@ -15,9 +16,32 @@ double cube(double num)
     return result;
 }
 
+struct Student
+{
+    int age;
+    double gpa;
+    char name[50];
+    char major[100];
+};
+
 int main()
 {
-    char grade = 'A';
+    struct Student student1;
+    student1.age = 21;
+    student1.gpa = 3.8;
+    strcpy(student1.name, "Pam");
+    strcpy(student1.major, "Computer Science");
+
+    struct Student student2;
+    student2.age = 19;
+    student2.gpa = 3.9;
+    strcpy(student2.name, "Cam");
+    strcpy(student2.major, "Business");    
+    
+    printf("%s's major is %s\n", student1.name, student1.major);
+    printf("%s's gpa score is %f\n", student2.name, student2.gpa);
+    
+    /*char grade = 'A';
     switch(grade)
     {
         case 'A': printf("You did a great job!\n");
@@ -32,7 +56,7 @@ int main()
     }
     
     
-    /*double num1;
+    double num1;
     double num2;
     char operator;
 
