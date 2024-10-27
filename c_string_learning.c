@@ -2,12 +2,13 @@
 #include <string.h>
 
 #pragma mark -- function declaration --
-int myLenOfStr(const char* str);
+int myLenOfStr(const char* str); 
 void printString(const char* str);
 int myStrcmp(const char *str1, const char *str2);
 int myStrncmp(const char *str1, const char *str2, size_t n);
 int myStrcmp2(const char *str1, const char *str2);
 int myStrncmp2(const char *str1, const char *str2, size_t n);
+int myStrncmp3(const char *str1, const char *str2, size_t n);
 void testStrcmp();
 void testStrcatAndStrcpy();
 char *myStrcat(char *dest, const char *src);
@@ -22,13 +23,19 @@ int myStrRChar(char* str, char a);
 
 int main()
 {
-    int res = myStrRChar("Harry Potter and the flying doggy", 'l');
+    int res = myStrRChar("Harry Potter and the flying doggy", 't');
     printf("%d\n", res);
     
-    /*char* res2 = myStrChar("wishtree",'r');
+    char* res2 = myStrChar("Harry Potter and the flying doggy", 't');
     printf("%s\n", res2);
     
-    testStrcmp();
+    int res3 = myStrcmp("abcdef", "basf");
+    printf("%d\n", res3);
+
+    int res4 = myStrncmp3("ac", "ab", 2);
+    printf("%d\n", res4);
+
+   /* testStrcmp();
     
     const char* kDemoStr = "I am a demo string";    // a string
     char demoCharArray[] = "I am a demo character array";    // a character array
@@ -72,6 +79,31 @@ int main()
 }
 
 #pragma mark -- function implementation --
+
+int myStrncmp3(const char *str1, const char *str2, size_t n)
+{
+    if((NULL == str1) || (NULL == str2))
+    {
+        if(str1 == str2)
+        {
+            return 0;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    int index = 1;
+
+    while((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2) && (index < n))
+    {
+        str1++;
+        str2++;
+        index++;
+    }
+    return (*str1 - *str2);
+}
 
 void printString(const char* str)
 {
