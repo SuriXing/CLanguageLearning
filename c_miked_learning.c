@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <time.h>
 
 // Only array and string need to add a andpersand in a scanf.
 
@@ -26,6 +27,79 @@ struct Student
 
 int main()
 {
+    int guess = 0;
+    
+    const int kMinValue = 1;
+    const int kMaxValue = 100;
+
+    srand(time(NULL));
+    int randomnumber = rand() % (kMaxValue - kMinValue) + kMinValue;
+
+    int min = 0;
+    int max = 100;
+
+    printf("Welcome to this number number guessing game! Please enter an integer:");
+    scanf("%d", &guess);
+
+    while (guess != randomnumber)
+    {
+        if (guess < randomnumber)
+        {
+            min = guess;
+            printf("Tip:The number is in between %d and %d\n", guess, max);
+            printf("Please enter another integer:");
+            scanf("%d", &guess);
+        }
+        else if (guess > randomnumber)
+        {
+            max = guess;
+            printf("Tip:The number is in between %d and %d\n", min, guess); 
+            printf("Please enter another integer:");
+            scanf("%d", &guess);
+        }
+        else
+        {
+            printf("Congrtualtions, you win, %d is the number!\n", guess);
+        }
+        
+    }
+    printf("Congratulations, you win the game!");
+
+    //              ^^
+    //guessing game ||
+    
+    /*double num1;
+    double num2;
+    char operator;
+
+    printf("Enter a number:");
+    scanf("%lf", &num1);
+    printf("Enter an operator(+ or - or * or/):");
+    scanf("\n%c", &operator);
+    printf("Enter another number:");
+    scanf("\n%lf", &num2);
+
+    if(operator == '+')
+    {
+        printf("%f\n", num1 + num2);
+    }
+    else if(operator == '-')
+    {
+        printf("%f\n", num1 - num2);
+    }
+    else if(operator == '*')
+    {
+        printf("%f\n", num1 * num2);
+    }
+    else if(operator == '/')
+    {
+        printf("%f\n", num1/num2);
+    }
+    else
+    {
+        printf("invalid operator\n");
+    }
+    
     struct Student student1;
     student1.age = 21;
     student1.gpa = 3.8;
@@ -41,18 +115,23 @@ int main()
     printf("%s's major is %s\n", student1.name, student1.major);
     printf("%s's gpa score is %f\n", student2.name, student2.gpa);
     
-    /*char grade = 'A';
+    char grade = 'A';
     switch(grade)
     {
         case 'A': printf("You did a great job!\n");
         break;
+        
         case 'B': printf("You did fine.");
         break;
+        
         case 'C': printf("You'll need more practice.");
         break;
+        
         case 'F': printf("You trash.");
         break;
+        
         default:printf("Invalid grade.");
+        break;        
     }
     
     
