@@ -27,7 +27,15 @@ struct Student
 
 int main()
 {
-    int guess = 0;
+    int numbers[5] = {2,4,6,8,150};
+
+    for(int i = 0; i < 5; i++)
+    {
+        printf("%d\n", numbers[i]);
+    }
+    
+    
+    /*int guess = 0;
     
     const int kMinValue = 1;
     const int kMaxValue = 100;
@@ -68,7 +76,7 @@ int main()
     //              ^^
     //guessing game ||
     
-    /*double num1;
+    double num1;
     double num2;
     char operator;
 
