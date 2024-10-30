@@ -27,7 +27,25 @@ struct Student
 
 int main()
 {
-    int numbers[5] = {2,4,6,8,150};
+    int nums[3][2] =
+    {
+        {1,3},
+        {3,6},
+        {6,9}
+    };
+    
+    int numbers[10][13];
+
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 13; j++)
+        {
+            printf("%d\n", numbers[i][j]);
+        }
+    }
+    
+    
+    /*int numbers[5] = {2,4,6,8,150};
 
     for(int i = 0; i < 5; i++)
     {
@@ -35,7 +53,7 @@ int main()
     }
     
     
-    /*int guess = 0;
+    int guess = 0;
     
     const int kMinValue = 1;
     const int kMaxValue = 100;
