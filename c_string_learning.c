@@ -20,6 +20,10 @@ char* myStrncpy(char* dest, const char* src, size_t n);
 void testMyStrncpy();
 char* myStrChar(const char* str, char c);
 int myStrRChar(char* str, char a);
+size_t myStrspn(const char *str1, const char *str2);
+size_t myStrspn2(const char *str1, const char *str2);
+size_t myStrcspn(const char *str1, const char *str2);
+size_t myStrcspn2(const char *str1, const char *str2);
 
 int main()
 {
@@ -356,20 +360,20 @@ void testStrcat2AndStrcpy2()
     myStrcpy2(test, "abcdgjk");
     printf("%s\n", test);
 }
+
 char* myStrChar(const char* str, char c)
 {
-    if((NULL == str))
+    if (NULL == str)
     {
         return NULL;
     }
-    char* str2 = (char*) str;//Because it was a const
 
-    while(*str2 != c)
+    while ((*str != c) && (*str != '\0'))
     {
-        str2++;
+        str++;
     }
     
-    return str2;
+    return ((*str == '\0') ? NULL : ((char*)str));
 }
 
 int myStrRChar(char* str, char a)
@@ -390,5 +394,93 @@ int myStrRChar(char* str, char a)
         index--;
     }
 
+    return -1;
+}
+
+size_t myStrspn(const char *str1, const char *str2)
+{
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return -1;
+    }
+
+    int len = 0;
+    size_t index = 0;
+
+    while (*str1 != '\0')
+    {
+        if (myStrChar(str2, *str1) != NULL)
+        {
+            return index;
+        }
+        
+        str1++;
+        index++;
+    }
+
+    return -1;
+}
+
+size_t myStrspn2(const char *str1, const char *str2)
+{
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return -1;
+    }
+
+    size_t index = 0;
+
+    while (*str1 != '\0')
+    {
+        if (myStrChar(str2, *str1) != NULL)
+        {
+            return index;
+        }
+        str1++;
+        index++;
+    }
+    return -1;
+}
+
+size_t myStrcspn(const char *str1, const char *str2)
+{
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return -1;
+    }
+
+    size_t index = 0;
+
+    while (*str1 != '\0')
+    {
+        if (myStrChar(str2, *str1) == NULL)
+        {
+            return index;
+        }
+        index ++;
+        str1++;
+    }
+
+    return -1;
+}
+
+size_t myStrcspn2(const char *str1, const char *str2)
+{
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return -1;
+    }
+
+    size_t index = 0;
+
+    while(*str1 != '\0')
+    {
+        if (myStrChar(str2, *str1) == NULL)
+        {
+            return index;
+        }
+        index++;
+        str1++;
+    }
     return -1;
 }
