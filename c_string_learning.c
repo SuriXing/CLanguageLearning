@@ -22,8 +22,12 @@ char* myStrChar(const char* str, char c);
 int myStrRChar(char* str, char a);
 size_t myStrspn(const char *str1, const char *str2);
 size_t myStrspn2(const char *str1, const char *str2);
+size_t myStrspn_fast(const char *str1, const char *str2);
 size_t myStrcspn(const char *str1, const char *str2);
 size_t myStrcspn2(const char *str1, const char *str2);
+size_t myStrcspn_fast(const char *str1, const char *str2);
+int testStrspn(const char *str1, const char *str2);
+int testStcrspn(const char *str1, const char *str2);
 
 int main()
 {
@@ -428,17 +432,46 @@ size_t myStrspn2(const char *str1, const char *str2)
         return -1;
     }
 
-    size_t index = 0;
+    size_t len = 0;
 
-    while (*str1 != '\0')
+    while(*str1 != '\0')
     {
         if (myStrChar(str2, *str1) != NULL)
         {
-            return index;
+            return len;
         }
         str1++;
-        index++;
+        len++;
     }
+    return -1;
+}
+
+size_t myStrspn_fast(const char *str1, const char *str2)
+{
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return -1;
+    }
+
+    int dict[256] = {0};
+    size_t len = 0;
+
+    while (*str2 != '\0')
+    {
+        dict[*str2] = 1;
+        str2++;
+    }
+
+    while (*str1 != '\0')
+    {
+        if (dict[*str1] == 1)
+        {
+            return len;
+        }
+        str1++;
+        len++;
+    }
+
     return -1;
 }
 
@@ -468,19 +501,78 @@ size_t myStrcspn2(const char *str1, const char *str2)
 {
     if ((NULL == str1) || (NULL == str2))
     {
-        return -1;
+        return 0;
     }
 
-    size_t index = 0;
+    size_t len = 0;
 
-    while(*str1 != '\0')
+    while (*str1 != '\0')
     {
         if (myStrChar(str2, *str1) == NULL)
         {
-            return index;
+            return len;
         }
-        index++;
+        len++;
         str1++;
     }
+    return -1;
+}
+
+size_t myStrcspn_fast(const char *str1, const char *str2)
+{
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return 0;
+    }
+    
+    char dict[256] = {0};
+
+    while (*str2 != '\0')
+    {
+        dict[*str2] = 1;
+        str2++;
+    }
+    
+    size_t len = 0;
+
+    while (*str1 != '\0')
+    {
+        if (dict[*str1] != 1)
+        {
+            return len;
+        }
+        str1++;
+        len++;
+    }
+    return -1;
+}
+
+int testStrspn(const char *str1, const char *str2)
+{
+    int num1 = strspn(str1, str2);
+    int num2 = myStrspn(str1, str2);
+    int num3 = myStrspn_fast(str1, str2);
+    
+    if ((num1 == num2) && (num1 == num3) && (num2 == num3))
+    {
+        printf("Yeah!\n");
+    }
+    
+    printf("There's something wrong!'");
+    return -1;
+}
+
+int testStrcspn(const char *str1, const char *str2)
+{
+    int num1 = strcspn(str1, str2);
+    int num2 = myStrcspn(str1, str2);
+    int num3 = myStrcspn_fast(str1, str2);
+    
+    if ((num1 == num2) && (num1 == num3) && (num2 == num3))
+    {
+        printf("Yeah!\n");
+    }
+    
+    printf("There's something wrong!'");
     return -1;
 }
