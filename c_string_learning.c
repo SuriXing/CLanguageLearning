@@ -17,6 +17,7 @@ char* myStrcat2(char *dest, const char *src);
 char* myStrCpy2(char *dest, const char *src);
 void testStrcat2AndStrcpy2();
 char* myStrncpy(char* dest, const char* src, size_t n);
+char *myStrstr(const char *haystack, const char *needle);
 void testMyStrncpy();
 char* myStrChar(const char* str, char c);
 int myStrRChar(char* str, char a);
@@ -28,9 +29,12 @@ size_t myStrcspn2(const char *str1, const char *str2);
 size_t myStrcspn_fast(const char *str1, const char *str2);
 int testStrspn(const char *str1, const char *str2);
 int testStcrspn(const char *str1, const char *str2);
+void testmyStrstr();
 
 int main()
 {
+    testmyStrstr();
+/*
     int res = myStrRChar("Harry Potter and the flying doggy", 't');
     printf("%d\n", res);
     
@@ -43,7 +47,7 @@ int main()
     int res4 = myStrncmp3("ac", "ab", 2);
     printf("%d\n", res4);
 
-   /* testStrcmp();
+    testStrcmp();
     
     const char* kDemoStr = "I am a demo string";    // a string
     char demoCharArray[] = "I am a demo character array";    // a character array
@@ -547,6 +551,30 @@ size_t myStrcspn_fast(const char *str1, const char *str2)
     return -1;
 }
 
+char *myStrstr(const char *haystack, const char *needle)
+{
+    while (*haystack != '\0')
+    {
+        const char* str1 = haystack;
+        const char* str2 = needle;
+
+        while ((*str2 != '\0') && (*str1 == *str2))
+        {
+            str1++;
+            str2++;
+        }
+
+        if (*str2 == '\0')
+        {
+            return (char*)haystack;
+        }
+
+        haystack++;
+    }
+
+    return NULL;
+}
+
 int testStrspn(const char *str1, const char *str2)
 {
     int num1 = strspn(str1, str2);
@@ -575,4 +603,11 @@ int testStrcspn(const char *str1, const char *str2)
     
     printf("There's something wrong!'");
     return -1;
+}
+
+void testmyStrstr()
+{
+    printf("%s\n", myStrstr("abcdefg", "cde"));
+    printf("%s\n", myStrstr("abcdefg", "ab"));
+    printf("%s\n", myStrstr("abcdefg", "f"));
 }
