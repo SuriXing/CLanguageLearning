@@ -1,5 +1,48 @@
 #include <stdio.h>
 
+int numberOfAscend3Digit()
+{
+    int count = 0;
+    for (int i1=1; i1<=9; i1++)
+    {
+        for (int i2=i1+1; i2<=9; i2++)
+        {
+            for (int i3=i2+1; i3<=9; i3++)
+            {
+                int num = (100*i1)+(10*i2)+(i3);
+                printf("%d\n",num);
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+int numberOfAscend5Digit()
+{
+    int count = 0;
+    for (int i1=1; i1<=9; i1++)
+    {
+        for (int i2=i1+1; i2<=9; i2++)    
+        {
+            for (int i3=i2+1; i3<=9; i3++)
+            {
+                for (int i4=i3+1; i4<=9; i4++)
+                {
+                    for (int i5=i4+1; i5<=9; i5++)
+                    {
+                        printf("%d%d%d%d%d\n", i1, i2, i3, i4, i5);
+                        
+                        count += 1;
+                    }
+                }
+            }
+        }
+    }
+
+    return count;
+}
+
 int isPrime(int num)
 {
     if (num <= 1)
@@ -366,8 +409,11 @@ int numOfAscendAndDescend()
 
 int main()
 {
-    printf("%d\n", numOfAscendAndDescend());
+    //printf("%d\n", numberOfAscend5Digit());
     
+    int number = numberOfAscend3Digit();
+    printf("%d\n", number);
+
 	return 0;
 }
 
