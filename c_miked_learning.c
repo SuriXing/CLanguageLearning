@@ -27,7 +27,14 @@ struct Student
 
 int main()
 {
-    int nums[3][2] =
+    char randomLetter = 'S';
+    int randomNumber = 8;
+    char string[100] = "Some Random things";
+    int numbers[5][5] = {0};
+    
+    printf("S: %p\n8: %p\nstring: %p:%p\n2D array: %p; %p; %p\n", &randomLetter, &randomNumber, string, &string, numbers, &numbers, numbers[0]);
+
+    /*int nums[3][2] =
     {
         {1,3},
         {3,6},
@@ -45,7 +52,7 @@ int main()
     }
     
     
-    /*int numbers[5] = {2,4,6,8,150};
+    int numbers[5] = {2,4,6,8,150};
 
     for(int i = 0; i < 5; i++)
     {
