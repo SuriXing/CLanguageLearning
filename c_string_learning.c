@@ -18,6 +18,7 @@ char* myStrCpy2(char *dest, const char *src);
 void testStrcat2AndStrcpy2();
 char* myStrncpy(char* dest, const char* src, size_t n);
 char *myStrstr(const char *haystack, const char *needle);
+char *myStrstr2(const char *haystack, const char *needle);
 void testMyStrncpy();
 char* myStrChar(const char* str, char c);
 int myStrRChar(char* str, char a);
@@ -28,11 +29,22 @@ size_t myStrcspn(const char *str1, const char *str2);
 size_t myStrcspn2(const char *str1, const char *str2);
 size_t myStrcspn_fast(const char *str1, const char *str2);
 int testStrspn(const char *str1, const char *str2);
-int testStcrspn(const char *str1, const char *str2);
+int testStrcspn(const char *str1, const char *str2);
 void testmyStrstr();
 
 int main()
 {
+/*
+    char *str="abcdefg";
+    printf("%s\n", str);
+    str++;
+    printf("%s\n", str);
+    str++;
+    printf("%s\n", str);
+    str++;
+    printf("%s\n", str);
+*/
+
     testmyStrstr();
 /*
     int res = myStrRChar("Harry Potter and the flying doggy", 't');
@@ -607,7 +619,31 @@ int testStrcspn(const char *str1, const char *str2)
 
 void testmyStrstr()
 {
-    printf("%s\n", myStrstr("abcdefg", "cde"));
-    printf("%s\n", myStrstr("abcdefg", "ab"));
-    printf("%s\n", myStrstr("abcdefg", "f"));
+    printf("%s\n", myStrstr2("abcdefg", "cde"));
+    printf("%s\n", myStrstr2("abcdefg", "ab"));
+    printf("%s\n", myStrstr2("abcdefg", "f"));
+}
+
+char *myStrstr2(const char *haystack, const char *needle)
+{
+    while(*haystack != '\0')
+    {
+        const char *str1 = haystack;
+        const char *str2 = needle;
+
+        while((*str2 != '\0') && (*str1 == *str2))
+        {
+            str1++;
+            str2++;
+        }
+
+        if (*str2 == '\0')
+        {
+            return (char*)haystack;
+        }
+
+        haystack++;
+    }
+
+    return NULL;
 }
