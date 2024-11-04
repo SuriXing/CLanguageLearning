@@ -27,6 +27,17 @@ struct Student
 
 int main()
 {
+    /*
+    int number = 12342;
+    printf("the pointer of 12341 is %p\n", &number);
+    printf("the number this pointer represents is %d\n", *&number);
+    */   
+    int number2 = 0;
+    printf("Please enter your number:\n");
+    scanf("%d", &number2);
+    printf("The pointer of %d is %p\n", number2, &number2);
+
+    /*
     char randomLetter = 'S';
     int randomNumber = 8;
     char string[100] = "Some Random things";
@@ -34,7 +45,7 @@ int main()
     
     printf("S: %p\n8: %p\nstring: %p:%p\n2D array: %p; %p; %p\n", &randomLetter, &randomNumber, string, &string, numbers, &numbers, numbers[0]);
 
-    /*int nums[3][2] =
+    int nums[3][2] =
     {
         {1,3},
         {3,6},
