@@ -2,50 +2,56 @@
 #include <string.h>
 
 #pragma mark -- function declaration --
-int myLenOfStr(const char* str); 
+
 void printString(const char* str);
+
+int myLenOfStr(const char* str); 
+
 int myStrcmp(const char *str1, const char *str2);
 int myStrncmp(const char *str1, const char *str2, size_t n);
 int myStrcmp2(const char *str1, const char *str2);
 int myStrncmp2(const char *str1, const char *str2, size_t n);
 int myStrncmp3(const char *str1, const char *str2, size_t n);
-void testStrcmp();
-void testStrcatAndStrcpy();
+
 char *myStrcat(char *dest, const char *src);
 char *myStrcpy(char *dest, const char *src);
 char* myStrcat2(char *dest, const char *src);
 char* myStrCpy2(char *dest, const char *src);
-void testStrcat2AndStrcpy2();
 char* myStrncpy(char* dest, const char* src, size_t n);
+
 char *myStrstr(const char *haystack, const char *needle);
 char *myStrstr2(const char *haystack, const char *needle);
-void testMyStrncpy();
+
 char* myStrChar(const char* str, char c);
 int myStrRChar(char* str, char a);
+
 size_t myStrspn(const char *str1, const char *str2);
 size_t myStrspn2(const char *str1, const char *str2);
 size_t myStrspn_fast(const char *str1, const char *str2);
 size_t myStrcspn(const char *str1, const char *str2);
 size_t myStrcspn2(const char *str1, const char *str2);
 size_t myStrcspn_fast(const char *str1, const char *str2);
+
+
+#pragma mark -- test function declaration --
+
 int testStrspn(const char *str1, const char *str2);
 int testStrcspn(const char *str1, const char *str2);
 void testmyStrstr();
+void testMyStrncpy();
+void testStrcmp();
+void testStrcatAndStrcpy();
+void testStrcat2AndStrcpy2();
+void understandStringAndPointer();
+void understandStringAndArray();
 
 int main()
 {
-/*
-    char *str="abcdefg";
-    printf("%s\n", str);
-    str++;
-    printf("%s\n", str);
-    str++;
-    printf("%s\n", str);
-    str++;
-    printf("%s\n", str);
-*/
-
     testmyStrstr();
+    testStrcatAndStrcpy();
+    testStrcat2AndStrcpy2();
+    testMyStrncpy();
+    testStrcmp();
 /*
     int res = myStrRChar("Harry Potter and the flying doggy", 't');
     printf("%d\n", res);
@@ -58,9 +64,31 @@ int main()
 
     int res4 = myStrncmp3("ac", "ab", 2);
     printf("%d\n", res4);
-
-    testStrcmp();
     
+    int lenOfStr = strlen(kDemoStr);
+    printf("Length of String: %d\n", lenOfStr);
+
+    int res = myLenOfStr(kDemoStr);
+    printf("My length of String: %d\n", res);
+
+    if (res == strlen(kDemoStr))
+    {
+        printf("OH YESS\n");
+    }
+    else
+    {
+        printf("WHAT\n");
+    }
+
+    understandStringAndArray();
+*/
+    return 0;
+}
+
+#pragma mark -- function implementation --
+
+void understandStringAndArray()
+{
     const char* kDemoStr = "I am a demo string";    // a string
     char demoCharArray[] = "I am a demo character array";    // a character array
     demoCharArray[0] = 'Y';
@@ -77,32 +105,19 @@ int main()
     printf("%d\n", (int)'9');
     printf("%d\n", (int)'a');
     printf("%d\n", '\0');
-
-    int lenOfStr = strlen(kDemoStr);
-    printf("Length of String: %d\n", lenOfStr);
-
-    int res = myLenOfStr(kDemoStr);
-    printf("My length of String: %d\n", res);
-
-    if (res == strlen(kDemoStr))
-    {
-        printf("OH YESS\n");
-    }
-    else
-    {
-        printf("WHAT\n");
-    }
-
-    testStrcatAndStrcpy();
-
-    testStrcat2AndStrcpy2();
-
-    testMyStrncpy();
-
-    return 0;*/
 }
 
-#pragma mark -- function implementation --
+void understandStringAndPointer()
+{
+    char *str="abcdefg";
+    printf("%s\n", str);
+    str++;
+    printf("%s\n", str);
+    str++;
+    printf("%s\n", str);
+    str++;
+    printf("%s\n", str);
+}
 
 int myStrncmp3(const char *str1, const char *str2, size_t n)
 {
