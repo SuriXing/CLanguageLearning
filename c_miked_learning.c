@@ -27,10 +27,18 @@ struct Student
 
 int main()
 {
+    /*
     FILE * fpointer = fopen("Hello.World", "r");
     fprintf(fpointer, "\nrandom things\nno idea what to add\nYay");
     fclose(fpointer);
-    
+    */
+
+    char line[255];
+    FILE * fpointer = fopen("Hello.World", "a");
+    fgets(line, 255, fpointer);
+    printf("%s", line);
+    fclose(fpointer);
+
     /*
     int number = 12342;
     printf("the pointer of 12341 is %p\n", &number);
