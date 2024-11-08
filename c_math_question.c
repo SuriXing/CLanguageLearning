@@ -407,18 +407,130 @@ int numOfAscendAndDescend()
     return count;
 }
 
+int permutation(int m, int n)
+{
+    if (m < n)
+    {
+        return 0;
+    }
+    return factorialFormula2(m)/factorialFormula2(m-n);
+}
+
+int permutationProblem1()
+{
+    int count = 0;
+    for (int i = 1; i <= 4; i++)
+    {
+        for (int j = 1; j <= 4; j++)
+        {
+            for (int k = 1; k <= 4; k++)
+            {
+                if ((i != j) && (j != k) && (k != i))
+                {
+                    int num = 100*i + 10*j + k;
+                    printf("%d\n", num);
+                    count++;
+                }
+            }
+        }
+    }
+    printf("%d\n", count);
+
+    int fastCount = permutation(4,3);
+    printf("%d\n", fastCount);
+
+    int dict[10] = {0};
+    int count2 = 0;
+    // 1,3,4,9
+    dict[1] = dict[3] = dict[4] = dict[9] = 1;
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (dict[i] == 0)
+            continue;
+
+        for (int j = 0; j < 10; j++)
+        {
+            if (dict[j] == 0)
+                continue;
+            
+            for (int k = 0; k < 10; k++)
+            {
+                if (dict[k] == 0)
+                    continue;
+
+                if ((i != j) && (j != k) && (k != i))
+                {
+                    int num = 100*i + 10*j + k;
+
+                    count2++;
+                }
+            }
+        }
+    }
+    
+    printf("%d\n", count2);
+
+    return 0;
+}
+
+int permutationProb2()
+{
+    int dict[10] = {0};
+    //1,3,8,9
+    dict[1] = dict[3] = dict[8] = dict[9] = 1;
+    int count = 0;
+    for (int i = 0; i < 10; i++)
+    {
+        if (dict[i] == 0)
+        {
+            continue;
+        }
+        
+        for (int k = 0; k < 10; k++)
+        {
+            if (dict[k] == 0)
+            {
+                continue;
+            }
+
+            for(int j = 0; j < 10; j++)
+            {
+                if (dict[j] == 0)
+                {
+                    continue;
+                }
+
+                if ((i != j) && (j != k) && (i != k))
+                {
+                    count++;
+                }
+            }
+        }
+    }
+    printf("%d\n", count);
+
+    int fastCount = permutation(4,3);
+    printf("%d\n", fastCount);
+    
+    return 0;
+}
+
 int main()
 {
     //printf("%d\n", numberOfAscend5Digit());
     
-    int number = numberOfAscend3Digit();
+    /*int number = numberOfAscend3Digit();
     printf("%d\n", number);
 
-	return 0;
+	return 0;*/
+
+    //permutationProblem1();
+
+    permutationProb2();
 }
 
-
-int slowSumOfConsequtiveNum(int from, int to)
+int slowSumOfConsecutiveNum(int from, int to)
 {
     int sum = 0;
     
