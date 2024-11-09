@@ -62,16 +62,69 @@ void printPrimeNum(int from, int to)
     }
 }
 
+int example5()
+{
+    int max = 0;
+    int mid = 0;
+    int min = 0;
+    int num = 0;
+    printf("Please enter the three numbers:\n");
+    scanf("%d,%d,%d", &max, &mid, &min);
 
+    if (mid < min)
+    {
+        num = min;
+        min = mid;
+        mid = num;
+    }
+    num = 0;
+    if (max < min)
+    {
+        num = min;
+        min = max;
+        max = num;
+    }
+    num = 0;
+    if (max < mid)
+    {
+        num = mid;
+        mid = max;
+        max = num;
+    }
 
+    printf("From the greatest to smallest: %d, %d, %d\n", max, mid, min);
+    return 0;
+}
 
+ 
+#define ARRAY_LENGTH 5
 
+int new_example5()
+{
+    int nums[ARRAY_LENGTH];
 
+    printf("Please enter the three numbers:\n");
+    scanf("%d,%d,%d,%d,%d", &nums[0], &nums[1], &nums[2], &nums[3], &nums[4]);
 
-
+    for (int i=0; i<ARRAY_LENGTH-1; i++)
+    {
+        for (int j=i+1; j<ARRAY_LENGTH-1; j++)
+        {
+            if (nums[i] > nums[j])
+            {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+        }
+    }
+    
+    printf("From the greatest to smallest: %d, %d, %d\n", nums[4], nums[3], nums[2]);
+    return 0;
+}
 
 int main()
 {
-
+    new_example5();
     return 0;
-}    
+}   
