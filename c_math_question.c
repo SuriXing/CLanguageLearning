@@ -1,5 +1,49 @@
 #include <stdio.h>
 
+int example4()
+{
+    int year = 0;
+    int month = 0;
+    int date = 0;
+    int num = 0;
+    int num2 = 0;
+    int month_in_a_year[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    printf("Enter your year:");
+    scanf("%d", &year);
+    printf("Enter your month (numeral):");
+    scanf("%d", &month);
+    printf("Enter your date:");
+    scanf("%d", &date);
+
+    if ((month >= 13) || (month <= 0) || (year <= 0))
+    {
+        printf("invalid input\n");
+        return 0;
+    }
+
+    if (year % 4 == 0)
+    {
+        month_in_a_year[1] += 1;
+    }
+
+    if ((date <= 0) || (date > month_in_a_year[month-1]))
+    {
+        printf("invalid input\n");
+        return 0;
+    }
+
+    for (int i = 0 ; i < month-1; i++)
+    {
+        num2 += month_in_a_year[i];
+    }
+
+    num = num2 + date;
+
+    printf("%d/%d is the %dst day in %d.\n", month, date, num, year);
+    return 0;
+}
+
 int numberOfAscend3Digit()
 {
     int count = 0;
@@ -512,7 +556,7 @@ int permutationProb2()
 
     int fastCount = permutation(4,3);
     printf("%d\n", fastCount);
-    
+
     return 0;
 }
 
@@ -527,7 +571,9 @@ int main()
 
     //permutationProblem1();
 
-    permutationProb2();
+    //permutationProb2();
+
+    example4();
 }
 
 int slowSumOfConsecutiveNum(int from, int to)
