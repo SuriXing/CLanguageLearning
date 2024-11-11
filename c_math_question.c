@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+int example5()
+{
+    printf("*****\n");
+    printf("*\n");
+    printf("*\n");
+    printf("*\n");
+    printf("*****\n");
+    return 0;
+}
+
 int example4()
 {
     int year = 0;
@@ -573,7 +583,7 @@ int main()
 
     //permutationProb2();
 
-    example4();
+    example5();
 }
 
 int slowSumOfConsecutiveNum(int from, int to)
