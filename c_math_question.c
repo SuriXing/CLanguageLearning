@@ -1,5 +1,18 @@
 #include <stdio.h>
 
+int example7()
+{
+    int count = 0;
+    for (int i = 1; i <= 9; i++)
+    {
+        for(int j = 1; j <= 9; j++)
+        {
+            printf("%d\n", i*j);
+        }
+    }
+    return 1;
+}
+
 int example5()
 {
     printf("*****\n");
@@ -583,7 +596,7 @@ int main()
 
     //permutationProb2();
 
-    example5();
+    example7();
 }
 
 int slowSumOfConsecutiveNum(int from, int to)
