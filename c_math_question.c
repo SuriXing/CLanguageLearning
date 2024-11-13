@@ -1,5 +1,25 @@
 #include <stdio.h>
 
+int example8()
+{
+    for(int i=0; i<8; i++)
+    {
+        for(int j=0; j<8; j++)
+            {
+                if((i+j)%2==0)
+                {
+                    printf("%c%c",95,95);
+                }
+                else 
+                {
+                    printf("  ");
+                }
+            }
+        printf("\n");
+    }
+    return 0;
+}
+
 int example7()
 {
     int count = 0;
@@ -596,7 +616,7 @@ int main()
 
     //permutationProb2();
 
-    example7();
+    example8();
 }
 
 int slowSumOfConsecutiveNum(int from, int to)
