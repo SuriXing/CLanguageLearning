@@ -1,5 +1,27 @@
 #include <stdio.h>
 
+int example9()
+{
+    for (int i = 101; i <= 200; i++)
+    {
+        int isPrime = 1;
+        for (int j = 2; j < i/2; j++)
+        {
+            if (i % j == 0)
+            {
+                isPrime = 0;
+                break;
+            }
+        }
+
+        if (isPrime == 1)
+        {
+            printf("%d\n", i);
+        }
+    }
+    return 0;
+}
+
 int example8()
 {
     for(int i=0; i<8; i++)
@@ -8,11 +30,11 @@ int example8()
             {
                 if((i+j)%2==0)
                 {
-                    printf("%c%c",95,95);
+                    printf("O");
                 }
                 else 
                 {
-                    printf("  ");
+                    printf("X");
                 }
             }
         printf("\n");
@@ -616,7 +638,7 @@ int main()
 
     //permutationProb2();
 
-    example8();
+    example9();
 }
 
 int slowSumOfConsecutiveNum(int from, int to)
