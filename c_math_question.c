@@ -1,5 +1,26 @@
 #include <stdio.h>
 
+int example9_2()
+{
+    for (int i = 101; i <= 200; i++)
+    {
+        int isPrime = 1;
+        for (int j = 2; j <= i/2; j++)
+        {
+            if (i % j == 0)
+            {
+                isPrime = 0;
+                break;
+            }   
+        }
+        if (isPrime == 1)
+        {
+            printf("%d\n", i);
+        }
+    }
+    return 0;
+}
+
 int example9()
 {
     for (int i = 101; i <= 200; i++)
