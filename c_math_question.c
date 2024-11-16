@@ -1,5 +1,97 @@
 #include <stdio.h>
 
+int example14()
+{
+    int num = 0;
+    printf("Please enter am integer:\n");
+    scanf("%d", &num);
+    printf("%d = ", num);
+
+    for (int i = 2; i <= num/1; i++)
+    {
+        while(num % i == 0)
+        {
+            printf("%d",i);
+            num /= i;
+            if(num != 1)
+            {
+                printf("*");
+            }
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+int isPrime2(int num)
+{
+	if (num < 0)
+	{
+		return 0;
+	}
+
+	for (int i=2; i<num/2; i++)
+	{
+		if (num % i == 0)
+		{
+			return 0;
+		}
+	}
+    return 1;
+}
+
+int findNextPrimeNumber2(int start)
+{
+	if (start < 0)
+	{
+		return 0;
+	}
+
+	for (int i=start; ; i++)
+	{
+		if (isPrime2(i))
+		{
+			return i;
+		}
+	}
+
+	return 0;
+}
+
+int primeFactorlization2()
+{
+	int num = 0;
+
+	printf("Please enter an integer:\n");
+	scanf("%d", &num);
+    printf("%d = ", num);
+
+	if (num <= 0)
+	{
+		return 0;
+	}
+
+	while(num > 1)
+	{
+		for (int i = 2; ; i = findNextPrimeNumber2(i+1))
+		{
+			if (num % i == 0)
+			{
+				printf("%d", i);
+				num /= i;
+				break;
+			}
+		}
+        if (num > 1)
+        {
+            printf("*");
+        }
+	}
+
+    printf("\n");
+    return 0;
+}
+
 int example9_2()
 {
     for (int i = 101; i <= 200; i++)
@@ -659,7 +751,12 @@ int main()
 
     //permutationProb2();
 
-    example9();
+    //primeFactorlization2();
+    primeFactorlization2();
+
+    example14();
+
+    return 0;
 }
 
 int slowSumOfConsecutiveNum(int from, int to)
