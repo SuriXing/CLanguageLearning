@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "../utils.h"
 
 int example14()
 {
@@ -23,23 +24,6 @@ int example14()
     return 0;
 }
 
-int isPrime2(int num)
-{
-	if (num < 0)
-	{
-		return 0;
-	}
-
-	for (int i=2; i<num/2; i++)
-	{
-		if (num % i == 0)
-		{
-			return 0;
-		}
-	}
-    return 1;
-}
-
 int findNextPrimeNumber2(int start)
 {
 	if (start < 0)
@@ -49,7 +33,7 @@ int findNextPrimeNumber2(int start)
 
 	for (int i=start; ; i++)
 	{
-		if (isPrime2(i))
+		if (isPrime(i))
 		{
 			return i;
 		}
@@ -157,7 +141,6 @@ int example8()
 
 int example7()
 {
-    int count = 0;
     for (int i = 1; i <= 9; i++)
     {
         for(int j = 1; j <= 9; j++)
@@ -265,24 +248,6 @@ int numberOfAscend5Digit()
     return count;
 }
 
-int isPrime(int num)
-{
-    if (num <= 1)
-    {
-        return 0;
-    }
-
-    for (int i=2; i<=num/2; i=i+1)
-    {
-        if (num%i == 0)
-        {
-            return 0;
-        }
-    }
-
-    return 1;
-}
-
 void printPrimeNum(int from, int to)
 {
     int countOfPrimeNum=0;
@@ -318,9 +283,6 @@ int calcFrom1To100()
 
 int fasterCalcFrom1To100()
 {
-    int sumOfOddNumber = 0;
-    int sumOfEvenNumber = 0;
-
     // Formula : n*(a1+an)/2
     int n = 50;
     int a1 = 1;
@@ -683,8 +645,6 @@ int permutationProblem1()
 
                 if ((i != j) && (j != k) && (k != i))
                 {
-                    int num = 100*i + 10*j + k;
-
                     count2++;
                 }
             }
