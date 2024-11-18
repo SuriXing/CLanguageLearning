@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include "../utils.h"
 
+int example15()
+{
+    int score;
+    char grade;
+    printf("Please input a score： ");
+    scanf("%d",&score);
+    grade=(score>=90)?'A':((score>=60)?'B':'C');
+    printf("Your grade is: %c\n",grade);
+    return 0;
+}
+
 int example14()
 {
     int num = 0;
@@ -712,9 +723,10 @@ int main()
     //permutationProb2();
 
     //primeFactorlization2();
-    primeFactorlization2();
+    //primeFactorlization2();
 
-    example14();
+    //example14();
+    example15();
 
     return 0;
 }
