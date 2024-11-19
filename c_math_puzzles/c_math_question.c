@@ -728,6 +728,70 @@ int main()
     //example14();
     example15();
 
+    int isPrime3()
+{
+	if (num < 0)
+	{
+		return 0;
+	}
+
+	for (int i=2; i<num/2; i++)
+	{
+		if (num % i == 0)
+		{
+			return 0;
+		}
+	}
+
+	return 0;
+}
+
+int nextPrimeNum3()
+{
+	if (start < 0)
+	{
+		return 0;
+	}
+
+	for (int i=start; ; i++)
+	{
+		if (isPrime(i))
+		{
+			return i;
+		}
+	}
+
+	return 0;
+}
+
+int primeFactorlization3()
+{
+	int num = 0;
+
+	printf("Please enter an integer:\n");
+	scanf("%d", &num);
+
+	printf("%d", num);
+
+	if (num <= 0)
+	{
+		return 0;
+	}
+
+	while(1)
+	{
+		for (int i = 2; ; i = findNextPrimeNumber2(i+1))
+		{
+			if (num % i == 0)
+			{
+				printf("%d*", i);
+				num /= i;
+				break;
+			}
+		}
+	}
+}
+
     return 0;
 }
 
