@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "../utils.h"
+#include <stdio.h>
+#include <string.h>
 
 int example15()
 {
@@ -709,61 +711,6 @@ int permutationProb2()
     return 0;
 }
 
-int main()
-{
-    //printf("%d\n", numberOfAscend5Digit());
-    
-    /*int number = numberOfAscend3Digit();
-    printf("%d\n", number);
-
-	return 0;*/
-
-    //permutationProblem1();
-
-    //permutationProb2();
-
-    //primeFactorlization2();
-    //primeFactorlization2();
-
-    //example14();
-    example15();
-
-    int isPrime3()
-{
-	if (num < 0)
-	{
-		return 0;
-	}
-
-	for (int i=2; i<num/2; i++)
-	{
-		if (num % i == 0)
-		{
-			return 0;
-		}
-	}
-
-	return 0;
-}
-
-int nextPrimeNum3()
-{
-	if (start < 0)
-	{
-		return 0;
-	}
-
-	for (int i=start; ; i++)
-	{
-		if (isPrime(i))
-		{
-			return i;
-		}
-	}
-
-	return 0;
-}
-
 int primeFactorlization3()
 {
 	int num = 0;
@@ -792,7 +739,21 @@ int primeFactorlization3()
 	}
 }
 
-    return 0;
+int array_or_string_Common()
+{
+
+}
+
+int example16(int m, int n)
+{
+    if((m <= 0) || (n<=0))
+    {
+        return 0;
+        printf("No negative or 0s :)");
+    }
+
+    strcmp(primeFactorlization2(m), primeFactorlization2(n));
+
 }
 
 int slowSumOfConsecutiveNum(int from, int to)
@@ -852,4 +813,26 @@ void printPrimeNum2(int from, int to)
             printf("%d\n", i);
         }
     }
+}
+
+int main()
+{
+    //printf("%d\n", numberOfAscend5Digit());
+    
+    /*int number = numberOfAscend3Digit();
+    printf("%d\n", number);
+
+	return 0;*/
+
+    //permutationProblem1();
+
+    //permutationProb2();
+
+    //primeFactorlization2();
+    //primeFactorlization2();
+
+    //example14();
+    example15();
+
+	return 0;
 }
