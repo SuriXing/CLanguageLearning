@@ -3,6 +3,26 @@
 #include <stdio.h>
 #include <string.h>
 
+void example17_2()
+{
+	int count = 0;	
+
+	char sentence[256];
+	
+	printf("Please enter your sentence/paragraph:\n");
+	scanf("%s", sentence);
+	char* ptr = sentence;
+
+	while (*ptr != '\0')
+	{
+		count++;
+        ptr++;
+	}
+
+	printf("There's %d words in total\n", count);
+}
+
+
 int example15()
 {
     int score;
@@ -739,10 +759,13 @@ int primeFactorlization3()
 	}
 }
 
+/*
 int array_or_string_Common()
 {
 
 }
+
+
 
 int example16(int m, int n)
 {
@@ -755,6 +778,7 @@ int example16(int m, int n)
     strcmp(primeFactorlization2(m), primeFactorlization2(n));
 
 }
+*/
 
 int slowSumOfConsecutiveNum(int from, int to)
 {
@@ -832,7 +856,7 @@ int main()
     //primeFactorlization2();
 
     //example14();
-    example15();
+    example17_2();
 
 	return 0;
 }
