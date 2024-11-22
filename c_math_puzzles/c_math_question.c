@@ -3,6 +3,23 @@
 #include <stdio.h>
 #include <string.h>
 
+void example_18()
+{
+    int s=0,a,n,t;
+    printf("Please input a and n as integers：\n");
+    scanf("%d%d",&a,&n);
+    t=a;
+    while(n>0)
+    {
+        s+=t;
+        a=a*10;
+        t+=a;
+        n--;
+    }
+    printf("a+aa+...=%d\n",s);
+    return;
+}
+
 void example17_2()
 {
 	int count = 0;	
@@ -856,7 +873,8 @@ int main()
     //primeFactorlization2();
 
     //example14();
-    example17_2();
+    //example17_2();
 
+    example_18();
 	return 0;
 }
