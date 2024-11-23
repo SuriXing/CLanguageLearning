@@ -74,6 +74,28 @@ int example14()
     return 0;
 }
 
+int isPrime2()
+{
+    for (int i = 101; i <= 200; i++)
+    {
+        int isPrime = 1;
+        for (int j = 2; j < i/2; j++)
+        {
+            if (i % j == 0)
+            {
+                isPrime = 0;
+                break;
+            }
+        }
+
+        if (isPrime == 1)
+        {
+            printf("%d\n", i);
+        }
+    }
+    return 0;
+}
+
 int findNextPrimeNumber2(int start)
 {
 	if (start < 0)
@@ -83,7 +105,7 @@ int findNextPrimeNumber2(int start)
 
 	for (int i=start; ; i++)
 	{
-		if (isPrime(i))
+		if (isPrime(i) == 1)
 		{
 			return i;
 		}
@@ -126,6 +148,39 @@ int primeFactorlization2()
     return 0;
 }
 
+int sumOfPrimeFactorlization(int num)
+{
+    int sum = 0;
+
+	if (num <= 0)
+	{
+		return 0;
+	}
+
+	for (int i = 1; i < num; i++)
+	{
+		if (num % i == 0)
+		{
+			sum += i;
+		}
+	}
+
+    return sum;
+}
+
+int example19()
+{
+    for (int i = 1; i <= 1000; i++)
+    {
+    //    printf("%d\t%d\n", i, sumOfPrimeFactorlization(i));
+        if (i == sumOfPrimeFactorlization(i))
+        {
+            printf("%d\n", i);
+        }
+    }
+    return 0;
+}
+
 int example9_2()
 {
     for (int i = 101; i <= 200; i++)
@@ -139,28 +194,6 @@ int example9_2()
                 break;
             }   
         }
-        if (isPrime == 1)
-        {
-            printf("%d\n", i);
-        }
-    }
-    return 0;
-}
-
-int example9()
-{
-    for (int i = 101; i <= 200; i++)
-    {
-        int isPrime = 1;
-        for (int j = 2; j < i/2; j++)
-        {
-            if (i % j == 0)
-            {
-                isPrime = 0;
-                break;
-            }
-        }
-
         if (isPrime == 1)
         {
             printf("%d\n", i);
@@ -809,7 +842,7 @@ int slowSumOfConsecutiveNum(int from, int to)
     return sum;
 }
 
-void printPrimeNum3(int from, int to)
+void printPrimeNum1(int from, int to)
 {
     if (from>=to)
     {
@@ -825,7 +858,7 @@ void printPrimeNum3(int from, int to)
     }
 }
 
-void printPrimrNum2(int from, int to)
+void printPrim2Num2(int from, int to)
 {
     for (int i=from; i<=to; i=i+1)
     {
@@ -845,7 +878,7 @@ void printPrimrNum2(int from, int to)
     }
 }
 
-void printPrimeNum2(int from, int to)
+void printPrimeNum3(int from, int to)
 {
     for (int i=from; i<=to; i=i+1)
     {
@@ -875,6 +908,6 @@ int main()
     //example14();
     //example17_2();
 
-    example_18();
+    example19();
 	return 0;
 }
