@@ -3,6 +3,20 @@
 #include <stdio.h>
 #include <string.h>
 
+void example20()
+{
+    int count = 0;
+    float height = 100;
+    
+    while (count != 10)
+    {
+        height = height/2;
+        count ++;
+    }
+
+    printf("%f\n", height);
+}
+
 void example_18()
 {
     int s=0,a,n,t;
@@ -908,6 +922,6 @@ int main()
     //example14();
     //example17_2();
 
-    example19();
+    example20();
 	return 0;
 }
