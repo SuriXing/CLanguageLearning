@@ -3,6 +3,29 @@
 #include <stdio.h>
 #include <string.h>
 
+void example21()
+{
+    int x = 1;
+
+    for (int i = 10; i > 1; i--)
+    {
+        x = 2 * (x + 1);
+    }    
+    printf("%d\n", x);
+}
+
+void example21_2()
+{
+    int pears[10];
+    pears[9] = 1;
+
+    for (int i = 8; i >= 0; i--)
+    {
+        pears[i] = 2*(pears[i+1] + 1);
+    }    
+    printf("%d\n", pears[0]);
+}
+
 void example20()
 {
     int count = 0;
@@ -922,6 +945,6 @@ int main()
     //example14();
     //example17_2();
 
-    example20();
+    example21();
 	return 0;
 }
