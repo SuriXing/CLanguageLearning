@@ -3,6 +3,15 @@
 #include <stdio.h>
 #include <string.h>
 
+void example23()
+{
+    printf("   *\n");
+    printf("  ***\n");
+    printf(" *****\n");
+    printf("  ***\n");
+    printf("   *\n");
+}
+
 void example21()
 {
     int x = 1;
@@ -945,6 +954,6 @@ int main()
     //example14();
     //example17_2();
 
-    example21();
+    example23();
 	return 0;
 }
