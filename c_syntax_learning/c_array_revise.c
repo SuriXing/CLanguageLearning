@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../utils.h"
+#include <time.h>
 
 #pragma mark -- macro declaration --
 #define LEN_OF_ONE_D_ARR 20
@@ -15,6 +16,47 @@ void greatest_number_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, i
 
 
 #pragma mark -- function implementation --
+
+int generateRandom1DArray(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return -1;
+    }
+
+    srand(time(NULL));
+    const int kMaxValue = 1000;
+    const int kMinValue = 1;
+
+    for (int i = 0; i < length; i++)
+    {
+        array[i] = rand() % (kMaxValue - kMinValue) + kMinValue;
+    }
+
+    return 0;
+}
+
+int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+{
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    {
+        return -1;
+    }
+
+    srand(time(NULL));
+    const int kMaxValue = 1000;
+    const int kMinValue = 1;
+
+    for (int i = 0; i < lengthOfR; i++)
+    {
+        for (int j = 0; j < lengthOfC; j++)
+        {
+            array[i][j] = rand() % (kMaxValue - kMinValue) + kMinValue;
+        }
+    }
+
+    return 0;
+}
 
 void smallest_number_in_1D_array(int array[], int lengthOf1DArr)
 {
@@ -87,6 +129,9 @@ int main()
     int oneDimensionalArray[LEN_OF_ONE_D_ARR];
     int twoDimensionalArray[LENGTH_OF_2D_ROW][LENGTH_OF_2D_COL];
     
+    generateRandom1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
+    generateRandom2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+
     smallest_number_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
     greatest_number_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
     smallest_number_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
