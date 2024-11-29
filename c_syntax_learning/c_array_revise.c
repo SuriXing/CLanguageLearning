@@ -14,6 +14,8 @@ void greatest_number_in_1D_array(int array[], int lengthOf1DArr);
 void smallest_number_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
 void greatest_number_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
 
+int print1DArray(int array[], int length);
+int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 
 #pragma mark -- function implementation --
 
@@ -124,6 +126,53 @@ void greatest_number_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, i
     printf("%d\n", greatestNum);
 }
 
+int print1DArray(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return -1;
+    }
+
+    for (int i = 0; i < length; i++)
+    {
+        printf("%d", array[i]);
+        if (i < length - 1)
+        {    
+            printf(",");
+        }
+    }
+    printf("\n");
+    
+    return 0;
+}
+
+int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+{
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    {
+        printf("invalid number\n");
+        return 0;
+    }
+
+    for (int i = 0; i < lengthOfR; i++)
+    {
+        for (int j = 0; j < lengthOfC; j++)
+        {
+            printf("%d", array[i][j]);
+            
+            if (j < lengthOfC - 1)
+            {
+                printf(",");
+            }
+
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
 int main()
 {
     int oneDimensionalArray[LEN_OF_ONE_D_ARR];
@@ -132,11 +181,14 @@ int main()
     generateRandom1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
     generateRandom2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
+    /*
     smallest_number_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
     greatest_number_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
     smallest_number_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     greatest_number_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    */
 
+    print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
     return 0;
 }
