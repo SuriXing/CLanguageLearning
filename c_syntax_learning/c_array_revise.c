@@ -17,6 +17,12 @@ void greatest_number_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, i
 int print1DArray(int array[], int length);
 int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 
+int sumOf1DArray(int array[], int length);
+int sumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+
+int averageOf1DArray(int array[], int length);
+int averageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+
 #pragma mark -- function implementation --
 
 int generateRandom1DArray(int array[], int length)
@@ -173,6 +179,77 @@ int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
     return 0;
 }
 
+int sumOf1DArray(int array[], int length)
+{
+    if (length <= 0)
+    {
+        printf("Invalid input\n");
+        return 0;
+    }
+    
+    int sum = 0;
+
+    for (int i = 0; i < length; i++)
+    {
+        sum += array[i];
+    }
+
+    printf("%s: %d\n", __FUNCTION__, sum);
+    return sum;
+}
+
+int sumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+{
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    {
+        printf("Invalid input\n");
+        return 0;
+    }
+    
+    int sum  = 0;
+    
+    for (int i = 0; i < lengthOfR; i++)
+    {
+        for (int j = 0; j < lengthOfC; j++)
+        {
+            sum += array[i][j];
+        }
+    }
+
+    printf("%s: %d\n", __FUNCTION__, sum); 
+    
+    return sum;
+}
+
+int averageOf1DArray(int array[], int length)
+{
+    if (length <= 0)
+    {
+        printf("Invalid input\n");
+        return 0;
+    }
+
+    int mean = sumOf1DArray(array, length)/length;
+
+    printf("%s: %d\n", __FUNCTION__, mean);
+
+    return mean;
+}
+
+int averageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+{
+    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    {
+        printf("Invalid input\n");
+        return 0;
+    }
+
+    int mean = sumOf2DArray(array, lengthOfR, lengthOfC)/(lengthOfR * lengthOfC);
+
+    printf("%s: %d\n", __FUNCTION__, mean);
+    return mean;
+}
+
 int main()
 {
     int oneDimensionalArray[LEN_OF_ONE_D_ARR];
@@ -186,9 +263,15 @@ int main()
     greatest_number_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
     smallest_number_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     greatest_number_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-    */
 
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    */
+   
+    sumOf1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
+    sumOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+
+    averageOf1DArray(oneDimensionalArray, LENGTH_OF_2D_ROW);
+    averageOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
     return 0;
 }
