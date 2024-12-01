@@ -23,6 +23,8 @@ int sumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 int averageOf1DArray(int array[], int length);
 int averageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 
+int swap1DArray(int array[], int length);
+
 #pragma mark -- function implementation --
 
 int generateRandom1DArray(int array[], int length)
@@ -250,6 +252,25 @@ int averageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC
     return mean;
 }
 
+int swap1DArray(int array[], int length)
+{
+    if (length <= 0)
+    {
+        return -1;
+    }
+
+    int temp = 0;
+
+    for (int i = 0; i < length/2; i++)
+    {
+        temp = array[length - i - 1];
+        array[length - i - 1] = array[i];
+        array[i] = temp;
+    }
+
+    return 0;
+}
+
 int main()
 {
     int oneDimensionalArray[LEN_OF_ONE_D_ARR];
@@ -265,13 +286,19 @@ int main()
     greatest_number_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-    */
    
     sumOf1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
     sumOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
     averageOf1DArray(oneDimensionalArray, LENGTH_OF_2D_ROW);
     averageOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    */
+
+    print1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
+
+    swap1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
+
+    print1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
 
     return 0;
 }
