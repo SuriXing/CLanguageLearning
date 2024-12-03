@@ -1,18 +1,13 @@
 #include <stdio.h>
 #include <string.h>
-
-#pragma mark -- function declaration --
-
-void printStr(const char *str);
-
-int myLenOfStr(const char *str);
+#include "c_string_learning.h"
 
 #pragma mark -- testing functions declaration --
 
 
 #pragma mark -- function definition --
 
-printStr(const char * str)
+void printStr(const char * str)
 {
     const char* kTest = str;
     while (*kTest != '\0')
@@ -37,4 +32,9 @@ int myLenOfStr(const char* str)
     }
 
     return length;
+}
+
+void c_string_learning_test()
+{
+
 }
