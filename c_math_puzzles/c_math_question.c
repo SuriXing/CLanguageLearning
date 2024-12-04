@@ -3,6 +3,20 @@
 #include <stdio.h>
 #include <string.h>
 
+void example24()
+{
+    double sum = 0;
+
+    for (int i = 0; i < 19; i++)
+    {
+        for (int j = 1; j < 20; j++)
+        {
+            sum += (j+1)/(i+1);
+        }
+    }
+    printf("%f\n", sum);
+}
+
 void example23()
 {
     printf("   *\n");
@@ -954,6 +968,6 @@ int main()
     //example14();
     //example17_2();
 
-    example23();
+    example24();
 	return 0;
 }
