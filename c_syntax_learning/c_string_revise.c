@@ -34,7 +34,7 @@ int myLenOfStr(const char* str)
     return length;
 }
 
-void c_string_learning_test()
+void cStringLearningTest()
 {
 
 }
