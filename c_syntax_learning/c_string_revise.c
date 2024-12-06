@@ -4,6 +4,12 @@
 
 #pragma mark -- testing functions declaration --
 
+void printStr(const char * str);
+
+int myLenOfStr(const char* str);
+
+int myStrCmp(const char* str1, const char* str2);
+int myStrnCmp(const char* str1, const char* str2, size_t n);
 
 #pragma mark -- function definition --
 
@@ -32,6 +38,31 @@ int myLenOfStr(const char* str)
     }
 
     return length;
+}
+
+int myStrCmp(const char* str1, const char* str2)
+{
+    while ((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2))
+    {
+        str1++;
+        str2++;
+    }
+
+    return (str1 - str2);
+}
+
+int myStrnCmp(const char* str1, const char* str2, size_t n)
+{
+    size_t index = 0;
+
+    while((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2) && (index < n))
+    {
+        str1++;
+        str2++;
+        index++;
+    }
+    
+    return (*str1 - *str2);
 }
 
 void cStringLearningTest()

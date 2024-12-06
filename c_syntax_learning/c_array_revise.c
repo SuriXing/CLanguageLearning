@@ -48,7 +48,7 @@ int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int leng
     return 0;
 }
 
-void smallest_number_in_1D_array(int array[], int lengthOf1DArr)
+void smallestNummber_in_1D_array(int array[], int lengthOf1DArr)
 {
     int smallestNum = array[0];
 
@@ -63,7 +63,7 @@ void smallest_number_in_1D_array(int array[], int lengthOf1DArr)
     printf("%d\n", smallestNum);
 }
 
-void greatest_number_in_1D_array(int array[], int lengthOf1DArr)
+void greatestNummber_in_1D_array(int array[], int lengthOf1DArr)
 {
     int greatestNum = array[0];
 
@@ -78,7 +78,7 @@ void greatest_number_in_1D_array(int array[], int lengthOf1DArr)
     printf("%d\n", greatestNum);
 }
 
-void smallest_number_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
+void smallestNummber_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
 {
     int smallestNum = array[0][0];
 
@@ -96,7 +96,7 @@ void smallest_number_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, i
     printf("%d\n", smallestNum);
 }
 
-void greatest_number_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
+void greatestNummber_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
 {
     int greatestNum = array[0][0];
 
@@ -251,19 +251,19 @@ int swap1DArray(int array[], int length)
     return 0;
 }
 
-void c_array_learning_test()
+void cArrayLearningTest()
 {
-    int oneDimensionalArray[LEN_OF_ONE_D_ARR];
+    int oneDimensionalArray[LEN_OF_1D_ARR];
     int twoDimensionalArray[LENGTH_OF_2D_ROW][LENGTH_OF_2D_COL];
     
-    generateRandom1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
+    generateRandom1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
     generateRandom2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
     /*
-    smallest_number_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
-    greatest_number_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
-    smallest_number_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-    greatest_number_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    smallestNummber_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
+    greatestNummber_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
+    smallestNummber_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    greatestNummber_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
    
@@ -274,9 +274,9 @@ void c_array_learning_test()
     averageOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     */
 
-    print1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
+    print1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
 
-    swap1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
+    swap1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
 
-    print1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
+    print1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
 }
