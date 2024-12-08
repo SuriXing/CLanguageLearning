@@ -3,7 +3,7 @@
 
 int main()
 {
-    cArrayLearningTest();
+    //cArrayLearningTest();
     cStringLearningTest();
     return 0;
 }

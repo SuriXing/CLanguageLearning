@@ -113,7 +113,68 @@ void testMyStrCatAndCpy()
     printf("%s\n", test);
 }
 
+char* myStrncat(char* dest, const char* src, size_t n)
+{
+    if ((NULL == dest) || (NULL == src))
+    {
+        return NULL;
+    }
+
+    char* destCopy = dest;
+    size_t count = 0;
+
+    while (*dest != '\0')
+    {
+        dest++;
+    }
+
+    while ((*src != '\0') && (count < n))
+    {
+        *dest = *src;
+        dest++;
+        src++;
+        count++;
+    }
+
+    return destCopy;
+}
+
+char* myStrncpy(char* dest, const char* src, size_t n)
+{
+    if ((NULL == dest) || (NULL == src))
+    {
+        return NULL;
+    }
+
+    char* destCopy = dest;
+    size_t count = 0;
+    
+    while ((*src != '\0') && (count < n))
+    {
+        *dest = *src;
+        dest++;
+        src++;
+        count++;
+    }
+    *dest = '\0';
+
+    return destCopy;
+}
+
+void testMyStrncatAndncpy()
+{
+    char test[256] = "";
+
+    myStrncat(test, "abcdeqazwsxedgujf", 7);
+    printf("%s\n", test);
+
+    myStrncpy(test, "abcdefghijklmnopqrstuvwqyz", 16);
+    printf("%s\n", test);
+}
+
 void cStringLearningTest()
 {
-    testMyStrCatAndCpy();
+    //testMyStrCatAndCpy();
+
+    testMyStrncatAndncpy();
 }
