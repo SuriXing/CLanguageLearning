@@ -15,6 +15,8 @@ void testMyStrCatAndCpy();
 char* myStrncat(char* dest, const char* src, size_t n);
 char* myStrncpy(char* dest, const char* src, size_t n);
 void testMyStrncatAndncpy();
+char* myStrstr(const char* str1, const char* str2);
+void testMyStrstr();
 
 #pragma mark -- test function --
 void cStringLearningTest();

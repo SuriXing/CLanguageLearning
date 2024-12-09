@@ -172,9 +172,40 @@ void testMyStrncatAndncpy()
     printf("%s\n", test);
 }
 
+char* myStrstr(const char* str, const char* needle)
+{
+    while (*str != '\0')
+    {
+        const char* str1 = str;
+        const char* str2 = needle;
+
+        while ((*str2 != '\0') && (*str1 == *str2))
+        {
+            str1++;
+            str2++;
+        }
+
+        if (*str2 == '\0')
+        {
+            return (char*)str;
+        }
+
+        str++;
+    }
+
+    return NULL;
+}
+
+void testMyStrstr()
+{
+    printf("%s\n", myStrstr("asdfghjkjmnbvc", "bvc"));
+    printf("%s\n", myStrstr("tfdxcvhjk", "cvh"));
+    printf("%s\n", myStrstr("olghdsghsunm", "lghds"));
+}
+
 void cStringLearningTest()
 {
     //testMyStrCatAndCpy();
 
-    testMyStrncatAndncpy();
+    testMyStrstr();
 }
