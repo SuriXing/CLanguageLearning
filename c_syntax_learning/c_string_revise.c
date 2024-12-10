@@ -203,6 +203,44 @@ void testMyStrstr()
     printf("%s\n", myStrstr("olghdsghsunm", "lghds"));
 }
 
+char* myStrChar(const char* str, char c)
+{
+    if (NULL == str)
+    {
+        return NULL;
+    }
+
+    while ((*str != c) && (*str != '\0'))
+    {
+        str++;
+    }
+    
+    return ((*str == '\0') ? NULL : ((char*)str));
+}
+
+size_t myStrspn(const char *str1, const char *str2)
+{
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return -1;
+    }
+
+    size_t index = 0;
+
+    while (*str1 != '\0')
+    {
+        if (myStrChar(str2, *str1) != NULL)
+        {
+            return index;
+        }
+        
+        str1++;
+        index++;
+    }
+
+    return -1;
+}
+
 void cStringLearningTest()
 {
     //testMyStrCatAndCpy();
