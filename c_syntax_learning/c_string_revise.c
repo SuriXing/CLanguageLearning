@@ -241,6 +241,35 @@ size_t myStrspn(const char *str1, const char *str2)
     return -1;
 }
 
+size_t myStrcspn_fast(const char *str1, const char *str2)
+{
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return 0;
+    }
+    
+    char dict[256] = {0};
+
+    while (*str2 != '\0')
+    {
+        dict[*str2] = 1;
+        str2++;
+    }
+    
+    size_t len = 0;
+
+    while (*str1 != '\0')
+    {
+        if (dict[*str1] != 1)
+        {
+            return len;
+        }
+        str1++;
+        len++;
+    }
+    return -1;
+}
+
 void cStringLearningTest()
 {
     //testMyStrCatAndCpy();

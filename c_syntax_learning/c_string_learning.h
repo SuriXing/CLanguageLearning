@@ -19,6 +19,7 @@ char* myStrstr(const char* str1, const char* str2);
 void testMyStrstr();
 size_t myStrspn(const char *str1, const char *str2);
 char* myStrChar(const char* str, char c);
+size_t myStrcspn_fast(const char *str1, const char *str2);
 
 #pragma mark -- test function --
 void cStringLearningTest();
