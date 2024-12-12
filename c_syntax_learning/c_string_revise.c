@@ -270,6 +270,27 @@ size_t myStrcspn_fast(const char *str1, const char *str2)
     return -1;
 }
 
+int myStrRChar(char* str, char a)
+{
+    if ((NULL == str))
+    {
+        return -1;
+    }
+
+    int index = myLenOfStr(str) - 1;
+
+    while (index >= 0)
+    {
+        if (str[index] == a)
+        {
+            return index;
+        }
+        index--;
+    }
+
+    return -1;
+}
+
 void cStringLearningTest()
 {
     //testMyStrCatAndCpy();
