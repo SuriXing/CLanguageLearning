@@ -9,8 +9,8 @@ void printStr(const char *str);
 
 int myLenOfStr(const char *str);
 
-int myStrCmp(const char* str1, const char* str2);
-int myStrnCmp(const char* str1, const char* str2, size_t n);
+int myStrcmp(const char* str1, const char* str2);
+int myStrncmp(const char* str1, const char* str2, size_t n);
 
 char* myStrcat(char* dest, const char* src);
 char* myStrcpy(char* dest, const char* src);

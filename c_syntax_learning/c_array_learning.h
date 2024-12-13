@@ -9,10 +9,10 @@
 #define LENGTH_OF_2D_COL 20
 
 #pragma mark -- function declaration --
-void smallestNumberIn1DArray(int array[], int lengthOf1DArr);
-void greatestNumberIn1DArray(int array[], int lengthOf1DArr);
-void smallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
-void greatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
+void findSmallestNumberIn1DArray(int array[], int lengthOf1DArr);
+void findGreatestNumberIn1DArray(int array[], int lengthOf1DArr);
+void findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
+void findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
 
 int print1DArray(int array[], int length);
 int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);

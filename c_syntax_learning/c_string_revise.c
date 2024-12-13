@@ -31,7 +31,7 @@ int myLenOfStr(const char *str)
     return length;
 }
 
-int myStrCmp(const char *str1, const char *str2)
+int myStrcmp(const char *str1, const char *str2)
 {
     while ((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2))
     {
@@ -42,7 +42,7 @@ int myStrCmp(const char *str1, const char *str2)
     return (str1 - str2);
 }
 
-int myStrnCmp(const char *str1, const char *str2, size_t n)
+int myStrncmp(const char *str1, const char *str2, size_t n)
 {
     size_t index = 0;
 
@@ -100,17 +100,6 @@ char *myStrcpy(char *dest, const char *src)
     *dest = '\0';
 
     return destCopy;
-}
-
-void testMyStrCatAndCpy()
-{
-    char test[256] = {};
-
-    myStrcat(test, "abcde");
-    printf("%s\n", test);
-
-    myStrcpy(test, "abc");
-    printf("%s\n", test);
 }
 
 char* myStrncat(char* dest, const char* src, size_t n)
@@ -194,13 +183,6 @@ char* myStrstr(const char* str, const char* needle)
     }
 
     return NULL;
-}
-
-void testMyStrstr()
-{
-    printf("%s\n", myStrstr("asdfghjkjmnbvc", "bvc"));
-    printf("%s\n", myStrstr("tfdxcvhjk", "cvh"));
-    printf("%s\n", myStrstr("olghdsghsunm", "lghds"));
 }
 
 char* myStrChar(const char* str, char c)
@@ -291,9 +273,27 @@ int myStrRChar(char* str, char a)
     return -1;
 }
 
+void testMyStrCatAndCpy()
+{
+    char test[256] = {};
+
+    myStrcat(test, "abcde");
+    printf("%s\n", test);
+
+    myStrcpy(test, "abc");
+    printf("%s\n", test);
+}
+
+void testMyStrstr()
+{
+    printf("%s\n", myStrstr("asdfghjkjmnbvc", "bvc"));
+    printf("%s\n", myStrstr("tfdxcvhjk", "cvh"));
+    printf("%s\n", myStrstr("olghdsghsunm", "lghds"));
+}
+
 void cStringLearningTest()
 {
-    //testMyStrCatAndCpy();
+    testMyStrCatAndCpy();
 
     testMyStrstr();
 }

@@ -48,7 +48,7 @@ int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int leng
     return 0;
 }
 
-void smallestNummber_in_1D_array(int array[], int lengthOf1DArr)
+void findSmallestNumberIn1DArray(int array[], int lengthOf1DArr)
 {
     int smallestNum = array[0];
 
@@ -63,7 +63,7 @@ void smallestNummber_in_1D_array(int array[], int lengthOf1DArr)
     printf("%d\n", smallestNum);
 }
 
-void greatestNummber_in_1D_array(int array[], int lengthOf1DArr)
+void findGreatestNumberIn1DArray(int array[], int lengthOf1DArr)
 {
     int greatestNum = array[0];
 
@@ -78,7 +78,7 @@ void greatestNummber_in_1D_array(int array[], int lengthOf1DArr)
     printf("%d\n", greatestNum);
 }
 
-void smallestNummber_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
+void findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
 {
     int smallestNum = array[0][0];
 
@@ -96,7 +96,7 @@ void smallestNummber_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, i
     printf("%d\n", smallestNum);
 }
 
-void greatestNummber_in_2D_array(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
+void findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
 {
     int greatestNum = array[0][0];
 
@@ -259,11 +259,10 @@ void cArrayLearningTest()
     generateRandom1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
     generateRandom2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
-    /*
-    smallestNummber_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
-    greatestNummber_in_1D_array(oneDimensionalArray,LEN_OF_ONE_D_ARR);
-    smallestNummber_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-    greatestNummber_in_2D_array(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    findSmallestNumberIn1DArray(oneDimensionalArray,LEN_OF_ONE_D_ARR);
+    findGreatestNumberIn1DArray(oneDimensionalArray,LEN_OF_ONE_D_ARR);
+    findSmallestNumberIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    findGreatestNumberIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
    
@@ -272,7 +271,6 @@ void cArrayLearningTest()
 
     averageOf1DArray(oneDimensionalArray, LENGTH_OF_2D_ROW);
     averageOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-    */
 
     print1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
 
