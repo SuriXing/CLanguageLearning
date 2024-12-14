@@ -2,7 +2,7 @@
 CC = gcc
 
 # Compilation options
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g3 -ggdb
 
 # Name of the target executable file
 TARGET = a.out
@@ -17,7 +17,6 @@ OBJS = $(SRCS:.c=.o)
 all: $(TARGET)
 	rm -f $(OBJS)
 	
-
 # Rule to generate the executable file
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^

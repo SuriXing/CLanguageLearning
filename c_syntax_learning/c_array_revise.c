@@ -15,7 +15,7 @@ int generateRandom1DArray(int array[], int length)
     }
 
     srand(time(NULL));
-    const int kMaxValue = 1000;
+    const int kMaxValue = 100;
     const int kMinValue = 1;
 
     for (int i = 0; i < length; i++)
@@ -34,7 +34,7 @@ int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int leng
     }
 
     srand(time(NULL));
-    const int kMaxValue = 1000;
+    const int kMaxValue = 100;
     const int kMinValue = 1;
 
     for (int i = 0; i < lengthOfR; i++)
@@ -48,7 +48,7 @@ int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int leng
     return 0;
 }
 
-void findSmallestNumberIn1DArray(int array[], int lengthOf1DArr)
+int findSmallestNumberIn1DArray(int array[], int lengthOf1DArr)
 {
     int smallestNum = array[0];
 
@@ -60,10 +60,12 @@ void findSmallestNumberIn1DArray(int array[], int lengthOf1DArr)
         }
     }
     
-    printf("%d\n", smallestNum);
+    printf("%s: %d\n", __FUNCTION__, smallestNum); 
+    
+    return smallestNum;
 }
 
-void findGreatestNumberIn1DArray(int array[], int lengthOf1DArr)
+int findGreatestNumberIn1DArray(int array[], int lengthOf1DArr)
 {
     int greatestNum = array[0];
 
@@ -75,10 +77,12 @@ void findGreatestNumberIn1DArray(int array[], int lengthOf1DArr)
         }
     }
     
-    printf("%d\n", greatestNum);
+    printf("%s: %d\n", __FUNCTION__, greatestNum);
+
+    return greatestNum;
 }
 
-void findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
+int findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
 {
     int smallestNum = array[0][0];
 
@@ -93,10 +97,12 @@ void findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, i
         }
     }
 
-    printf("%d\n", smallestNum);
+    printf("%s: %d\n", __FUNCTION__, smallestNum);
+    
+    return smallestNum;
 }
 
-void findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
+int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
 {
     int greatestNum = array[0][0];
 
@@ -104,14 +110,16 @@ void findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, i
     {
         for (int j = 0; j < 20; j++)
         {
-            if (greatestNum > array[i][j])
+            if (greatestNum < array[i][j])
             {
                 greatestNum = array[i][j];
             }
         }
     }
 
-    printf("%d\n", greatestNum);
+    printf("%s: %d\n", __FUNCTION__, greatestNum);
+
+    return greatestNum;
 }
 
 int print1DArray(int array[], int length)
@@ -161,7 +169,7 @@ int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
     return 0;
 }
 
-int sumOf1DArray(int array[], int length)
+int getSumOf1DArray(int array[], int length)
 {
     if (length <= 0)
     {
@@ -180,7 +188,7 @@ int sumOf1DArray(int array[], int length)
     return sum;
 }
 
-int sumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+int getSumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
     if ((lengthOfR <= 0) || (lengthOfC <= 0))
     {
@@ -203,7 +211,7 @@ int sumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
     return sum;
 }
 
-int averageOf1DArray(int array[], int length)
+int getAverageOf1DArray(int array[], int length)
 {
     if (length <= 0)
     {
@@ -211,14 +219,14 @@ int averageOf1DArray(int array[], int length)
         return 0;
     }
 
-    int mean = sumOf1DArray(array, length)/length;
+    int mean = getSumOf1DArray(array, length)/length;
 
     printf("%s: %d\n", __FUNCTION__, mean);
 
     return mean;
 }
 
-int averageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
+int getAverageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
     if ((lengthOfR <= 0) || (lengthOfC <= 0))
     {
@@ -226,7 +234,7 @@ int averageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC
         return 0;
     }
 
-    int mean = sumOf2DArray(array, lengthOfR, lengthOfC)/(lengthOfR * lengthOfC);
+    int mean = getSumOf2DArray(array, lengthOfR, lengthOfC)/(lengthOfR * lengthOfC);
 
     printf("%s: %d\n", __FUNCTION__, mean);
     return mean;
@@ -253,28 +261,28 @@ int swap1DArray(int array[], int length)
 
 void cArrayLearningTest()
 {
-    int oneDimensionalArray[LEN_OF_1D_ARR];
+    int oneDimensionalArray[LENGTH_OF_1D_ARR];
     int twoDimensionalArray[LENGTH_OF_2D_ROW][LENGTH_OF_2D_COL];
     
-    generateRandom1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
+    generateRandom1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
     generateRandom2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
-    findSmallestNumberIn1DArray(oneDimensionalArray,LEN_OF_ONE_D_ARR);
-    findGreatestNumberIn1DArray(oneDimensionalArray,LEN_OF_ONE_D_ARR);
+    findSmallestNumberIn1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
+    findGreatestNumberIn1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
     findSmallestNumberIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     findGreatestNumberIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
+    getSumOf1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
+    getSumOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+
+    getAverageOf1DArray(oneDimensionalArray, LENGTH_OF_2D_ROW);
+    getAverageOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+
+    print1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
+
+    swap1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
+
+    print1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
+
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-   
-    sumOf1DArray(oneDimensionalArray, LEN_OF_ONE_D_ARR);
-    sumOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-
-    averageOf1DArray(oneDimensionalArray, LENGTH_OF_2D_ROW);
-    averageOf2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-
-    print1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
-
-    swap1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
-
-    print1DArray(oneDimensionalArray, LEN_OF_1D_ARR);
 }

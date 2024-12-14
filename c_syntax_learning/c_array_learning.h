@@ -4,27 +4,26 @@
 #pragma mark -- function declaration --
 
 #pragma mark -- macro declaration --
-#define LEN_OF_1D_ARR 20
+#define LENGTH_OF_1D_ARR 20
 #define LENGTH_OF_2D_ROW 20
 #define LENGTH_OF_2D_COL 20
 
 #pragma mark -- function declaration --
-void findSmallestNumberIn1DArray(int array[], int lengthOf1DArr);
-void findGreatestNumberIn1DArray(int array[], int lengthOf1DArr);
-void findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
-void findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
+int findSmallestNumberIn1DArray(int array[], int lengthOf1DArr);
+int findGreatestNumberIn1DArray(int array[], int lengthOf1DArr);
+int findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
+int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
 
 int print1DArray(int array[], int length);
 int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 
-int sumOf1DArray(int array[], int length);
-int sumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+int getSumOf1DArray(int array[], int length);
+int getSumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 
-int averageOf1DArray(int array[], int length);
-int averageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
+int getAverageOf1DArray(int array[], int length);
+int getAverageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 
 int swap1DArray(int array[], int length);
-
 
 #pragma mark -- test function --
 void cArrayLearningTest();

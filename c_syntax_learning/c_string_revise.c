@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 #include "c_string_learning.h"
 
 #pragma mark-- function definition --
@@ -39,7 +40,7 @@ int myStrcmp(const char *str1, const char *str2)
         str2++;
     }
 
-    return (str1 - str2);
+    return (*str1 - *str2);
 }
 
 int myStrncmp(const char *str1, const char *str2, size_t n)
@@ -276,12 +277,19 @@ int myStrRChar(char* str, char a)
 void testMyStrCatAndCpy()
 {
     char test[256] = {};
+    char test2[256] = {};
 
     myStrcat(test, "abcde");
-    printf("%s\n", test);
+    strcat(test2, "abcde");
+    
+    assert(strcmp(test, test2) == 0);
+    assert(strcmp(test, test2) == myStrcmp(test, test2));
 
     myStrcpy(test, "abc");
-    printf("%s\n", test);
+    strcpy(test2, "abc");
+
+    assert(strcmp(test, test2) == 0);
+    assert(strcmp(test, test2) == myStrcmp(test, test2));
 }
 
 void testMyStrstr()
