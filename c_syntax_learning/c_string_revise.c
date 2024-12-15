@@ -290,6 +290,30 @@ void testMyStrCatAndCpy()
 
     assert(strcmp(test, test2) == 0);
     assert(strcmp(test, test2) == myStrcmp(test, test2));
+
+    myStrcat(test, "qazwsxedc");
+    strcat(test2, "qazwsxedc");
+
+    assert(strcmp(test, test2) == 0);
+    assert(strcmp(test, test2) == myStrcmp(test, test2));
+
+    myStrcpy(test, "okmijn");
+    strcpy(test2, "abcde");
+
+    assert(strcmp(test, test2) != 0);
+    assert(strcmp(test, test2) == myStrcmp(test, test2));
+
+    myStrcpy(test, "okmijn");
+    strcpy(test2, "okmijn");
+
+    assert(strcmp(test, test2) == 0);
+    assert(strcmp(test, test2) == myStrcmp(test, test2));
+
+    myStrcat(test, "abcdefg");
+    strcat(test2, "asdfg");
+
+    assert(strcmp(test, test2) != 0);
+    assert(strcmp(test, test2) == myStrcmp(test, test2));
 }
 
 void testMyStrstr()
