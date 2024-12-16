@@ -10,7 +10,7 @@
 int main()
 {
     TESTSUITE("Array", cArrayLearningTest)
-    TESTSUITE("String", cStringLearningTest)
+//    TESTSUITE("String", cStringLearningTest)
 
     return 0;
 }

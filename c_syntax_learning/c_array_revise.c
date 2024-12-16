@@ -52,7 +52,7 @@ int findSmallestNumberIn1DArray(int array[], int lengthOf1DArr)
 {
     int smallestNum = array[0];
 
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < lengthOf1DArr; i++)
     {
         if (array[i] < smallestNum)
         {
@@ -65,11 +65,28 @@ int findSmallestNumberIn1DArray(int array[], int lengthOf1DArr)
     return smallestNum;
 }
 
+int findSmallestIndexIn1DArray(int array[], int lengthOf1DArr)
+{
+    int smallestIndex = 0;
+
+    for (int i = 0; i < lengthOf1DArr; i++)
+    {
+        if (array[i] < array[smallestIndex])
+        {
+            smallestIndex = i;
+        }
+    }
+    
+    printf("%s: %d\n", __FUNCTION__, smallestIndex); 
+    
+    return smallestIndex;
+}
+
 int findGreatestNumberIn1DArray(int array[], int lengthOf1DArr)
 {
     int greatestNum = array[0];
 
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < lengthOf1DArr; i++)
     {
         if (array[i] > greatestNum)
         {
@@ -80,6 +97,23 @@ int findGreatestNumberIn1DArray(int array[], int lengthOf1DArr)
     printf("%s: %d\n", __FUNCTION__, greatestNum);
 
     return greatestNum;
+}
+
+int findGreatestIndexIn1DArray(int array[], int lengthOf1DArr)
+{
+    int greatestIndex = 0;
+
+    for (int i = 0; i < lengthOf1DArr; i++)
+    {
+        if (array[i] > array[greatestIndex])
+        {
+            greatestIndex = i;
+        }
+    }
+    
+    printf("%s: %d\n", __FUNCTION__, greatestIndex);
+
+    return greatestIndex;
 }
 
 int findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
@@ -102,13 +136,13 @@ int findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, in
     return smallestNum;
 }
 
-int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
+int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
     int greatestNum = array[0][0];
 
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < lengthOfR; i++)
     {
-        for (int j = 0; j < 20; j++)
+        for (int j = 0; j < lengthOfC; j++)
         {
             if (greatestNum < array[i][j])
             {
@@ -285,4 +319,6 @@ void cArrayLearningTest()
     print1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
 
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+
+    doArraySortTesting();
 }
