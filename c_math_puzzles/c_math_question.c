@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include "../utils.h"
-#include <stdio.h>
 #include <string.h>
+#include "../utils.h"
 
 void example24()
 {
@@ -968,6 +967,6 @@ int main()
     //example14();
     //example17_2();
 
-    example24();
+    //example24();
 	return 0;
 }
