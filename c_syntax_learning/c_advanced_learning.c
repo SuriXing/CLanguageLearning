@@ -75,9 +75,7 @@ int login()
     return (retryCount < RETRY_TIMES);
 }
 
-int main()
+void cAdvancedLearningTest()
 {
-    
     login();
-    return 0;
 }

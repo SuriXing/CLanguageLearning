@@ -77,7 +77,7 @@ int findSmallestIndexIn1DArray(int array[], int lengthOf1DArr)
         }
     }
     
-    printf("%s: %d\n", __FUNCTION__, smallestIndex); 
+//    printf("%s: %d\n", __FUNCTION__, smallestIndex); 
     
     return smallestIndex;
 }

@@ -33,11 +33,13 @@ int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int leng
 int swap1DArray(int array[], int length);
 
 #pragma mark -- Sorting function --
-int doBubbleSortInInvertedOrder(int array[], int length);
-int doBubbleSortInReversedOrder(int array[], int length);
+int doSelectionSortInInvertedOrder(int array[], int length);
+int doSelectionSortInReversedOrder(int array[], int length);
 
-int doBubbleSortInInvertedOrder2(int array[], int length);
-int doBubbleSortInReversedOrder2(int array[], int length);
+int doSelectionSortInInvertedOrder2(int array[], int length);
+int doSelectionSortInReversedOrder2(int array[], int length);
+
+int bubbleSort(int array[], int length);
 
 #pragma mark -- test function --
 void cArrayLearningTest();

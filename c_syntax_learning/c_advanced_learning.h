@@ -13,4 +13,7 @@ typedef struct _Account
 #pragma mark -- function declaration --
 int login();
 
+
+void cAdvancedLearningTest();
+
 #endif // __C_ADVANCED_LEARNING_H__

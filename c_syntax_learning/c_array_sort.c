@@ -3,7 +3,7 @@
 #include "c_array_learning.h"
 #include "../utils.h"
 
-int doBubbleSortInInvertedOrder(int array[], int length)
+int doSelectionSortInInvertedOrder(int array[], int length)
 {
     if ((NULL == array) || (length <= 0))
     {
@@ -23,7 +23,7 @@ int doBubbleSortInInvertedOrder(int array[], int length)
     return 0;
 }
 
-int doBubbleSortInReversedOrder(int array[], int length)
+int doSelectionSortInReversedOrder(int array[], int length)
 {
     if ((NULL == array) || (length <= 0))
     {
@@ -42,7 +42,7 @@ int doBubbleSortInReversedOrder(int array[], int length)
     return 0;
 }
 
-int doBubbleSortInInvertedOrder2(int array[], int length)
+int doSelectionSortInInvertedOrder2(int array[], int length)
 {
     if ((NULL == array) || (length <= 0))
     {
@@ -62,7 +62,7 @@ int doBubbleSortInInvertedOrder2(int array[], int length)
 
 }
 
-int doBubbleSortInReversedOrder2(int array[], int length)
+int doSelectionSortInReversedOrder2(int array[], int length)
 {
     if ((NULL == array) || (length <= 0))
     {
@@ -80,15 +80,42 @@ int doBubbleSortInReversedOrder2(int array[], int length)
     return 0;
 }
 
+int bubbleSort(int array[], int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        for (int j = i+1; j < length; j++)
+        {
+            if (array[i] > array[j])
+            {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+    }
+
+    return 0;
+}
+
 void doArraySortTesting()
 {
     int array[64] = {};
     int length = 64;
     
     // Bubble Sort
+    printf("\nStart Bubble Sort\n");
     generateRandom1DArray(array, length);    
     print1DArray(array, length);
-    doBubbleSortInInvertedOrder2(array, length);
+    doBubbleSort(array, length);
     print1DArray(array, length);
+    printf("End Bubble Sort\n");
 
+    // Selection Sort
+    printf("\nStart Selection Sort\n");
+    generateRandom1DArray(array, length);    
+    print1DArray(array, length);
+    doSelectionSortInInvertedOrder(array, length);
+    print1DArray(array, length);
+    printf("End Selection Sort\n");
 }
