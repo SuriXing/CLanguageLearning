@@ -136,6 +136,28 @@ int findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, in
     return smallestNum;
 }
 
+IndexOf2DArray findSmallestIndexIn2DArray(int array[][LENGTH_OF_2D_COL], unsigned int len2DArrR, unsigned int len2DArrC)
+{
+    IndexOf2DArray smallestIndex = {0, 0};
+    int smallestNum = array[0][0];
+
+    for (int i = 0; i < len2DArrR; i++)
+    {
+        for (int j = 0; j < len2DArrC; j++)
+        {
+            if (smallestNum > array[i][j])
+            {
+                smallestNum = array[i][j];
+                smallestIndex.row = i;
+                smallestIndex.column = j;
+            }
+        }
+    }
+
+printf("%s: %d: {%d, %d}\n", __FUNCTION__, smallestNum, smallestIndex.row, smallestIndex.column); 
+    return smallestIndex;
+}
+
 int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
     int greatestNum = array[0][0];
@@ -154,6 +176,28 @@ int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, in
     printf("%s: %d\n", __FUNCTION__, greatestNum);
 
     return greatestNum;
+}
+
+IndexOf2DArray findGreatestIndexIn2DArray(int array[][LENGTH_OF_2D_COL], unsigned int len2DArrR, unsigned int len2DArrC)
+{
+    IndexOf2DArray greatestIndex = {0, 0};
+    int greatestNum = array[0][0];
+
+    for (int i = 0; i < len2DArrR; i++)
+    {
+        for (int j = 0; j < len2DArrC; j++)
+        {
+            if (greatestNum < array[i][j])
+            {
+                greatestNum = array[i][j];
+                greatestIndex.row = i;
+                greatestIndex.column = j;
+            }
+        }
+    }
+
+    printf("%s: %d: {%d, %d}\n", __FUNCTION__, greatestNum, greatestIndex.row, greatestIndex.column); 
+    return greatestIndex;
 }
 
 int print1DArray(int array[], int length)
@@ -301,6 +345,7 @@ void cArrayLearningTest()
     generateRandom1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
     generateRandom2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
+    /*
     findSmallestNumberIn1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
     findGreatestNumberIn1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
     findSmallestNumberIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
@@ -321,4 +366,8 @@ void cArrayLearningTest()
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
     doArraySortTesting();
+    */
+    
+    print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+    findGreatestIndexIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 }

@@ -1,7 +1,12 @@
 #ifndef __C_ARRAY_LEARNING_H__
 #define __C_ARRAY_LEARNING_H__
 
-#pragma mark -- function declaration --
+#pragma mark -- structure declaration --
+
+typedef struct _2DArrayIndex {
+    unsigned int row;
+    unsigned int column;
+} IndexOf2DArray;
 
 #pragma mark -- macro declaration --
 #define LENGTH_OF_1D_ARR 20
@@ -16,7 +21,9 @@ int findGreatestNumberIn1DArray(int array[], int lengthOf1DArr);
 int findGreatestIndexIn1DArray(int array[], int lengthOf1DArr);
 
 int findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
+IndexOf2DArray findSmallestIndexIn2DArray(int array[][LENGTH_OF_2D_COL], unsigned int len2DArrR, unsigned int len2DArrC);
 int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC);
+IndexOf2DArray findGreatestIndexIn2DArray(int array[][LENGTH_OF_2D_COL], unsigned int len2DArrR, unsigned int len2DArrC);
 
 int print1DArray(int array[], int length);
 int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);

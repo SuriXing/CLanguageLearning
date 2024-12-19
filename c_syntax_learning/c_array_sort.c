@@ -80,7 +80,7 @@ int doSelectionSortInReversedOrder2(int array[], int length)
     return 0;
 }
 
-int bubbleSort(int array[], int length)
+int doBubbleSort(int array[], int length)
 {
     for (int i = 0; i < length; i++)
     {
