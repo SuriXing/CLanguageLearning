@@ -46,7 +46,7 @@ int doSelectionSortInReversedOrder(int array[], int length);
 int doSelectionSortInInvertedOrder2(int array[], int length);
 int doSelectionSortInReversedOrder2(int array[], int length);
 
-int bubbleSort(int array[], int length);
+int doBubbleSort(int array[], int length);
 
 #pragma mark -- test function --
 void cArrayLearningTest();

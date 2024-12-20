@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <assert.h>
 #include "c_array_learning.h"
 #include "../utils.h"
 
@@ -9,7 +10,10 @@
 
 int generateRandom1DArray(int array[], int length)
 {
-    if (length <= 0)
+    assert(array != NULL);
+    assert(length > 0);
+
+    if ((length <= 0) || (NULL == array))
     {
         return -1;
     }
@@ -28,7 +32,11 @@ int generateRandom1DArray(int array[], int length)
 
 int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
-    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    assert(NULL != array);
+    assert(lengthOfR > 0);
+    assert(lengthOfC > 0);
+    
+    if ((lengthOfR <= 0) || (lengthOfC <= 0) || (NULL == array))
     {
         return -1;
     }
@@ -50,6 +58,14 @@ int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int leng
 
 int findSmallestNumberIn1DArray(int array[], int lengthOf1DArr)
 {
+    assert(NULL != array);
+    assert(lengthOf1DArr > 0);
+
+    if ((NULL == array) || (lengthOf1DArr <= 0))
+    {
+        return -1;
+    }
+    
     int smallestNum = array[0];
 
     for (int i = 0; i < lengthOf1DArr; i++)
@@ -67,6 +83,14 @@ int findSmallestNumberIn1DArray(int array[], int lengthOf1DArr)
 
 int findSmallestIndexIn1DArray(int array[], int lengthOf1DArr)
 {
+    assert(NULL != array);
+    assert(lengthOf1DArr > 0);
+
+    if ((NULL == array) || (lengthOf1DArr <= 0))
+    {
+        return -1;
+    }
+    
     int smallestIndex = 0;
 
     for (int i = 0; i < lengthOf1DArr; i++)
@@ -84,6 +108,14 @@ int findSmallestIndexIn1DArray(int array[], int lengthOf1DArr)
 
 int findGreatestNumberIn1DArray(int array[], int lengthOf1DArr)
 {
+    assert(NULL != array);
+    assert(lengthOf1DArr > 0);
+
+    if ((NULL == array) || (lengthOf1DArr <= 0))
+    {
+        return -1;
+    }
+    
     int greatestNum = array[0];
 
     for (int i = 0; i < lengthOf1DArr; i++)
@@ -101,6 +133,14 @@ int findGreatestNumberIn1DArray(int array[], int lengthOf1DArr)
 
 int findGreatestIndexIn1DArray(int array[], int lengthOf1DArr)
 {
+    assert(NULL != array);
+    assert(lengthOf1DArr > 0);
+
+    if ((NULL == array) || (lengthOf1DArr <= 0))
+    {
+        return -1;
+    }
+    
     int greatestIndex = 0;
 
     for (int i = 0; i < lengthOf1DArr; i++)
@@ -118,6 +158,15 @@ int findGreatestIndexIn1DArray(int array[], int lengthOf1DArr)
 
 int findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, int len2DArrC)
 {
+    assert(NULL != array);
+    assert(len2DArrR > 0);
+    assert(len2DArrC > 0);
+
+    if ((NULL == array) || (len2DArrR <= 0) || (len2DArrC <= 0))
+    {
+        return -1;
+    }
+
     int smallestNum = array[0][0];
 
     for (int i = 0; i < 20; i++)
@@ -138,6 +187,16 @@ int findSmallestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int len2DArrR, in
 
 IndexOf2DArray findSmallestIndexIn2DArray(int array[][LENGTH_OF_2D_COL], unsigned int len2DArrR, unsigned int len2DArrC)
 {
+    assert(NULL != array);
+    assert(len2DArrR > 0);
+    assert(len2DArrC > 0);
+
+    if ((NULL == array) || (len2DArrR <= 0) || (len2DArrC <= 0))
+    {
+        IndexOf2DArray error = {-1, -1};
+        return error;
+    }
+
     IndexOf2DArray smallestIndex = {0, 0};
     int smallestNum = array[0][0];
 
@@ -154,12 +213,20 @@ IndexOf2DArray findSmallestIndexIn2DArray(int array[][LENGTH_OF_2D_COL], unsigne
         }
     }
 
-printf("%s: %d: {%d, %d}\n", __FUNCTION__, smallestNum, smallestIndex.row, smallestIndex.column); 
     return smallestIndex;
 }
 
 int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
+    assert(NULL != array);
+    assert(lengthOfR > 0);
+    assert(lengthOfC > 0);
+
+    if ((NULL == array) || (lengthOfR <= 0) || (lengthOfC <= 0))
+    {
+        return -1;
+    }
+
     int greatestNum = array[0][0];
 
     for (int i = 0; i < lengthOfR; i++)
@@ -180,6 +247,16 @@ int findGreatestNumberIn2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, in
 
 IndexOf2DArray findGreatestIndexIn2DArray(int array[][LENGTH_OF_2D_COL], unsigned int len2DArrR, unsigned int len2DArrC)
 {
+    assert(NULL != array);
+    assert(len2DArrR > 0);
+    assert(len2DArrC > 0);
+
+    if ((NULL == array) || (len2DArrR <= 0) || (len2DArrC <= 0))
+    {
+        IndexOf2DArray error = {-1, -1};
+        return error;
+    }
+
     IndexOf2DArray greatestIndex = {0, 0};
     int greatestNum = array[0][0];
 
@@ -196,13 +273,15 @@ IndexOf2DArray findGreatestIndexIn2DArray(int array[][LENGTH_OF_2D_COL], unsigne
         }
     }
 
-    printf("%s: %d: {%d, %d}\n", __FUNCTION__, greatestNum, greatestIndex.row, greatestIndex.column); 
     return greatestIndex;
 }
 
 int print1DArray(int array[], int length)
 {
-    if (length <= 0)
+    assert(NULL != array);
+    assert(length > 0);
+
+    if ((length <= 0) || (NULL == array))
     {
         return -1;
     }
@@ -222,7 +301,11 @@ int print1DArray(int array[], int length)
 
 int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
-    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    assert(NULL != array);
+    assert(lengthOfR > 0);
+    assert(lengthOfC > 0);
+
+    if ((lengthOfR <= 0) || (lengthOfC <= 0) || (NULL == array))
     {
         printf("invalid number\n");
         return 0;
@@ -249,7 +332,10 @@ int print2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 
 int getSumOf1DArray(int array[], int length)
 {
-    if (length <= 0)
+    assert(NULL != array);
+    assert(length >= 0);
+
+    if ((length <= 0) || (NULL == array))
     {
         printf("Invalid input\n");
         return 0;
@@ -268,7 +354,11 @@ int getSumOf1DArray(int array[], int length)
 
 int getSumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
-    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    assert(NULL != array);
+    assert(lengthOfR > 0);
+    assert(lengthOfC > 0);
+
+    if ((lengthOfR <= 0) || (lengthOfC <= 0) || (NULL == array))
     {
         printf("Invalid input\n");
         return 0;
@@ -291,7 +381,10 @@ int getSumOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 
 int getAverageOf1DArray(int array[], int length)
 {
-    if (length <= 0)
+    assert(NULL != array);
+    assert(length > 0);
+
+    if ((length <= 0) || (NULL == array))
     {
         printf("Invalid input\n");
         return 0;
@@ -306,7 +399,11 @@ int getAverageOf1DArray(int array[], int length)
 
 int getAverageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC)
 {
-    if ((lengthOfR <= 0) || (lengthOfC <= 0))
+    assert(NULL != array);
+    assert(lengthOfR > 0);
+    assert(lengthOfC > 0);
+
+    if ((lengthOfR <= 0) || (lengthOfC <= 0) || (NULL == array))
     {
         printf("Invalid input\n");
         return 0;
@@ -320,7 +417,10 @@ int getAverageOf2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int length
 
 int swap1DArray(int array[], int length)
 {
-    if (length <= 0)
+    assert(NULL != array);
+    assert(length > 0);
+
+    if ((length <= 0) || (length <= 0))
     {
         return -1;
     }

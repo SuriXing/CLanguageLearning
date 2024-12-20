@@ -98,7 +98,7 @@ int doBubbleSort(int array[], int length)
     return 0;
 }
 
-void doArraySortTesting()
+void doBuddleSortTesting()
 {
     int array[64] = {};
     int length = 64;
@@ -110,6 +110,12 @@ void doArraySortTesting()
     doBubbleSort(array, length);
     print1DArray(array, length);
     printf("End Bubble Sort\n");
+}
+
+void doSelectionSortTesting()
+{
+    int array[64] = {};
+    int length = 64;
 
     // Selection Sort
     printf("\nStart Selection Sort\n");
@@ -118,4 +124,10 @@ void doArraySortTesting()
     doSelectionSortInInvertedOrder(array, length);
     print1DArray(array, length);
     printf("End Selection Sort\n");
+}
+
+void doArraySortTesting()
+{
+    doBuddleSortTesting();
+    doSelectionSortTesting();
 }
