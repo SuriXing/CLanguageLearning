@@ -3,10 +3,25 @@
 #include <assert.h>
 #include "c_string_learning.h"
 
+#pragma mark -- testing function --
+static void testMyStrcmpAndncmp();
+static void testMyStrCatAndCpy();
+static void testMyStrncatAndncpy();
+static void testMyStrstr();
+static void testMyStrCharAndrchar();
+static void testMyStrspnAndcspn();
+
 #pragma mark-- function definition --
 
 void printStr(const char *str)
 {
+    assert(NULL != str);
+
+    if (NULL == str)
+    {
+        return;
+    }
+
     const char *kTest = str;
     while (*kTest != '\0')
     {
@@ -17,8 +32,15 @@ void printStr(const char *str)
     printf("\n");
 }
 
-int myLenOfStr(const char *str)
+int myStrlen(const char *str)
 {
+    assert(NULL != str);
+
+    if (NULL == str)
+    {
+        return -1;
+    }
+    
     int length = 0;
 
     // All the strings end with '\0'
@@ -34,6 +56,14 @@ int myLenOfStr(const char *str)
 
 int myStrcmp(const char *str1, const char *str2)
 {
+    assert(NULL != str1);
+    assert(NULL != str2);
+
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return -1;
+    }
+
     while ((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2))
     {
         str1++;
@@ -47,6 +77,14 @@ int myStrncmp(const char *str1, const char *str2, size_t n)
 {
     size_t index = 0;
 
+    assert(NULL != str1);
+    assert(NULL != str2);
+
+    if ((NULL == str1) || (NULL == str2))
+    {
+        return -1;
+    }
+
     while ((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2) && (index < n))
     {
         str1++;
@@ -59,6 +97,9 @@ int myStrncmp(const char *str1, const char *str2, size_t n)
 
 char *myStrcat(char *dest, const char *src)
 {
+    assert(NULL != dest);
+    assert(NULL != src);
+
     if ((dest == NULL) || (src == NULL))
     {
         return NULL;
@@ -85,6 +126,9 @@ char *myStrcat(char *dest, const char *src)
 
 char *myStrcpy(char *dest, const char *src)
 {
+    assert(NULL != dest);
+    assert(NULL != src);
+
     if ((NULL == dest) || (NULL == src))
     {
         return NULL;
@@ -105,6 +149,9 @@ char *myStrcpy(char *dest, const char *src)
 
 char* myStrncat(char* dest, const char* src, size_t n)
 {
+    assert(NULL != dest);
+    assert(NULL != src);
+
     if ((NULL == dest) || (NULL == src))
     {
         return NULL;
@@ -131,6 +178,9 @@ char* myStrncat(char* dest, const char* src, size_t n)
 
 char* myStrncpy(char* dest, const char* src, size_t n)
 {
+    assert(NULL != dest);
+    assert(NULL != src);
+
     if ((NULL == dest) || (NULL == src))
     {
         return NULL;
@@ -156,14 +206,19 @@ void testMyStrncatAndncpy()
     char test[256] = "";
 
     myStrncat(test, "abcdeqazwsxedgujf", 7);
-    printf("%s\n", test);
-
     myStrncpy(test, "abcdefghijklmnopqrstuvwqyz", 16);
-    printf("%s\n", test);
 }
 
 char* myStrstr(const char* str, const char* needle)
 {
+    assert(NULL != str);
+    assert(NULL != needle);
+
+    if ((NULL == str) || (NULL == needle))
+    {
+        return NULL;
+    }
+
     while (*str != '\0')
     {
         const char* str1 = str;
@@ -188,6 +243,8 @@ char* myStrstr(const char* str, const char* needle)
 
 char* myStrChar(const char* str, char c)
 {
+    assert(NULL != str);
+
     if (NULL == str)
     {
         return NULL;
@@ -203,9 +260,12 @@ char* myStrChar(const char* str, char c)
 
 size_t myStrspn(const char *str1, const char *str2)
 {
+    assert(NULL != str1);
+    assert(NULL != str2);
+
     if ((NULL == str1) || (NULL == str2))
     {
-        return -1;
+        return 0;
     }
 
     size_t index = 0;
@@ -226,6 +286,9 @@ size_t myStrspn(const char *str1, const char *str2)
 
 size_t myStrcspn_fast(const char *str1, const char *str2)
 {
+    assert(NULL != str1);
+    assert(NULL != str2);
+
     if ((NULL == str1) || (NULL == str2))
     {
         return 0;
@@ -235,7 +298,7 @@ size_t myStrcspn_fast(const char *str1, const char *str2)
 
     while (*str2 != '\0')
     {
-        dict[*str2] = 1;
+        dict[(int)*str2] = 1;
         str2++;
     }
     
@@ -243,7 +306,7 @@ size_t myStrcspn_fast(const char *str1, const char *str2)
 
     while (*str1 != '\0')
     {
-        if (dict[*str1] != 1)
+        if (dict[(int)*str1] != 1)
         {
             return len;
         }
@@ -255,12 +318,14 @@ size_t myStrcspn_fast(const char *str1, const char *str2)
 
 int myStrRChar(char* str, char a)
 {
+    assert(NULL != str);
+
     if ((NULL == str))
     {
         return -1;
     }
 
-    int index = myLenOfStr(str) - 1;
+    int index = myStrlen(str) - 1;
 
     while (index >= 0)
     {
@@ -272,6 +337,14 @@ int myStrRChar(char* str, char a)
     }
 
     return -1;
+}
+
+void testMyStrcmp()
+{
+    assert(myStrlen("hjkhiuhfaiufhmqkyjrmxgqkewhja") == strlen("hjkhiuhfaiufhmqkyjrmxgqkewhja"));
+    assert(myStrcmp("abcdefghijklmn", "abced") == strcmp("abcdefghijklmn", "abced")); 
+    
+    myStrncmp("hello", "hi", 2);
 }
 
 void testMyStrCatAndCpy()
@@ -318,14 +391,23 @@ void testMyStrCatAndCpy()
 
 void testMyStrstr()
 {
-    printf("%s\n", myStrstr("asdfghjkjmnbvc", "bvc"));
-    printf("%s\n", myStrstr("tfdxcvhjk", "cvh"));
-    printf("%s\n", myStrstr("olghdsghsunm", "lghds"));
+    assert(myStrstr("asdfghjkjmnbvc", "bvc") == strstr("asdfghjkjmnbvc", "bvc"));
+    assert(myStrstr("tfdxcvhjk", "cvh") == strstr("tfdxcvhjk", "cvh"));
 }
 
 void cStringLearningTest()
 {
+    testMyStrcmp();
     testMyStrCatAndCpy();
-
+    testMyStrncatAndncpy();
     testMyStrstr();
+
+/*
+    printStr("yay");
+    myStrChar("asdfghjkl", 'c');
+    myStrRChar("qazwsx", 'a');
+
+    myStrspn("qwertyuiop", "");
+    myStrcspn_fast(const char *str1, const char *str2);
+*/
 }

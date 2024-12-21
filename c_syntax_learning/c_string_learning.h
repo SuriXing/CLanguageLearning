@@ -7,21 +7,18 @@
 
 void printStr(const char *str);
 
-int myLenOfStr(const char *str);
+int myStrlen(const char *str);
 
 int myStrcmp(const char* str1, const char* str2);
 int myStrncmp(const char* str1, const char* str2, size_t n);
 
 char* myStrcat(char* dest, const char* src);
 char* myStrcpy(char* dest, const char* src);
-void testMyStrCatAndCpy();
 
 char* myStrncat(char* dest, const char* src, size_t n);
 char* myStrncpy(char* dest, const char* src, size_t n);
-void testMyStrncatAndncpy();
 
 char* myStrstr(const char* str1, const char* str2);
-void testMyStrstr();
 
 char* myStrChar(const char* str, char c);
 int myStrRChar(char* str, char a);

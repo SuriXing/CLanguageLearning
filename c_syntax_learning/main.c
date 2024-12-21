@@ -12,7 +12,7 @@ int main()
 {
     TESTSUITE("Array", cArrayLearningTest)
 //    TESTSUITE("Advanced", cAdvancedLearningTest)
-//    TESTSUITE("String", cStringLearningTest)
+    TESTSUITE("String", cStringLearningTest)
     
     return 0;
 }
