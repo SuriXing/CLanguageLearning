@@ -11,6 +11,21 @@ static void testMyStrstr();
 static void testMyStrCharAndrchar();
 static void testMyStrspnAndcspn();
 
+static int specialForStrcmp(int returnValue)
+{
+    if (returnValue == 0)
+    {
+        return 0;
+    }
+    else if (returnValue > 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return -1;
+    }
+}
 #pragma mark-- function definition --
 
 void printStr(const char *str)
@@ -70,7 +85,7 @@ int myStrcmp(const char *str1, const char *str2)
         str2++;
     }
 
-    return (*str1 - *str2);
+    return (((*str1 - *str2) > 0) ? 1 : ((*str1 - *str2) == 0) ? 0 : -1);
 }
 
 int myStrncmp(const char *str1, const char *str2, size_t n)
@@ -92,7 +107,7 @@ int myStrncmp(const char *str1, const char *str2, size_t n)
         index++;
     }
 
-    return (*str1 - *str2);
+    return (((*str1 - *str2) > 0) ? 1 : ((*str1 - *str2) == 0) ? 0 : -1);
 }
 
 char *myStrcat(char *dest, const char *src)
@@ -339,12 +354,13 @@ int myStrRChar(char* str, char a)
     return -1;
 }
 
-void testMyStrcmp()
+void testMyStrcmpAndncmp()
 {
-    assert(myStrlen("hjkhiuhfaiufhmqkyjrmxgqkewhja") == strlen("hjkhiuhfaiufhmqkyjrmxgqkewhja"));
-    assert(myStrcmp("abcdefghijklmn", "abced") == strcmp("abcdefghijklmn", "abced")); 
-    
-    myStrncmp("hello", "hi", 2);
+    assert(specialForStrcmp(myStrcmp("abcde", "jklmn")) == specialForStrcmp(strcmp("abcde", "jklmn")));
+    assert(specialForStrcmp(myStrcmp("ababababa", "lkjh")) == specialForStrcmp(strcmp("ababababa", "lkjh")));
+
+    assert(specialForStrcmp(myStrncmp("abcdefghijklmnopqrstuvwxyz", "jklmn", 13)) == strncmp("abcdefghijklmnopqrstuvwxyz", "jklmn", 13));
+    assert(specialForStrcmp(myStrncmp("bansmdjfkrltz", "ltzz", 10)) == specialForStrcmp(strncmp("bansmdjfkrltz", "ltzz", 10)));
 }
 
 void testMyStrCatAndCpy()
@@ -397,7 +413,7 @@ void testMyStrstr()
 
 void cStringLearningTest()
 {
-    testMyStrcmp();
+    testMyStrcmpAndncmp();
     testMyStrCatAndCpy();
     testMyStrncatAndncpy();
     testMyStrstr();
