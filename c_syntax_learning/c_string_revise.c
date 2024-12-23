@@ -256,7 +256,7 @@ char* myStrstr(const char* str, const char* needle)
     return NULL;
 }
 
-char* myStrChar(const char* str, char c)
+char* myStrchr(const char* str, char c)
 {
     assert(NULL != str);
 
@@ -280,23 +280,23 @@ size_t myStrspn(const char *str1, const char *str2)
 
     if ((NULL == str1) || (NULL == str2))
     {
-        return 0;
+        return -1;
     }
 
     size_t index = 0;
 
     while (*str1 != '\0')
     {
-        if (myStrChar(str2, *str1) != NULL)
+        if (myStrchr(str2, *str1) == NULL)
         {
-            return index;
+            break;
         }
         
         str1++;
         index++;
     }
 
-    return -1;
+    return index;
 }
 
 size_t myStrcspn_fast(const char *str1, const char *str2)
@@ -331,13 +331,13 @@ size_t myStrcspn_fast(const char *str1, const char *str2)
     return -1;
 }
 
-int myStrRChar(char* str, char a)
+char* myStrrchr(const char* str, char a)
 {
     assert(NULL != str);
 
-    if ((NULL == str))
+    if (NULL == str)
     {
-        return -1;
+        return NULL;
     }
 
     int index = myStrlen(str) - 1;
@@ -346,12 +346,12 @@ int myStrRChar(char* str, char a)
     {
         if (str[index] == a)
         {
-            return index;
+            break;
         }
         index--;
     }
 
-    return -1;
+    return (index >= 0 ? (char*)(str + index) : NULL);
 }
 
 void testMyStrcmpAndncmp()
@@ -371,38 +371,38 @@ void testMyStrCatAndCpy()
     myStrcat(test, "abcde");
     strcat(test2, "abcde");
     
-    assert(strcmp(test, test2) == 0);
-    assert(strcmp(test, test2) == myStrcmp(test, test2));
+    assert(specialForStrcmp(strcmp(test, test2)) == 0);
+    assert(specialForStrcmp(strcmp(test, test2)) == specialForStrcmp(myStrcmp(test, test2)));
 
     myStrcpy(test, "abc");
     strcpy(test2, "abc");
 
-    assert(strcmp(test, test2) == 0);
-    assert(strcmp(test, test2) == myStrcmp(test, test2));
+    assert(specialForStrcmp(strcmp(test, test2)) == 0);
+    assert(specialForStrcmp(strcmp(test, test2)) == specialForStrcmp(myStrcmp(test, test2)));
 
     myStrcat(test, "qazwsxedc");
     strcat(test2, "qazwsxedc");
 
-    assert(strcmp(test, test2) == 0);
-    assert(strcmp(test, test2) == myStrcmp(test, test2));
+    assert(specialForStrcmp(strcmp(test, test2)) == 0);
+    assert(specialForStrcmp(strcmp(test, test2)) == specialForStrcmp(myStrcmp(test, test2)));
 
     myStrcpy(test, "okmijn");
     strcpy(test2, "abcde");
 
-    assert(strcmp(test, test2) != 0);
-    assert(strcmp(test, test2) == myStrcmp(test, test2));
+    assert(specialForStrcmp(strcmp(test, test2)) != 0);
+    assert(specialForStrcmp(strcmp(test, test2)) == specialForStrcmp(myStrcmp(test, test2)));
 
     myStrcpy(test, "okmijn");
     strcpy(test2, "okmijn");
 
-    assert(strcmp(test, test2) == 0);
-    assert(strcmp(test, test2) == myStrcmp(test, test2));
+    assert(specialForStrcmp(strcmp(test, test2)) == 0);
+    assert(specialForStrcmp(strcmp(test, test2)) == specialForStrcmp(myStrcmp(test, test2)));
 
     myStrcat(test, "abcdefg");
     strcat(test2, "asdfg");
 
-    assert(strcmp(test, test2) != 0);
-    assert(strcmp(test, test2) == myStrcmp(test, test2));
+    assert(specialForStrcmp(strcmp(test, test2)) != 0);
+    assert(specialForStrcmp(strcmp(test, test2)) == specialForStrcmp(myStrcmp(test, test2)));
 }
 
 void testMyStrstr()
@@ -411,18 +411,34 @@ void testMyStrstr()
     assert(myStrstr("tfdxcvhjk", "cvh") == strstr("tfdxcvhjk", "cvh"));
 }
 
+static void testMyStrCharAndrchar()
+{
+    assert(myStrchr("abcdefg", 'h') == strchr("abcdefg", 'h'));
+    assert(myStrchr("zyxwvutsr", 'r') == strchr("zyxwvutsr", 'r'));
+
+    assert(myStrrchr("abcdefg", 'h') == strrchr("abcdefg", 'h'));
+    assert(myStrrchr("zyxwvutsr", 'r') == strrchr("zyxwvutsr", 'r'));
+}
+
+static void testMyStrspnAndcspn()
+{
+    assert(myStrspn("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom") == strspn("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom"));
+    assert(myStrspn("ababababab", "abcde") == strspn("ababababab", "abcde"));
+
+    //assert(myStrcspn_fast("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom") == strcspn("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom"));
+    //assert(myStrcspn_fast("bleah", "aeh") == strcspn("bleah", "aeh"));
+}
+
 void cStringLearningTest()
 {
     testMyStrcmpAndncmp();
     testMyStrCatAndCpy();
     testMyStrncatAndncpy();
     testMyStrstr();
+    testMyStrCharAndrchar();
+    testMyStrspnAndcspn();
 
 /*
-    printStr("yay");
-    myStrChar("asdfghjkl", 'c');
-    myStrRChar("qazwsx", 'a');
-
     myStrspn("qwertyuiop", "");
     myStrcspn_fast(const char *str1, const char *str2);
 */
