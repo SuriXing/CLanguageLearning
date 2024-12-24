@@ -98,6 +98,38 @@ int doBubbleSort(int array[], int length)
     return 0;
 }
 
+int doCountingSort(int array[], int length, RangesOfArrays range)
+{
+    return 0;   
+}
+
+
+int _doCountingSort(int array[], int length, RangesOfArrays range)
+{
+    int countingArray[range.max - range.min];
+    for (int i=0; i<range.max - range.min; i++)
+    {
+        countingArray[i] = 0;
+    }
+
+    for (int i=0; i<length; i++)
+    {
+        countingArray[array[i] - range.min] += 1;
+    }
+
+    int index = 0;
+    for (int i=range.min; i<range.max; i++)
+    {
+        for (int j=0; j<countingArray[i]; j++)
+        {
+            array[index++] = i;
+        }
+    }
+    assert(index == length);
+
+    return 0;
+}
+
 void doBuddleSortTesting()
 {
     int array[64] = {};
@@ -130,4 +162,12 @@ void doArraySortTesting()
 {
     doBuddleSortTesting();
     doSelectionSortTesting();
+
+    int array[16] = {0};
+    int length = 16;
+    generateRandom1DArray(array, length);    
+    print1DArray(array, length);
+    RangesOfArrays range = {0, 100};
+    _doCountingSort(array, length, range);
+    print1DArray(array, length);
 }

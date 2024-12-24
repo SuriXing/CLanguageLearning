@@ -439,13 +439,14 @@ int swap1DArray(int array[], int length)
 
 void cArrayLearningTest()
 {
+    /*    
     int oneDimensionalArray[LENGTH_OF_1D_ARR];
     int twoDimensionalArray[LENGTH_OF_2D_ROW][LENGTH_OF_2D_COL];
     
     generateRandom1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
     generateRandom2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
-    /*
+
     findSmallestNumberIn1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
     findGreatestNumberIn1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
     findSmallestNumberIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
@@ -465,9 +466,9 @@ void cArrayLearningTest()
 
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
-    doArraySortTesting();
-    */
     
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     findGreatestIndexIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
+*/
+    doArraySortTesting();
 }

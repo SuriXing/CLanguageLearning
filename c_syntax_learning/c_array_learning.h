@@ -8,6 +8,11 @@ typedef struct _2DArrayIndex {
     unsigned int column;
 } IndexOf2DArray;
 
+typedef struct _rangesForArray {
+    unsigned int min;
+    unsigned int max;
+} RangesOfArrays;
+
 #pragma mark -- macro declaration --
 #define LENGTH_OF_1D_ARR 20
 #define LENGTH_OF_2D_ROW 20
@@ -47,6 +52,8 @@ int doSelectionSortInInvertedOrder2(int array[], int length);
 int doSelectionSortInReversedOrder2(int array[], int length);
 
 int doBubbleSort(int array[], int length);
+
+int doCountingSort(int array[], int length, RangesOfArrays range);
 
 #pragma mark -- test function --
 void cArrayLearningTest();
