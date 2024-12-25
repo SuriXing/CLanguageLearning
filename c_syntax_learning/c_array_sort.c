@@ -100,27 +100,22 @@ int doBubbleSort(int array[], int length)
 
 int doCountingSort(int array[], int length, RangesOfArrays range)
 {
-    return 0;   
-}
-
-
-int _doCountingSort(int array[], int length, RangesOfArrays range)
-{
     int countingArray[range.max - range.min];
-    for (int i=0; i<range.max - range.min; i++)
+    for (int i = 0; i < range.max - range.min; i++)
     {
         countingArray[i] = 0;
     }
 
-    for (int i=0; i<length; i++)
+    for (int i = 0; i < length; i++)
     {
         countingArray[array[i] - range.min] += 1;
     }
 
     int index = 0;
-    for (int i=range.min; i<range.max; i++)
+
+    for (int i = range.min; i < range.max; i++)
     {
-        for (int j=0; j<countingArray[i]; j++)
+        for (int j = 0; j < countingArray[i]; j++)
         {
             array[index++] = i;
         }
@@ -168,6 +163,6 @@ void doArraySortTesting()
     generateRandom1DArray(array, length);    
     print1DArray(array, length);
     RangesOfArrays range = {0, 100};
-    _doCountingSort(array, length, range);
+    doCountingSort(array, length, range);
     print1DArray(array, length);
 }
