@@ -100,6 +100,14 @@ int doBubbleSort(int array[], int length)
 
 int doCountingSort(int array[], int length, RangesOfArrays range)
 {
+    assert(NULL != array);
+    assert(length > 0);
+
+    if ((NULL == array) || (length < 0))
+    {
+        return -1;
+    }
+
     int countingArray[range.max - range.min];
     for (int i = 0; i < range.max - range.min; i++)
     {
@@ -125,44 +133,58 @@ int doCountingSort(int array[], int length, RangesOfArrays range)
     return 0;
 }
 
+// Bubble Sort
 void doBuddleSortTesting()
 {
     int array[64] = {};
     int length = 64;
     
-    // Bubble Sort
-    printf("\nStart Bubble Sort\n");
+    printf("*** Start %s *** \n", __FUNCTION__);
+    
     generateRandom1DArray(array, length);    
     print1DArray(array, length);
     doBubbleSort(array, length);
     print1DArray(array, length);
-    printf("End Bubble Sort\n");
+
+    printf("*** End %s *** \n", __FUNCTION__);
 }
 
+// Selection Sort
 void doSelectionSortTesting()
 {
     int array[64] = {};
     int length = 64;
 
-    // Selection Sort
-    printf("\nStart Selection Sort\n");
+    printf("*** Start %s *** \n", __FUNCTION__);
+
     generateRandom1DArray(array, length);    
     print1DArray(array, length);
     doSelectionSortInInvertedOrder(array, length);
     print1DArray(array, length);
-    printf("End Selection Sort\n");
+
+    printf("*** End %s *** \n", __FUNCTION__);
+}
+
+// Counting Sort
+void doCountingSortTesting()
+{
+    int array[64] = {0};
+    int length = 64;
+
+    printf("*** Start %s *** \n", __FUNCTION__);
+
+    generateRandom1DArray(array, length);    
+    print1DArray(array, length);
+    RangesOfArrays range = {0, 100};
+    doCountingSort(array, length, range);
+    print1DArray(array, length);
+
+    printf("*** End %s *** \n", __FUNCTION__);
 }
 
 void doArraySortTesting()
 {
     doBuddleSortTesting();
     doSelectionSortTesting();
-
-    int array[16] = {0};
-    int length = 16;
-    generateRandom1DArray(array, length);    
-    print1DArray(array, length);
-    RangesOfArrays range = {0, 100};
-    doCountingSort(array, length, range);
-    print1DArray(array, length);
+    doCountingSortTesting();
 }

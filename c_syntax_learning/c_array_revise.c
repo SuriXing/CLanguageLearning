@@ -5,7 +5,6 @@
 #include "c_array_learning.h"
 #include "../utils.h"
 
-
 #pragma mark -- function implementation --
 
 int generateRandom1DArray(int array[], int length)
