@@ -98,6 +98,31 @@ int doBubbleSort(int array[], int length)
     return 0;
 }
 
+int doBubbleSort2(int array[], int length)
+{
+    assert(length > 0);
+    assert(NULL != array);
+
+    if ((NULL == array) || (length <= 0))
+    {
+        return -1;
+    }
+
+    for (int i = 0; i < length; i++)
+    {
+        for (int j = i+1; j < length; j++)
+        {
+            if ( array[i] > array[j])
+            {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+    }
+    return 0;
+}
+
 int doCountingSort(int array[], int length, RangesOfArrays range)
 {
     assert(NULL != array);
@@ -133,6 +158,41 @@ int doCountingSort(int array[], int length, RangesOfArrays range)
     return 0;
 }
 
+int doCountingSort2(int array[], int length, RangesOfArrays range)
+{
+    assert(NULL != array);
+    assert(length > 0);
+
+    if ((NULL == array) || (length < 0))
+    {
+        return -1;
+    }
+
+    int countingArray[range.max - range.min];
+    for (int i = 0; i < range.max - range.min; i++)
+    {
+        countingArray[i] = 0;
+    }
+
+    for (int i = 0; i < length; i++)
+    {
+        countingArray[array[i]] += 1;
+    }
+
+    int index = 0;
+
+    for (int i = range.min; i < range.max; i++)
+    {
+        for (int j = 0; j < countingArray[i]; j++)
+        {
+            array[index++] = i;
+        }
+    }
+    assert(index == length);
+
+    return 0;
+}
+
 // Bubble Sort
 void doBuddleSortTesting()
 {
@@ -140,13 +200,18 @@ void doBuddleSortTesting()
     int length = 64;
     
     printf("*** Start %s *** \n", __FUNCTION__);
-    
     generateRandom1DArray(array, length);    
     print1DArray(array, length);
     doBubbleSort(array, length);
     print1DArray(array, length);
-
     printf("*** End %s *** \n", __FUNCTION__);
+
+    printf("*** Start %s2 *** \n", __FUNCTION__);
+    generateRandom1DArray(array, length);
+    print1DArray(array, length);
+    doBubbleSort(array, length);
+    print1DArray(array, length);
+    printf("*** End %s2 *** \n", __FUNCTION__);
 }
 
 // Selection Sort

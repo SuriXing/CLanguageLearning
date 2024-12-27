@@ -52,8 +52,10 @@ int doSelectionSortInInvertedOrder2(int array[], int length);
 int doSelectionSortInReversedOrder2(int array[], int length);
 
 int doBubbleSort(int array[], int length);
+int doBubbleSort2(int array[], int length);
 
 int doCountingSort(int array[], int length, RangesOfArrays range);
+int doCountingSort2(int array[], int length, RangesOfArrays range);
 
 #pragma mark -- test function --
 void cArrayLearningTest();
