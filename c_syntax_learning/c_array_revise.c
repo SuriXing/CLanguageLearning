@@ -436,9 +436,38 @@ int swap1DArray(int array[], int length)
     return 0;
 }
 
-void cArrayLearningTest()
+int insertInto1DArray(int array[], int length, int index, int insertedValue)
 {
-    /*    
+    assert(NULL != array);
+    assert(length > 0);
+    assert((index >= 0) && (index <= length));
+
+    for (int i = length-1; i >= index; i--)
+    {
+        array[i+1] = array[i];
+    }
+
+    array[index] = insertedValue;
+
+    return 0;
+}
+
+void insertInto1DArrayTest()
+{
+    int oneDimensionalArray[LENGTH_OF_1D_ARR];
+    generateRandom1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
+
+    printf("*** Start %s *** \n", __FUNCTION__);
+
+    print1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
+    insertInto1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR-2, 9, 20120325);
+    print1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
+
+    printf("*** End %s *** \n", __FUNCTION__);
+}
+
+void cArrayLearningTest()
+{  
     int oneDimensionalArray[LENGTH_OF_1D_ARR];
     int twoDimensionalArray[LENGTH_OF_2D_ROW][LENGTH_OF_2D_COL];
     
@@ -465,9 +494,10 @@ void cArrayLearningTest()
 
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
-    
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     findGreatestIndexIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
-*/
+
+    insertInto1DArrayTest();
+
     doArraySortTesting();
 }

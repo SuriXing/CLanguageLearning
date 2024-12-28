@@ -43,6 +43,8 @@ int generateRandom1DArray(int array[], int length);
 int generateRandom2DArray(int array[][LENGTH_OF_2D_COL], int lengthOfR, int lengthOfC);
 
 int swap1DArray(int array[], int length);
+int insertInto1DArray(int array[], int length, int index, int insertedValue);
+void insertInto1DArrayTest();
 
 #pragma mark -- Sorting function --
 int doSelectionSortInInvertedOrder(int array[], int length);
