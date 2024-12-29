@@ -8,7 +8,7 @@ CFLAGS = -Wall -g3 -ggdb
 TARGET = a.out
 
 # List of source files
-SRCS = c_string_revise.c c_array_revise.c c_advanced_learning.c c_array_sort.c main.c ../utils.c
+SRCS = c_string_revise.c c_array_revise.c c_advanced_learning.c c_array_sort.c c_string_testing.c main.c ../utils.c
 
 # Automatically derive the list of object files (replace.c suffix of source files with.o suffix)
 OBJS = $(SRCS:.c=.o)

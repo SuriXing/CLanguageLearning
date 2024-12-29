@@ -1,7 +1,5 @@
-#ifndef __C_STRING_LEARNING__H
-#define __C_STRING_LEARNING__H
-
-#include <stdlib.h>
+#ifndef __C_STRING_LEARNING_H__
+#define __C_STRING_LEARNING_H__
 
 #pragma mark -- function declaration --
 
@@ -26,7 +24,4 @@ char* myStrrchr(const char* str, char a);
 size_t myStrspn(const char *str1, const char *str2);
 size_t myStrcspn_fast(const char *str1, const char *str2);
 
-#pragma mark -- test function --
-void cStringLearningTest();
-
-#endif // __C_STRING_LEARNING__H
+#endif // __C_STRING_LEARNING_H__

@@ -452,7 +452,7 @@ int insertInto1DArray(int array[], int length, int index, int insertedValue)
     return 0;
 }
 
-void insertInto1DArrayTest()
+void doInsertInto1DArrayTest()
 {
     int oneDimensionalArray[LENGTH_OF_1D_ARR];
     generateRandom1DArray(oneDimensionalArray, LENGTH_OF_1D_ARR);
@@ -497,7 +497,7 @@ void cArrayLearningTest()
     print2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
     findGreatestIndexIn2DArray(twoDimensionalArray, LENGTH_OF_2D_ROW, LENGTH_OF_2D_COL);
 
-    insertInto1DArrayTest();
+    doInsertInto1DArrayTest();
 
     doArraySortTesting();
 }

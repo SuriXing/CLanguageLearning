@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "c_array_learning.h"
-#include "c_string_learning.h"
+#include "c_string_testing.h"
 #include "c_advanced_learning.h"
 
 #define TESTSUITE(NAME, FUNCTION)\
