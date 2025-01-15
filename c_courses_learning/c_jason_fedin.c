@@ -2,6 +2,22 @@
 #include <stdlib.h>
 #include <assert.h>
 
+
+void formatSpecifiers()
+{
+    int intNum = 100;
+    char letter = 'a';
+    float floatNum = 2.545;
+    double doubleNum = 8.44e+11;
+
+    printf("integer: %d\n", intNum);
+    printf("char: %c\n", letter);
+    printf("float: %f\n", floatNum);
+    printf("double1(e): %e\n", doubleNum);
+    printf("double2(g): %g\n", doubleNum);
+    printf("double3(lf): %lf\n", doubleNum);
+}
+
 typedef enum _Roman
 {
     I,
@@ -124,6 +140,10 @@ int jasonFedin2ndLesson()
 
 int main()
 {
+    formatSpecifiers();
+
+    printf("\n\n\n");
+
     int jason = jasonFedin1stLesson();
     printf("%d\n", jason);
 
@@ -131,5 +151,6 @@ int main()
     printf("%d\n", TWO);
     printf("%d\n", THREE);
     printf("%d\n", THOUSAND);
+
     return 0;
 }
