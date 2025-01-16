@@ -948,6 +948,22 @@ void printPrimeNum3(int from, int to)
     }
 }
 
+// Function to check if a number is a perfect square
+int isPerfectSquare(int num) {
+    if (num < 0) {
+        return 0; // Negative numbers are not perfect squares
+    }
+    
+    int i = 0;
+    while (i * i <= num) {
+        if (i * i == num) {
+            return 1;
+        }
+        i++;
+    }
+    return 0;
+}
+
 int main()
 {
     //printf("%d\n", numberOfAscend5Digit());
@@ -968,5 +984,10 @@ int main()
     //example17_2();
 
     //example24();
+    int i = 64;
+    if (1 ==isPerfectSquare(i))
+        printf("%d is perfect sqaure", i);
+    else
+        printf("%d is not perfect square", i);
 	return 0;
 }
