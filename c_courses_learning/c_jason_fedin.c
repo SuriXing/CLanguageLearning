@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <assert.h>
 
+void argumentLearning(int argc, char* argv[])
+{
+    printf("Number of arguments: %d\n", argc);
+    printf("Argument 1 is the program name: %s\n", argv[0]);
+
+    for (int i = 1; i < argc; i++)
+    {
+        printf("Argument %d is the command line argument: %s\n", i+1, argv[i]);
+    }
+}
 
 void formatSpecifiers()
 {
@@ -138,7 +148,7 @@ int jasonFedin2ndLesson()
     return 0;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
     formatSpecifiers();
 
@@ -151,6 +161,8 @@ int main()
     printf("%d\n", TWO);
     printf("%d\n", THREE);
     printf("%d\n", THOUSAND);
+
+    argumentLearning(argc, argv);
 
     return 0;
 }
