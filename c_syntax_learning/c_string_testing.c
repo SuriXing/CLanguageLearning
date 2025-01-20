@@ -117,11 +117,19 @@ static void testMyStrspnAndcspn()
 
     assert(myStrspn("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom") == strspn("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom"));
     assert(myStrspn("ababababab", "abcde") == strspn("ababababab", "abcde"));
+    assert(myStrspn("qwertyuiop", "") == strspn("qwertyuiop", ""));
+    assert(myStrspn("qwertyuiop", "qqq") == strspn("qwertyuiop", "qqq"));
 
-    //assert(myStrcspn_fast("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom") == strcspn("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom"));
-    //assert(myStrcspn_fast("bleah", "aeh") == strcspn("bleah", "aeh"));
-
+/*
+    assert(myStrcspn_fast("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom") == strcspn("abcdefghijklmnopqrstuvwxyz", "zyxwvutsrqpom"));
+    assert(myStrcspn_fast("bleah", "aeh") == strcspn("bleah", "aeh"));
+*/
     printf("*** End %s *** \n", __FUNCTION__);
+}
+
+static void testMyStrncatAndncpy()
+{
+
 }
 
 void cStringLearningTest()
@@ -132,9 +140,4 @@ void cStringLearningTest()
     testMyStrstr();
     testMyStrCharAndrchar();
     testMyStrspnAndcspn();
-
-/*
-    myStrspn("qwertyuiop", "");
-    myStrcspn_fast(const char *str1, const char *str2);
-*/
 }
