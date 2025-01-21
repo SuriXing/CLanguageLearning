@@ -3,14 +3,12 @@
 #include <assert.h>
 #include "c_string_learning.h"
 
-
 #pragma mark-- function definition --
 
 void printStr(const char *str)
 {
-    assert(NULL != str);
-
-    if (NULL == str)
+    // Check for NULL pointer
+    if (str == NULL)
     {
         return;
     }
@@ -19,40 +17,32 @@ void printStr(const char *str)
     while (*kTest != '\0')
     {
         printf("%c", *kTest);
-
         kTest++;
     }
     printf("\n");
 }
 
-int myStrlen(const char *str)
+size_t myStrlen(const char *str)
 {
-    assert(NULL != str);
-
-    if (NULL == str)
+    // Check for NULL pointer
+    if (str == NULL)
     {
-        return -1;
+        return 0;
     }
-    
-    int length = 0;
 
-    // All the strings end with '\0'
-    // *str mean the current character
+    size_t length = 0;
     while (*str != '\0')
     {
         length++;
         str++;
     }
-
     return length;
 }
 
 int myStrcmp(const char *str1, const char *str2)
 {
-    assert(NULL != str1);
-    assert(NULL != str2);
-
-    if ((NULL == str1) || (NULL == str2))
+    // Check for NULL pointers
+    if (str1 == NULL || str2 == NULL)
     {
         return -1;
     }
@@ -63,21 +53,18 @@ int myStrcmp(const char *str1, const char *str2)
         str2++;
     }
 
-    return (((*str1 - *str2) > 0) ? 1 : ((*str1 - *str2) == 0) ? 0 : -1);
+    return ((*str1 - *str2) > 0) ? 1 : ((*str1 - *str2) == 0) ? 0 : -1;
 }
 
 int myStrncmp(const char *str1, const char *str2, size_t n)
 {
-    size_t index = 0;
-
-    assert(NULL != str1);
-    assert(NULL != str2);
-
-    if ((NULL == str1) || (NULL == str2))
+    // Check for NULL pointers
+    if (str1 == NULL || str2 == NULL)
     {
         return -1;
     }
 
+    size_t index = 0;
     while ((*str1 != '\0') && (*str2 != '\0') && (*str1 == *str2) && (index < n))
     {
         str1++;
@@ -85,21 +72,18 @@ int myStrncmp(const char *str1, const char *str2, size_t n)
         index++;
     }
 
-    return (((*str1 - *str2) > 0) ? 1 : ((*str1 - *str2) == 0) ? 0 : -1);
+    return ((*str1 - *str2) > 0) ? 1 : ((*str1 - *str2) == 0) ? 0 : -1;
 }
 
 char *myStrcat(char *dest, const char *src)
 {
-    assert(NULL != dest);
-    assert(NULL != src);
-
-    if ((dest == NULL) || (src == NULL))
+    // Check for NULL pointers
+    if (dest == NULL || src == NULL)
     {
         return NULL;
     }
 
     char *destCopy = dest;
-
     while (*dest != '\0')
     {
         dest++;
@@ -113,22 +97,18 @@ char *myStrcat(char *dest, const char *src)
     }
 
     *dest = '\0';
-
     return destCopy;
 }
 
 char *myStrcpy(char *dest, const char *src)
 {
-    assert(NULL != dest);
-    assert(NULL != src);
-
-    if ((NULL == dest) || (NULL == src))
+    // Check for NULL pointers
+    if (dest == NULL || src == NULL)
     {
         return NULL;
     }
 
     char *destCopy = dest;
-
     while (*src != '\0')
     {
         *dest = *src;
@@ -136,16 +116,13 @@ char *myStrcpy(char *dest, const char *src)
         src++;
     }
     *dest = '\0';
-
     return destCopy;
 }
 
 char* myStrncat(char* dest, const char* src, size_t n)
 {
-    assert(NULL != dest);
-    assert(NULL != src);
-
-    if ((NULL == dest) || (NULL == src))
+    // Check for NULL pointers
+    if (dest == NULL || src == NULL)
     {
         return NULL;
     }
@@ -166,22 +143,21 @@ char* myStrncat(char* dest, const char* src, size_t n)
         count++;
     }
 
+    *dest = '\0';
     return destCopy;
 }
 
 char* myStrncpy(char* dest, const char* src, size_t n)
 {
-    assert(NULL != dest);
-    assert(NULL != src);
-
-    if ((NULL == dest) || (NULL == src))
+    // Check for NULL pointers
+    if (dest == NULL || src == NULL)
     {
         return NULL;
     }
 
     char* destCopy = dest;
     size_t count = 0;
-    
+
     while ((*src != '\0') && (count < n))
     {
         *dest = *src;
@@ -189,7 +165,12 @@ char* myStrncpy(char* dest, const char* src, size_t n)
         src++;
         count++;
     }
-    *dest = '\0';
+
+    // Ensure the destination string is null-terminated
+    if (count < n)
+    {
+        *dest = '\0';
+    }
 
     return destCopy;
 }
@@ -198,7 +179,11 @@ void testMyStrncatAndncpy()
 {
     char test[256] = "";
 
-    myStrncat(test, "abcdeqazwsxedgujf", 7);
+    // Check the return value of myStrncat
+    if (myStrncat(test, "abcdeqazwsxedgujf", 7) == NULL)
+    {
+        printf("myStrncat failed\n
+    }
     myStrncpy(test, "abcdefghijklmnopqrstuvwqyz", 16);
 }
 
