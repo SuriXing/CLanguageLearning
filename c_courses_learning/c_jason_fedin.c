@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <assert.h>
 
+
+void perimeterAndAreaOfRectangles(int width, int length)
+{
+    int perimeter = 2 * (width + length);
+    int area = width * length;
+
+    printf ("The area of this %d * %d rectangle is %d\n", width, length, area);
+    printf ("The perimeter of this %d * %d rectangle is %d\n", width, length, perimeter);
+}
+
 void argumentLearning(int argc, char* argv[])
 {
     printf("Number of arguments: %d\n", argc);
@@ -163,6 +173,8 @@ int main(int argc, char* argv[])
     printf("%d\n", THOUSAND);
 
     argumentLearning(argc, argv);
+
+    perimeterAndAreaOfRectangles(15, 20);
 
     return 0;
 }

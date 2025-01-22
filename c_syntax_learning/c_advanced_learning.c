@@ -4,6 +4,16 @@
 #include "c_advanced_learning.h"
 #include "../utils.h"
 
+int perimeterAndAreaOfRectangle(int width, int length)
+{
+    int perimeter = 2 * (width + length);
+    int area = width * length;
+
+    printf("The area of this rectangle with width %d; length %d, has area %d, and lastlly perimeter %d\n", width, length, area, perimeter);
+
+    return perimeter && area;
+}
+
 int isAccountInSystem(const Account* kAccountArray, const int kAccountArrayLength, Account account)
 {
     assert(kAccountArray != NULL);
