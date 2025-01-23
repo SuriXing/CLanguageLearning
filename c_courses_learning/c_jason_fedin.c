@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include <assert.h>
 
+enum Company 
+{
+    GOOGLE,
+    FACEBOOK,
+    XEROX,
+    YAHOO,
+    EBAY,
+    MICROSOFT
+};
 
 void perimeterAndAreaOfRectangles(int width, int length)
 {
@@ -160,7 +169,7 @@ int jasonFedin2ndLesson()
 
 int main(int argc, char* argv[])
 {
-    formatSpecifiers();
+    /*formatSpecifiers();
 
     printf("\n\n\n");
 
@@ -174,7 +183,15 @@ int main(int argc, char* argv[])
 
     argumentLearning(argc, argv);
 
-    perimeterAndAreaOfRectangles(15, 20);
+    perimeterAndAreaOfRectangles(15, 20); */
+
+    enum Company company1 = XEROX;
+    enum Company company2 = GOOGLE;
+    enum Company company3 = EBAY;
+
+    printf("%d\n", company1);
+    printf("%d\n", company2);
+    printf("%d\n", company3);
 
     return 0;
 }
