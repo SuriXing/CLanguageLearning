@@ -2,6 +2,22 @@
 #include <stdlib.h>
 #include <assert.h>
 
+void math()
+{
+    printf("Enter a number:\n");
+    int a = 0;
+    scanf("%d", &a);
+    printf("Enter another number:\n");
+    int b = 0;
+    scanf("%d", &b);
+
+    int sum = a+b;
+    printf("Sum = %d\n", sum);
+
+    int product = a * b;
+    printf("product = %d\n", product);
+}
+
 enum Company 
 {
     GOOGLE,
@@ -169,7 +185,8 @@ int jasonFedin2ndLesson()
 
 int main(int argc, char* argv[])
 {
-    /*formatSpecifiers();
+    /*
+    formatSpecifiers();
 
     printf("\n\n\n");
 
@@ -183,7 +200,7 @@ int main(int argc, char* argv[])
 
     argumentLearning(argc, argv);
 
-    perimeterAndAreaOfRectangles(15, 20); */
+    perimeterAndAreaOfRectangles(15, 20); 
 
     enum Company company1 = XEROX;
     enum Company company2 = GOOGLE;
@@ -192,6 +209,9 @@ int main(int argc, char* argv[])
     printf("%d\n", company1);
     printf("%d\n", company2);
     printf("%d\n", company3);
+    */
+
+    math();
 
     return 0;
 }
