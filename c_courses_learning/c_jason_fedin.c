@@ -2,6 +2,33 @@
 #include <stdlib.h>
 #include <assert.h>
 
+int operators()
+{
+    unsigned int a = 50; // 二进制: 0011 0010
+    unsigned int b = 25; // 二进制: 0001 1001
+    unsigned int result; // 用于存储每次运算的结果
+
+    result = a & b;
+    printf("a & b = %u\n", result);
+
+    result = a | b;
+    printf("a | b = %u\n", result); 
+
+    result = a ^ b;
+    printf("a ^ b = %u\n", result); 
+
+    result = ~a;
+    printf("~a = %u\n", result);
+
+    result = a << 2;
+    printf("a << 2 = %u\n", result); 
+
+    result = a >> 2;
+    printf("a >> 2 = %u\n", result); 
+
+    return 0;
+}
+
 void math()
 {
     printf("Enter a number:\n");
@@ -211,7 +238,7 @@ int main(int argc, char* argv[])
     printf("%d\n", company3);
     */
 
-    math();
+    operators();
 
     return 0;
 }
