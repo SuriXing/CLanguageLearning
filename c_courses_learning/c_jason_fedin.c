@@ -2,13 +2,14 @@
 #include <stdlib.h>
 #include <assert.h>
 
-int minConvertToDayAndYear()
+int minConvert()
 {
     const int MinutesPerHour = 60;
     const int HoursPerDay = 24;
     const int DaysPerYear = 365;
     const int MinutesPerDay = MinutesPerHour * HoursPerDay;
     const int MinutesPerYear = MinutesPerDay * DaysPerYear;
+    const int DaysPerMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     int minutes = 0;
     printf ("Enter the number of minutes:\n");
@@ -18,8 +19,22 @@ int minConvertToDayAndYear()
     int day = (minutes % MinutesPerYear) / MinutesPerDay;
     int hour = ((minutes % MinutesPerYear) % MinutesPerDay) / MinutesPerHour;
     int minute = ((minutes % MinutesPerYear) % MinutesPerDay) % MinutesPerHour;
+    int month = 0;
+    
+    for (int i = 0; i < 12; i++)
+    {
+        if (day > DaysPerMonth[i])
+        {
+            day -= DaysPerMonth[i];
+        }
+        else
+        {
+            month = i + 1;
+        }
+    }
 
-    printf("%d minutes is approximately %d years and %d days.\n", minutes, year, day);
+    printf("%d minutes is approximately %d years and %d month and %d days and %d hours and %d minutes.\n", 
+        minutes, year, month, day, hour, minute);
 
     return 0;
 }
@@ -260,7 +275,7 @@ int main(int argc, char* argv[])
     printf("%d\n", company3);
     */
 
-    minConvertToDayAndYear();
+    minConvert();
 
     return 0;
 }
