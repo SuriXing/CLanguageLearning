@@ -2,39 +2,58 @@
 #include <stdlib.h>
 #include <assert.h>
 
+typedef struct _Month {
+    const char monthStr[16];
+    const int daysPerMonth;
+} Month;
+
 int minConvert()
 {
-    const int MinutesPerHour = 60;
-    const int HoursPerDay = 24;
-    const int DaysPerYear = 365;
-    const int MinutesPerDay = MinutesPerHour * HoursPerDay;
-    const int MinutesPerYear = MinutesPerDay * DaysPerYear;
-    const int DaysPerMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    const int kMinutesPerHour = 60;
+    const int kHoursPerDay = 24;
+    const int kDaysPerYear = 365;
+    const int kMinutesPerDay = kMinutesPerHour * kHoursPerDay;
+    const int kMinutesPerYear = kMinutesPerDay * kDaysPerYear;
+    const Month kMonths[12] = {
+        {"January", 31},
+        {"February", 28},
+        {"March", 31},
+        {"April", 30},
+        {"May", 31},
+        {"June", 30},
+        {"July", 31},
+        {"August", 31},
+        {"September", 30},
+        {"October", 31},
+        {"November", 30},
+        {"December", 31}
+    };
 
     int minutes = 0;
     printf ("Enter the number of minutes:\n");
     scanf("%d", &minutes);
 
-    int year = minutes / MinutesPerYear;
-    int day = (minutes % MinutesPerYear) / MinutesPerDay;
-    int hour = ((minutes % MinutesPerYear) % MinutesPerDay) / MinutesPerHour;
-    int minute = ((minutes % MinutesPerYear) % MinutesPerDay) % MinutesPerHour;
+    int year = minutes / kMinutesPerYear;
+    int day = (minutes % kMinutesPerYear) / kMinutesPerDay;
+    int hour = ((minutes % kMinutesPerYear) % kMinutesPerDay) / kMinutesPerHour;
+    int minute = ((minutes % kMinutesPerYear) % kMinutesPerDay) % kMinutesPerHour;
     int month = 0;
     
     for (int i = 0; i < 12; i++)
     {
-        if (day > DaysPerMonth[i])
+        if (day > kMonths[i].daysPerMonth)
         {
-            day -= DaysPerMonth[i];
+            day -= kMonths[i].daysPerMonth;
         }
         else
         {
             month = i + 1;
+            break;
         }
     }
 
-    printf("%d minutes is approximately %d years and %d month and %d days and %d hours and %d minutes.\n", 
-        minutes, year, month, day, hour, minute);
+    printf("%d minutes is approximately %d years and %s and %d days and %d hours and %d minutes.\n", 
+        minutes, year, kMonths[month].monthStr, day, hour, minute);
 
     return 0;
 }
