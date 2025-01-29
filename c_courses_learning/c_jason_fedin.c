@@ -2,6 +2,29 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#define SIZEOF(array) (sizeof(array)/sizeof(array[0]))
+
+void printSizeOfTypes(int pointerOfArray[])
+{
+    printf("Size of char: %zd bytes\n", sizeof(char));
+    printf("Size of short: %zd bytes\n", sizeof(short));
+    printf("Size of int: %zd bytes\n", sizeof(int));
+    printf("Size of long: %zd bytes\n", sizeof(long));
+    printf("Size of long long: %zd bytes\n", sizeof(long long));
+    printf("Size of float: %zd bytes\n", sizeof(float));
+    printf("Size of double: %zd bytes\n", sizeof(double));
+    printf("Size of long double: %zd bytes\n", sizeof(long double));
+
+    int intArray[12];
+    printf("Length of integer array: %zd bytes\n", SIZEOF(intArray));
+    int charArray[12];
+    printf("Length of character array: %zd bytes\n", SIZEOF(charArray));
+    printf("Size of Pointer: %zd bytes\n", sizeof(pointerOfArray));
+
+    int *ptr = NULL;
+    printf("Size of Pointer: %zd bytes\n", sizeof(ptr));
+}
+
 typedef struct _Month {
     const char monthStr[16];
     const int daysPerMonth;
@@ -294,7 +317,8 @@ int main(int argc, char* argv[])
     printf("%d\n", company3);
     */
 
-    minConvert();
+   int array[12];
+    printSizeOfTypes(array); 
 
     return 0;
 }
