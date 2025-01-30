@@ -1,6 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <time.h>
+
+void guessNum()
+{
+    srand(time(NULL));
+    int num = rand() % 20 + 1;
+
+    printf("This is a guessing game.\n");
+    printf("I have chosen a number between 0 and 20 which you must guess.\n");
+
+    for (int i = 5; i > 0; i--)
+    {
+        int userGuess = 0;
+        printf ("You have %d tries left.\n", i);
+        printf("Enter a guess:\n");
+        scanf("%d", &userGuess);
+        if (userGuess == num)
+        {
+            printf("Congratulations. You guessed the number.\n");
+            break;
+        }
+        else if (userGuess < 0 || userGuess > 20)
+        {
+            printf("Sorry, %d is invalid. My number is between 0 and 20.\n", userGuess);
+        }
+        else if (userGuess < num)
+        {
+            printf("Sorry, %d is wrong. My number is greater than that.\n", userGuess);
+        }
+        else
+        {
+            printf("Sorry, %d is wrong. My number is less than that.\n", userGuess);
+        }
+    }
+}
 
 #define SIZEOF(array) (sizeof(array)/sizeof(array[0]))
 
@@ -317,8 +352,7 @@ int main(int argc, char* argv[])
     printf("%d\n", company3);
     */
 
-   int array[12];
-    printSizeOfTypes(array); 
+    guessNum();
 
     return 0;
 }
