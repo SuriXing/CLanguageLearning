@@ -3,6 +3,38 @@
 #include <assert.h>
 #include <time.h>
 
+void ifNumIsEvenOrOdd()
+{
+    int num = 0;
+    printf("Enter an integer:\n");
+    
+    while (1)
+    {
+        int res = scanf ("%d", &num);
+
+        while (getchar() != '\n')
+        {
+            ;
+        }
+
+        if (res <= 0)
+        {
+            printf ("Invalid input, please enter an integer.\n");
+            continue;
+        }
+
+        if (num % 2 == 0)
+        {
+            printf ("%d is even.\n", num);
+        }
+        else
+        {
+           printf ("%d is odd.\n", num);
+        }
+        break;
+    }
+}
+
 void guessNum()
 {
     srand(time(NULL));
@@ -13,10 +45,24 @@ void guessNum()
 
     for (int i = 5; i > 0; i--)
     {
-        int userGuess = 0;
+        int userGuess = -1;
         printf ("You have %d tries left.\n", i);
-        printf("Enter a guess:\n");
-        scanf("%d", &userGuess);
+        printf("Enter a guess:\n", i);
+        //scanf("%d", &userGuess);
+        
+        int a = scanf("%d", &userGuess);
+
+        while (getchar() != '\n')
+        {
+            ;
+        }
+        if (a <= 0)
+        {
+            printf("Invalid input. Please enter a number between 0 and 20.\n");
+            continue;
+        }
+        
+
         if (userGuess == num)
         {
             printf("Congratulations. You guessed the number.\n");
@@ -352,7 +398,8 @@ int main(int argc, char* argv[])
     printf("%d\n", company3);
     */
 
-    guessNum();
+    //guessNum();
+    ifNumIsEvenOrOdd();
 
     return 0;
 }
