@@ -3,6 +3,52 @@
 #include <assert.h>
 #include <time.h>
 
+/*
+void simpleGame()
+{
+    int gamesOver;
+
+    if ( gamesOver == 0 )
+    {
+        if ( playerToMove == YOU )
+        {
+            printf("Your Move\n");
+        }
+        else
+        {
+            printf("My Move\n");
+        }
+    }
+    else
+    {
+        printf("The game is over\n");
+    }
+}
+*/
+
+void aaa()
+{
+    int number, sign;
+    
+    printf("Please type in a number: ");
+    scanf("%i", &number);
+    
+    if (number < 0)
+    {
+        sign = -1;
+    }
+    else if (number == 0)
+    {
+        sign = 0;
+    }
+    else
+    {
+        sign = 1;
+    }   
+    
+    printf("Sign = %i\n", sign);
+}
+
 void ifNumIsEvenOrOdd()
 {
     int num = 0;
