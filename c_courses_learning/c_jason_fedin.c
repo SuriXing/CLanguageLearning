@@ -3,6 +3,33 @@
 #include <assert.h>
 #include <time.h>
 
+int today()
+{
+    enum weekday {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday};
+    enum weekday today = Friday;
+
+    switch (today)
+    {
+        case Monday:
+        printf("Today is Monday:(\n");
+        break;
+
+        case Wednesday:
+        printf("Today is Wednesday:|\n");
+        break;
+
+        case Friday:
+        printf("Today is Friday!!!\n");
+        break;
+
+        default:
+       printf("Whatever *sideeye\n");
+       break;
+    }
+
+    return 0;
+}
+
 /*
 void simpleGame()
 {
@@ -131,7 +158,7 @@ void guessNum()
 
 #define SIZEOF(array) (sizeof(array)/sizeof(array[0]))
 
-void printSizeOfTypes(int pointerOfArray[])
+void printSizeOfTypes(int* pointerOfArray)
 {
     printf("Size of char: %zd bytes\n", sizeof(char));
     printf("Size of short: %zd bytes\n", sizeof(short));
@@ -445,7 +472,9 @@ int main(int argc, char* argv[])
     */
 
     //guessNum();
-    ifNumIsEvenOrOdd();
+    //ifNumIsEvenOrOdd();
+
+    today();
 
     return 0;
 }
