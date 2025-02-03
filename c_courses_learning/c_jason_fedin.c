@@ -3,6 +3,22 @@
 #include <assert.h>
 #include <time.h>
 
+void sumOfFirstNIntegers()
+{
+    unsigned num = 0;
+    unsigned long long sum = 0;
+
+    printf("Enter the number of intergers you want to sum:\n");
+    scanf("%d", &num);
+
+    for (int i = 1; i <= num; i++)
+    {
+        sum += i;
+    }
+
+    printf ("The sum of the first %d integers is %llu.\n", num, sum);
+}
+
 int today()
 {
     enum weekday {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday};
@@ -474,7 +490,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    today();
+    sumOfFirstNIntegers();
 
     return 0;
 }
