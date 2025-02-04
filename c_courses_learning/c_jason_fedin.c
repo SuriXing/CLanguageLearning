@@ -3,6 +3,36 @@
 #include <assert.h>
 #include <time.h>
 
+void sizeofTypes()
+{
+    char a = 127;
+    a++;
+    assert(a == -128);
+    
+
+    unsigned char b = 0;
+    b--;
+    assert(b == 255);
+
+    unsigned char bb = (0xFF);
+    ++b;
+    assert(b == 0);
+
+    int c = 2147483647;
+    c++;
+    assert(c == -2147483648);
+    c-=2;
+    assert(c == 2147483646);
+
+    int c2 = -2147483647;
+    c2++;
+    assert(c2 == -2147483646);
+
+    unsigned int d = 0U;
+    d--;
+    assert(d == 4294967295);
+}
+
 void sumOfFirstNIntegers()
 {
     unsigned num = 0;
@@ -136,7 +166,7 @@ void guessNum()
     {
         int userGuess = -1;
         printf ("You have %d tries left.\n", i);
-        printf("Enter a guess:\n", i);
+        printf("Enter a guess:\n");
         //scanf("%d", &userGuess);
         
         int a = scanf("%d", &userGuess);
@@ -490,7 +520,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    sumOfFirstNIntegers();
+    sizeofTypes();
 
     return 0;
 }
