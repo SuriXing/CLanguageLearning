@@ -3,6 +3,19 @@
 #include <assert.h>
 #include <time.h>
 
+void randomNumDisplay()
+{
+    int num = 0;
+    scanf("%d", &num);
+
+    while (num < 35)
+    {
+        printf("%d\n", num);
+        scanf("%d", &num);
+        while (getchar() != '\n');
+    }
+}
+
 void sizeofTypes()
 {
     char a = 127;
@@ -520,7 +533,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    sizeofTypes();
+    randomNumDisplay();
 
     return 0;
 }
