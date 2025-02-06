@@ -3,6 +3,22 @@
 #include <assert.h>
 #include <time.h>
 
+void sum()
+{
+    int num = 0;
+    printf("Enter an INTEGER\n");
+    scanf("%d", &num);
+    
+    int sum = 0;
+
+    for (int i = 1; i <= num; i++)
+    {
+        sum += i;
+    }
+
+    printf("sum: %d\n", sum);
+}
+
 void randomNumDisplay()
 {
     int num = 0;
@@ -533,7 +549,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    randomNumDisplay();
+    sum();
 
     return 0;
 }
