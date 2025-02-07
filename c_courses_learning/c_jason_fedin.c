@@ -3,6 +3,26 @@
 #include <assert.h>
 #include <time.h>
 
+void findAverageGrade()
+{
+    int grades[10];
+    int count = 10;
+    long sum = 0;
+    float average = 0.0f;
+
+    printf("\nEnter the 10 grades:\n");
+
+    for(int i = 0; i < count; ++i)
+    {
+      printf("%2u> ",i + 1);
+      scanf("%d", &grades[i]);
+      sum += grades[i];
+    }
+
+    average = sum/count;
+    printf("The average of the ten grades is %f\n", average);
+}
+
 void sum()
 {
     int num = 0;
@@ -549,7 +569,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    sum();
+    findAverageGrade();
 
     return 0;
 }
