@@ -3,6 +3,18 @@
 #include <assert.h>
 #include <time.h>
 
+int months()
+{
+    int days[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+
+    for (int i = 0; i < 12; i++)
+    {
+        printf("Month %d has %d days.\n", i+1, days[i]);
+    }
+
+    return 0;
+}
+
 void findAverageGrade()
 {
     int grades[10];
@@ -569,7 +581,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    findAverageGrade();
+    months();
 
     return 0;
 }
