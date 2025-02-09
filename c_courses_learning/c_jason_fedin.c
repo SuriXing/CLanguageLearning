@@ -3,10 +3,47 @@
 #include <assert.h>
 #include <time.h>
 
+//豆包写的：
+#include <math.h>
+// Function to print a pentagram
+void printPentagram(int size) {
+    // Outer loop for rows
+    for (int y = size; y >= -size; y--) {
+        // Inner loop for columns
+        for (int x = -size; x <= size; x++) {
+            // The following angles are used to calculate the position of the pentagram
+            double angles[5] = {0, 2 * M_PI / 5, 4 * M_PI / 5, 6 * M_PI / 5, 8 * M_PI / 5};
+            int isStar = 0;
+            for (int i = 0; i < 5; i++) {
+                int j = (i + 2) % 5;
+                // Calculate the start and end points of each line segment of the pentagram
+                double x1 = size * cos(angles[i]);
+                double y1 = size * sin(angles[i]);
+                double x2 = size * cos(angles[j]);
+                double y2 = size * sin(angles[j]);
+                // Use the line - equation formula to check if the current point is on the line segment
+                double left = (y - y1) * (x2 - x1);
+                double right = (y2 - y1) * (x - x1);
+                if (fabs(left - right) < 1.0) {
+                    isStar = 1;
+                    break;
+                }
+            }
+            if (isStar) {
+                printf("*");
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+}
+
 void findTreasure() {
     srand(time(NULL));
     int treasureX = rand() % 5;
     int treasureY = rand() % 5;
+    printf ("%d %d\n", treasureX, treasureY);
     int guessX, guessY;
     printf("Welcome to the treasure - finding game! The treasure is hidden in a 5x5 map.\n");
     printf("You can enter coordinates (0 - 4) to find the treasure. The format is: row column.\n");
@@ -15,7 +52,6 @@ void findTreasure() {
 
         if (scanf("%d %d", &guessX, &guessY) != 2) {
             printf("Invalid input. Please enter two integers separated by a space.\n");
-
             while (getchar() != '\n'); 
             continue;
         }
@@ -25,6 +61,7 @@ void findTreasure() {
         }
         if (guessX == treasureX && guessY == treasureY) {
             printf("Congratulations! You've found the treasure!\n");
+            printPentagram(10);
             break;
         } else {
             printf("Sorry, there's no treasure here. Try again.\n");
