@@ -3,6 +3,35 @@
 #include <assert.h>
 #include <time.h>
 
+void findTreasure() {
+    srand(time(NULL));
+    int treasureX = rand() % 5;
+    int treasureY = rand() % 5;
+    int guessX, guessY;
+    printf("Welcome to the treasure - finding game! The treasure is hidden in a 5x5 map.\n");
+    printf("You can enter coordinates (0 - 4) to find the treasure. The format is: row column.\n");
+    while (1) {
+        printf("Please enter the coordinates you guessed: ");
+
+        if (scanf("%d %d", &guessX, &guessY) != 2) {
+            printf("Invalid input. Please enter two integers separated by a space.\n");
+
+            while (getchar() != '\n'); 
+            continue;
+        }
+        if (guessX < 0 || guessX > 4 || guessY < 0 || guessY > 4) {
+            printf("The entered coordinates are out of range. Please enter numbers between 0 and 4.\n");
+            continue;
+        }
+        if (guessX == treasureX && guessY == treasureY) {
+            printf("Congratulations! You've found the treasure!\n");
+            break;
+        } else {
+            printf("Sorry, there's no treasure here. Try again.\n");
+        }
+    }
+}
+
 int months()
 {
     int days[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
@@ -581,7 +610,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    months();
+    findTreasure();
 
     return 0;
 }
