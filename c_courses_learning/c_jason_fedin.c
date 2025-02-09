@@ -190,6 +190,24 @@ void randomNumDisplay()
     }
 }
 
+void twoDimArray()
+{
+	int arr[2][3] = {[0][0] = 12, [0][1] = 24, [1][0] = 36, [1][1] = 48, [1][2] = 60};
+
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			printf("%d", arr[i][j]);
+			if (j %3 == 0)
+			{
+				printf("\n");
+			}
+		}
+	}
+}
+
+
 void sizeofTypes()
 {
     char a = 127;
@@ -740,6 +758,7 @@ int main(int argc, char* argv[])
     //ifNumIsEvenOrOdd();
 
     gcdOf2Nums(123, 234);
+    twoDimArray();
 
     return 0;
 }
