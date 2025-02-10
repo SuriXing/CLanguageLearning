@@ -3,6 +3,25 @@
 #include <assert.h>
 #include <time.h>
 
+void findAllPrimeFrom3To100()
+{
+    int j;
+
+    for (int i = 3; i <= 100; i++)
+    {
+        for (j = 2; j < i; j++)
+        {
+            if (i % j == 0) {
+                break;
+            }
+        }
+        if (i == j)
+        {
+            printf("%d ", i);
+        }
+    }
+}
+
 //豆包写的：
 #include <math.h>
 // Function to print a pentagram
@@ -647,7 +666,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    findTreasure();
+    findAllPrimeFrom3To100();
 
     return 0;
 }
