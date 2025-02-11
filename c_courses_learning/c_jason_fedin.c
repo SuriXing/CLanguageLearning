@@ -3,6 +3,31 @@
 #include <assert.h>
 #include <time.h>
 
+void weather()
+{
+    float arr[5][12] = {
+        {7.3, 7.3, 4.9, 3.0, 2.3, 0.6, 1.2, 0.3, 0.5, 1.7, 3.6, 6.7},
+        {7.3, 7.3, 4.9, 3.0, 2.3, 0.6, 1.2, 0.3, 0.5, 1.7, 3.6, 6.7},
+        {7.3, 7.3, 4.9, 3.0, 2.3, 0.6, 1.2, 0.3, 0.5, 1.7, 3.6, 6.7},
+        {7.3, 7.3, 4.9, 3.0, 2.3, 0.6, 1.2, 0.3, 0.5, 1.7, 3.6, 6.7},
+        {7.3, 7.3, 4.9, 3.0, 2.3, 0.6, 1.2, 0.3, 0.5, 1.7, 3.6, 6.7}
+    };
+
+    int sum = 0;
+    int count = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 12; j++)
+        {
+            sum += arr[i][j];
+            count++;
+        }
+    }
+
+    printf("Sum = %d\nAverage = %d\n", sum, sum/count);
+}
+
 void findAllPrimeFrom3To100()
 {
     int j;
@@ -666,7 +691,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    findAllPrimeFrom3To100();
+    weather();
 
     return 0;
 }
