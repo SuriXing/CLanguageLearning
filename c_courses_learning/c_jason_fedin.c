@@ -3,6 +3,22 @@
 #include <assert.h>
 #include <time.h>
 
+void gcdOf2Nums(int a, int b)
+{
+    int gcd = 1;
+
+    int smaller = (a < b) ? a : b;
+    for (int i = 1; i <= smaller; i++) 
+    {
+        if (a % i == 0 && b % i == 0) 
+        {
+            gcd = i;
+        }
+    }
+
+    printf("The gcd of %d and %d is %d", a, b, gcd);
+}
+
 void weather()
 {
     float arr[5][12] = {
@@ -691,7 +707,7 @@ int main(int argc, char* argv[])
     //guessNum();
     //ifNumIsEvenOrOdd();
 
-    weather();
+    gcdOf2Nums(123, 234);
 
     return 0;
 }
