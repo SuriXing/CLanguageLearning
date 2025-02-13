@@ -341,6 +341,38 @@ void ifNumIsEvenOrOdd()
     }
 }
 
+void ifNumIsEvenOrOdd2()
+{
+    int num = 0;
+    printf("Enter an integer:\n");
+    
+    while (1)
+    {
+        int res = scanf ("%d", &num);
+
+        while (getchar() != '\n')
+        {
+            ;
+        }
+
+        if (res <= 0)
+        {
+            printf ("Invalid input, please enter an integer.\n");
+            continue;
+        }
+
+        if (num % 2 == 0)
+        {
+            printf ("%d is even.\n", num);
+        }
+        else
+        {
+           printf ("%d is odd.\n", num);
+        }
+        break;
+    }
+}
+
 void guessNum()
 {
     srand(time(NULL));
