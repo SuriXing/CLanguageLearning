@@ -3,6 +3,7 @@
 #include <assert.h>
 #include "c_advanced_learning.h"
 #include "../utils.h"
+#include <stdlib.h>
 
 int perimeterAndAreaOfRectangle(int width, int length)
 {
@@ -96,10 +97,42 @@ double factorial(unsigned int i)
    return i * factorial(i - 1);
 }
 
+// Function to find two sum indices
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) 
+{
+    int *result = (int *)malloc(2 * sizeof(int));
+    if (result == NULL) {
+        return NULL;
+    }
+
+    for (int i = 0; i < numsSize; i++) {
+        for (int j = i + 1; j < numsSize; j++) {
+            if (nums[i] + nums[j] == target) {
+                result[0] = i;
+                result[1] = j;
+                *returnSize = 2;
+                return result;
+            }
+        }
+    }
+    *returnSize = 0;
+    free(result);
+    return NULL;
+}
 
 int  main()
 {
-    int i = 15;
-    printf("%d 的阶乘为 %f\n", i, factorial(i));
-    return 0;
+    //int i = 15;
+    //printf("%d 的阶乘为 %f\n", i, factorial(i));
+    //return 0;
+    int nums[] = {2, 7, 11, 15};
+    int target = 9;
+    int numsSize = sizeof(nums) / sizeof(nums[0]);
+    int returnSize;
+    int *result = twoSum(nums, numsSize, target, &returnSize);
+
+    if (result != NULL) {
+        printf("[%d, %d]\n", result[0], result[1]);
+        free(result);
+    }
 }
