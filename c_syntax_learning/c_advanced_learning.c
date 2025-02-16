@@ -120,12 +120,28 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
     return NULL;
 }
 
+int reverse(int x) {
+    int reversed = 0;
+    while (x != 0) {
+        int pop = x % 10;
+        x /= 10;
+
+        // Check for overflow before updating the result
+        if (reversed > (2147483647 / 10) || (reversed == (2147483647 / 10) && pop > 7)) return 0;
+        if (reversed < (-2147483648 / 10) || (reversed == (-2147483648 / 10) && pop < -8)) return 0;
+
+        reversed = reversed * 10 + pop;
+    }
+    return reversed;
+}
+
+
 int  main()
 {
     //int i = 15;
     //printf("%d 的阶乘为 %f\n", i, factorial(i));
     //return 0;
-    int nums[] = {2, 7, 11, 15};
+    /*int nums[] = {2, 7, 11, 15};
     int target = 9;
     int numsSize = sizeof(nums) / sizeof(nums[0]);
     int returnSize;
@@ -134,5 +150,15 @@ int  main()
     if (result != NULL) {
         printf("[%d, %d]\n", result[0], result[1]);
         free(result);
-    }
+    }*/
+
+    int num1 = 123;
+    int num2 = -123;
+    int num3 = 120;
+
+    printf("Reversed of %d is %d\n", num1, reverse(num1));
+    printf("Reversed of %d is %d\n", num2, reverse(num2));
+    printf("Reversed of %d is %d\n", num3, reverse(num3));
+
+    return 0;
 }
