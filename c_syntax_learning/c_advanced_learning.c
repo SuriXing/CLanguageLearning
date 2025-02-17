@@ -5,6 +5,75 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+int ticTacToe()
+{
+    char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    int moves = 0;
+    char player = 'X';
+    int position;
+    int win = 0;
+
+    int wins[8][3] = 
+    {
+        {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, 
+        {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, 
+        {0, 4, 8}, {2, 4, 6}
+    };
+
+    while (moves < 9 &&!win)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            printf(" %c ", board[i]);
+            if ((i + 1) % 3 != 0) printf("|");
+            if ((i + 1) % 3 == 0) printf("\n");
+            if ((i + 1) % 3 == 0 && i < 8) printf("---+---+---\n");
+        }
+
+        printf("Player %c, enter position (1 - 9): ", player);
+        scanf("%d", &position);
+
+        if (position < 1 || position > 9 || board[position - 1] != ' ')
+        {
+            printf("Invalid move. Try again.\n");
+            continue;
+        }
+
+        board[position - 1] = player;
+        moves++;
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (board[wins[i][0]] == player && board[wins[i][1]] == player && board[wins[i][2]] == player)
+            {
+                win = 1;
+                break;
+            }
+        }
+
+        player = (player == 'X') ? 'O' : 'X';
+    }
+
+    for (int i = 0; i < 9; i++)
+    {
+        printf(" %c ", board[i]);
+        if ((i + 1) % 3 != 0) printf("|");
+        if ((i + 1) % 3 == 0) printf("\n");
+        if ((i + 1) % 3 == 0 && i < 8) printf("---+---+---\n");
+    }
+
+    if (win)
+    {
+        printf("Player %c wins!\n", (player == 'X') ? 'O' : 'X');
+    }
+    else
+    {
+        printf("It's a draw!\n");
+    }
+
+    return 0;
+}
+
 int perimeterAndAreaOfRectangle(int width, int length)
 {
     int perimeter = 2 * (width + length);
@@ -150,7 +219,7 @@ int  main()
     if (result != NULL) {
         printf("[%d, %d]\n", result[0], result[1]);
         free(result);
-    }*/
+    }
 
     int num1 = 123;
     int num2 = -123;
@@ -159,6 +228,8 @@ int  main()
     printf("Reversed of %d is %d\n", num1, reverse(num1));
     printf("Reversed of %d is %d\n", num2, reverse(num2));
     printf("Reversed of %d is %d\n", num3, reverse(num3));
+    */
+   ticTacToe();
 
     return 0;
 }

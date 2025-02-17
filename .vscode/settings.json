@@ -10,6 +10,7 @@
         "string": "c",
         "string_view": "c",
         "assert.h": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "c_advanced_learning.h": "c"
     }
 }
