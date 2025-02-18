@@ -5,6 +5,16 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+void str()
+{
+    char arr[100] = {'H', 'E', 'L', 'L', 'O', '!'};
+
+    for (int i = 0; i < 100; i++)
+    {
+        printf ("%c\n", arr[i]);
+    }
+}
+
 int ticTacToe()
 {
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
@@ -229,7 +239,7 @@ int  main()
     printf("Reversed of %d is %d\n", num2, reverse(num2));
     printf("Reversed of %d is %d\n", num3, reverse(num3));
     */
-   ticTacToe();
+   str();
 
     return 0;
 }
