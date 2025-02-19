@@ -5,6 +5,18 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+void strChallenge(const char* str)
+{
+    int count = 0;
+    while (*str != '\0')
+    {
+        count++;
+        str++;
+    }
+
+    printf ("%d\n", count-1);
+}
+
 void str()
 {
     char arr[100] = {'H', 'E', 'L', 'L', 'O', '!'};
@@ -239,7 +251,7 @@ int  main()
     printf("Reversed of %d is %d\n", num2, reverse(num2));
     printf("Reversed of %d is %d\n", num3, reverse(num3));
     */
-   str();
+   strChallenge("LOW LOw low");
 
     return 0;
 }
