@@ -5,7 +5,7 @@
 #include "../utils.h"
 #include <stdlib.h>
 
-void strChallenge(const char* str)
+int strChallenge(const char* str)
 {
     int count = 0;
     while (*str != '\0')
@@ -15,6 +15,20 @@ void strChallenge(const char* str)
     }
 
     printf ("%d\n", count-1);
+    return count;
+}
+
+void reverseStr(const char* str)
+{
+    int count = 0;
+    count = strChallenge(str);
+
+    for (int i = 0; i < count/2; i++)
+    {
+        printf("%d", str[i]);
+    }
+
+    printf("\n");
 }
 
 void str()
@@ -251,7 +265,6 @@ int  main()
     printf("Reversed of %d is %d\n", num2, reverse(num2));
     printf("Reversed of %d is %d\n", num3, reverse(num3));
     */
-   strChallenge("LOW LOw low");
-
+    reverseStr("abcdefg");
     return 0;
 }
