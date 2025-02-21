@@ -5,6 +5,30 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+void surveyResult()
+{
+    int deepseek = 0;
+    int CiCi = 0;
+    int chatGpt = 0;
+
+    int num = 0;
+
+    printf ("Which of the following AI chat boxes do you think is the best?\n1.Deepseek\n2.CiCi\n3.ChatGpt\n");
+    scanf ("%d", &num);
+    if (num == 1)
+    {
+        deepseek++;
+    }
+    else if (num == 2)
+    {
+        CiCi++;
+    }
+    else
+    {
+        chatGpt++;
+    }
+}
+
 int strChallenge(const char* str)
 {
     int count = 0;
