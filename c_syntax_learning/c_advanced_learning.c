@@ -5,6 +5,36 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+void meanMedianAndRange()
+{
+    double arr[5];
+    double temp;
+    printf("Enter 5 numbers that you want to find the mean, median, and range of.\n");
+    for (int i = 0; i < 5; i++)
+    {
+        scanf("%lf", &arr[i]);
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = i + 1; j < 5; j++)
+        {
+            if (arr[i] > arr[j])
+            {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    double mean = (arr[0] + arr[1] + arr[2] + arr[3] + arr[4]) / 5;
+    double range = arr[4] - arr[0];
+    double median = arr[2];
+
+    printf("Mean: %f\nMedian: %f\nRange: %f\n", mean, median, range);
+}
+
 void surveyResult()
 {
     int deepseek = 0;
@@ -289,6 +319,6 @@ int  main()
     printf("Reversed of %d is %d\n", num2, reverse(num2));
     printf("Reversed of %d is %d\n", num3, reverse(num3));
     */
-    reverseStr("abcdefg");
+    meanMedianAndRange();
     return 0;
 }
