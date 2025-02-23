@@ -5,6 +5,23 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+typedef enum _Gender
+{
+	MALE,
+	FEMALE,
+} Gender;
+
+typedef struct _IsbStudent
+{
+	char first_name[32];
+	char *p_first_name;
+	char last_name[32];
+	Gender gender;
+	unsigned int math_score;
+	unsigned int language_usage_score;
+	unsigned int reading_score;
+} IsbStudent;
+
 void meanMedianAndRange()
 {
     double arr[5];
@@ -319,6 +336,65 @@ int  main()
     printf("Reversed of %d is %d\n", num2, reverse(num2));
     printf("Reversed of %d is %d\n", num3, reverse(num3));
     */
-    meanMedianAndRange();
+    
+    IsbStudent suri_class[20] = {0};
+
+	suri_class[0].gender = FEMALE;
+	suri_class[0].math_score = 99;
+	suri_class[0].language_usage_score = 94;
+	suri_class[0].reading_score = 92;
+
+	strncpy(suri_class[0].first_name, "suri", sizeof(suri_class[0].first_name)-1);
+	suri_class[0].first_name[sizeof(suri_class[0].first_name)-1] = '\0';
+
+	strncpy(suri_class[0].last_name, "xing", sizeof(suri_class[0].last_name)-1);
+	suri_class[0].last_name[sizeof(suri_class[0].last_name)-1] = '\0';
+
+	IsbStudent* pCurrent = &suri_class[0];
+
+	// pCurrent->first_name
+	// pCurrent++;
+	// pCurrent->last_name
+
+	int num = 0;
+/*
+	num = 1+1;
+    printf("%d\n", !num);
+    num = -1;
+    printf("%d\n", !num);
+    num = 0;
+    printf("%d\n", !num);
+*/
+	num = 0xffffffff;
+    printf("%x\n", ~num);
+
+    printf("%x\n", num<<1);
+
+	num = 0x55555555;
+    printf("%x\n", ~num);
+
+    printf("%x\n", num<<1);
+    printf("%x\n", num<<2);
+    printf("%x\n", num<<3);
+
+    printf("%x\n", num>>1);
+    printf("%x\n", num>>2);
+    printf("%x\n", num>>3);
+
+	unsigned int unum = 0x55555555;
+    printf("%x\n", unum>>1);
+    printf("%x\n", unum>>2);
+    printf("%x\n", unum>>3);
+
+	printf("%x\n", 0x5555 & 0xAAAA);
+	printf("%x\n", 0x5555 | 0xAAAA);
+	printf("%x\n", 0x5555 ^ 0xAAAA);
+	printf("%x\n", 0x5555 ^ 0x5555);
+	printf("%x\n", 0xAAAA ^ 0xAAAA);
+
+	int *p = &num;
+	num=1;
+	*p=2;
+
     return 0;
 }
