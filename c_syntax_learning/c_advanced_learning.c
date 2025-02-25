@@ -5,6 +5,22 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+void isOdd()
+{
+    int num = 0;
+    printf ("Enter an integer\n");
+    scanf ("%d", &num);
+
+    if (num & 1 == 0)
+    {
+        printf("%d is an even number\n", num);
+    }
+    else
+    {
+        printf("%d is an odd number\n", num);
+    }
+}
+
 void hexadecimal()
 {
     printf("0x3333 & 0xCCCC: %x\n", 0x3333 & 0xCCCC);
