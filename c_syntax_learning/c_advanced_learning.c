@@ -53,6 +53,13 @@ int isPowerOfTwo_Fast(int num)
     return num > 0 && (num & (num - 1)) == 0;
 }
 
+void testPowerOf2()
+{
+    assert((isPowerOfTwo(32)) == (isPowerOfTwo_Fast(32)));
+    assert((isPowerOfTwo(33)) == (isPowerOfTwo_Fast(33)));
+    assert((isPowerOfTwo(64)) == (isPowerOfTwo_Fast(64)));
+}
+
 void hexadecimal()
 {
     printf("0x3333 & 0xCCCC: %x\n", 0x3333 & 0xCCCC);
@@ -526,8 +533,9 @@ int  main()
 	num=1;
 	*p=2;
     */
-   
+
     // hexadecimal();
 
+    testPowerOf2();
     return 0;
 }
