@@ -11,7 +11,7 @@ void isOdd()
     printf ("Enter an integer\n");
     scanf ("%d", &num);
 
-    if (num & 1 == 0)
+    if ((num & 1) == 0)
     {
         printf("%d is an even number\n", num);
     }
@@ -19,6 +19,38 @@ void isOdd()
     {
         printf("%d is an odd number\n", num);
     }
+}
+
+void swap(int a, int b)
+{
+    printf("a: %d, b: %d\n", a, b);
+    int temp = a ^ b;
+    a = temp ^ a;
+    b = temp ^ b;
+    printf("a: %d, b: %d\n", a, b);
+}
+
+int isPowerOfTwo(int num)
+{
+    int nonZeroCount = 0;
+    unsigned int unum = (unsigned int)num;
+    for (int i=0; i<sizeof(num)*8 && unum > 0; i++)
+    {
+        nonZeroCount += (unum & 0x1);
+        unum = unum >> 1;
+
+        if (nonZeroCount > 1)
+        {
+            break;
+        }
+    }
+
+    return nonZeroCount == 1;
+}
+
+int isPowerOfTwo_Fast(int num)
+{
+    return num > 0 && (num & (num - 1)) == 0;
 }
 
 void hexadecimal()
@@ -494,7 +526,8 @@ int  main()
 	num=1;
 	*p=2;
     */
+   
+    // hexadecimal();
 
-    hexadecimal();
     return 0;
 }
