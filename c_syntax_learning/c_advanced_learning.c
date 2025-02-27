@@ -5,6 +5,32 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+int numOf1sInABinaryNum(int num)
+{
+    unsigned int unum = (unsigned int)num;
+    int count = 0;
+
+    for (int i = 0; i < sizeof(num) * 8; i++)
+    {
+        count += (unum & 0x1);
+
+        unum = unum >> 1;
+    }
+    return count;
+}
+
+int absValue(int num)
+{
+    if (num >= 0)
+    {
+        return num;
+    }
+
+    int absValOfNum = (~num + 1);
+
+    return absValOfNum;
+}
+
 void isOdd()
 {
     int num = 0;
@@ -536,6 +562,16 @@ int  main()
 
     // hexadecimal();
 
-    testPowerOf2();
+
+    assert(numOf1sInABinaryNum(0x1) == 1);
+    assert(numOf1sInABinaryNum(0xF) == 4);
+    assert(numOf1sInABinaryNum(0xF0) == 4);
+    assert(numOf1sInABinaryNum(0xF00) == 4);
+    assert(numOf1sInABinaryNum(0xF000) == 4);
+    assert(numOf1sInABinaryNum(0xFF00) == 8);
+    assert(numOf1sInABinaryNum(0xFFF0) == 12);
+    assert(numOf1sInABinaryNum(0xFFFFFFFF) == 32);
+    assert(numOf1sInABinaryNum(0xFFFF) == 16);
+
     return 0;
 }
