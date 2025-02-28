@@ -5,6 +5,22 @@
 #include "../utils.h"
 #include <stdlib.h>
 
+int reverseBinaryNum(int num)
+{
+    unsigned int unum = (unsigned int)num;
+
+    int count = 0;
+
+    for (int i = 0; i < sizeof(unum)*8; i++)
+    {
+        count <<= 1;
+        count |= (unum & 0x1);
+        unum >>= 1;
+    }
+
+    return count;
+}
+
 int numOf1sInABinaryNum(int num)
 {
     unsigned int unum = (unsigned int)num;
@@ -572,6 +588,12 @@ int  main()
     assert(numOf1sInABinaryNum(0xFFF0) == 12);
     assert(numOf1sInABinaryNum(0xFFFFFFFF) == 32);
     assert(numOf1sInABinaryNum(0xFFFF) == 16);
+
+    assert(reverseBinaryNum(0xFFFFFFFF) == 0xFFFFFFFF);
+    assert(reverseBinaryNum(0xFFFF0000) == 0xFFFF);
+    assert(reverseBinaryNum(0xFFFF) == 0xFFFF0000);
+    assert(reverseBinaryNum(0X55555555) == 0XAAAAAAAA);
+    assert(reverseBinaryNum(0XAAAAAAAA) == 0X55555555);
 
     return 0;
 }
