@@ -4,7 +4,61 @@
 #include "c_advanced_learning.h"
 #include "../utils.h"
 #include <stdlib.h>
+#include <time.h>
 
+// 性能测试函数
+void performance_test(int (*fun)(int)) {
+    clock_t start, end;
+    double cpu_time_used;
+
+    // 记录开始时间
+    start = clock();
+
+    // 调用传入的函数10万次
+    for (int i = 0; i < 100000; i++) {
+        fun(i);
+    }
+
+    // 记录结束时间
+    end = clock();
+
+    // 计算使用的CPU时间
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+
+    // 输出结果
+    printf("调用函数10万次花费的时间: %f 秒\n", cpu_time_used);
+}
+
+int isBinaryPalindrome(int num)
+{
+    unsigned unum = num;
+
+    int result = 0;
+
+    for (int i = 0; i < sizeof(num) * 8; i++)
+    {
+        result <<= 1;
+        result |= (unum & 0x1);
+        unum >>= 1;
+    }
+
+    return (result == num);
+}
+
+int isNumPalindrome(int num)
+{
+    int num_copy = num;
+
+    int result = 0;
+
+    while (num != 0)
+    {
+        result = (result * 10) + (num % 10);
+        num = num / 10;
+    }
+
+    return (result == num_copy);
+}
 
 int reverseBinaryNum(int num)
 {
@@ -221,6 +275,24 @@ int main()
     assert(numOf1sInABinaryNum2(0xFFF0) == 12);
     assert(numOf1sInABinaryNum2(0xFFFFFFFF) == 32);
     assert(numOf1sInABinaryNum2(0xFFFF) == 16);
+
+
+    assert(isNumPalindrome(1234554321) == 1);
+    assert(isNumPalindrome(123455432) == 0);
+    assert(isNumPalindrome(121) == 1);
+    assert(isNumPalindrome(123421) == 0);
+    assert(isNumPalindrome(-1234554321) == 1);
+    assert(isNumPalindrome(-123455432) == 0);
+    assert(isNumPalindrome(-121) == 1);
+    assert(isNumPalindrome(-123421) == 0);
+
+    assert(isBinaryPalindrome(0x80000001) == 1);
+    assert(isBinaryPalindrome(0xF88FF11F) == 1);
+    assert(isBinaryPalindrome(0x42242442) == 1);
+    assert(isBinaryPalindrome(0x232) == 0);
+
+    performance_test(isNumPalindrome);
+    performance_test(isBinaryPalindrome);
 
     return 0;
 }
