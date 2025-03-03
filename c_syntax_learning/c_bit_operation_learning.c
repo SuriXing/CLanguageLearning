@@ -5,6 +5,53 @@
 #include "../utils.h"
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
+
+int numOf1sInABinaryNum(int num)
+{
+    unsigned int unum = (unsigned int)num;
+
+    int count = 0;
+
+    for (int i = 0; i < sizeof(num) * 8; i++)
+    {
+        count += unum & 0x1;
+        unum = unum >> 1;
+    }
+
+    return count;
+}
+
+int numOf1sInABinaryNum2(int num)
+{
+    unsigned int unum = (unsigned int)num;
+
+    int count = 0;
+
+    for (int i = 0; i < sizeof(num) * 8; i++)
+    {
+        count += ((unum & 0x80000000) >> 31);
+        unum = unum << 1;
+    }
+
+    return count;
+}
+
+bool isNumSumOf2PowersOf2(int num)
+{
+    int count = numOf1sInABinaryNum2(num);
+
+    assert(numOf1sInABinaryNum2(num) == numOf1sInABinaryNum(num));
+    
+    if ((count == 1) || (count == 2))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 // 性能测试函数
 void performance_test(int (*fun)(int)) {
@@ -62,11 +109,11 @@ int isNumPalindrome(int num)
 
 int reverseBinaryNum(int num)
 {
-    unsigned int unum = (unsigned int) num;
+    unsigned int unum = (unsigned int)num;
 
     int count = 0;
 
-    for (int i = 0; i < sizeof(unum) * 8; i++)
+    for (int i = 0; i < sizeof(unum)*8; i++)
     {
         count <<= 1;
         count |= (unum & 0x1);
@@ -75,37 +122,6 @@ int reverseBinaryNum(int num)
 
     return count;
 }
-
-int numOf1sInABinaryNum(int num)
-{
-    unsigned int unum = (unsigned int)num;
-
-    int count = 0;
-
-    for (int i = 0; i < sizeof(num) * 8; i++)
-    {
-        count += (unum & 0x1);
-        unum = unum >> 1;
-    }
-
-    return count;
-}
-
-int numOf1sInABinaryNum2(int num)
-{
-    unsigned int unum = (unsigned int)num;
-
-    int count = 0;
-
-    for (int i = 0; i < sizeof(num) * 8; i++)
-    {
-        count += ((unum & 0x80000000) >> 31);
-        unum = unum << 1;
-    }
-
-    return count;
-}
-
 
 int absValue(int num)
 {
@@ -291,8 +307,12 @@ int main()
     assert(isBinaryPalindrome(0x42242442) == 1);
     assert(isBinaryPalindrome(0x232) == 0);
 
-    performance_test(isNumPalindrome);
-    performance_test(isBinaryPalindrome);
+    assert(isNumSumOf2PowersOf2(6) == 1);
+    assert(isNumSumOf2PowersOf2(8) == 1);
+    assert(isNumSumOf2PowersOf2(25) == 0);
+    assert(isNumSumOf2PowersOf2(48) == 1);
+    assert(isNumSumOf2PowersOf2(7) == 0);
+    assert(isNumSumOf2PowersOf2(24) == 1);
 
     return 0;
 }
