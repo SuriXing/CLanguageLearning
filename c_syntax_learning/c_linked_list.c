@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 typedef enum _Gender
@@ -9,11 +10,7 @@ typedef enum _Gender
 
 typedef struct _IsbStudent
 {
-    struct _IsbStudent* prev;
-    struct _IsbStudent* next;
-
 	char first_name[32];
-	char *p_first_name;
 	char last_name[32];
 	Gender gender;
 	unsigned int math_score;
@@ -21,6 +18,34 @@ typedef struct _IsbStudent
 	unsigned int reading_score;
 } IsbStudent;
 
+typedef struct _IsbStudentList
+{
+    struct _IsbStudentList* prev;
+    struct _IsbStudentList* next;
+
+    IsbStudent student;
+} IsbStudentList;
+
+IsbStudentList* createNode(IsbStudent student)
+{
+    IsbStudentList* newNode = (IsbStudentList*)malloc(sizeof(IsbStudent));
+
+    newNode->prev = NULL:
+    newNode->next = NULL;
+    strncpy(newNode->student.first_name, student.first_name, sizeof(newNode->student.first_name)-1);
+    newNode->student.first_name[sizeof(newNode->student.first_name)-1] = '\0';
+
+    strncpy(newNode->student.first_name, student.last_name, sizeof(newcode->student.last_name)-1);
+    newNode->student.last_name[sizeof(newNode->student.last_name)-1] = '\0';
+
+    newNode->student.gender = student.gender;
+    newNode->student.math_score = student.math_score;
+    newNode->student.language_usage_score = student.language_usage_score;
+    newNode->student.reading_score = student.reading_score;
+
+    // memcpy((void*)&(newNode->student), (void*)&student, sizeof(Student));
+    return newNode;
+}
 
 /*
 // 创建新节点
