@@ -35,7 +35,7 @@ IsbStudentList* createNode(IsbStudent student)
     strncpy(newNode->student.first_name, student.first_name, sizeof(newNode->student.first_name)-1);
     newNode->student.first_name[sizeof(newNode->student.first_name)-1] = '\0';
 
-    strncpy(newNode->student.first_name, student.last_name, sizeof(newcode->student.last_name)-1);
+    strncpy(newNode->student.first_name, student.last_name, sizeof(newNode->student.last_name)-1);
     newNode->student.last_name[sizeof(newNode->student.last_name)-1] = '\0';
 
     newNode->student.gender = student.gender;
@@ -44,6 +44,29 @@ IsbStudentList* createNode(IsbStudent student)
     newNode->student.reading_score = student.reading_score;
 
     // memcpy((void*)&(newNode->student), (void*)&student, sizeof(Student));
+    return newNode;
+}
+
+IsbStudentList* createNode2(IsbStudent student)
+{
+    IsbStudentList* newNode = (IsbStudentList*)malloc(sizeof(IsbStudent));
+
+    newNode->prev = NULL;
+    newNode->next = NULL;
+
+    strncpy(newNode->student.first_name, student.last_name, sizeof(newNode->student.first_name)-1);
+    newNode->student.first_name[sizeof(newNode->student.first_name)-1] = '\0';
+
+    strncpy(newNode->student.last_name, student.last_name, sizeof(newNode->student.last_name)-1);
+    newNode->student.last_name[sizeof(newNode->student.last_name)-1] = '\0';
+
+    newNode->student.gender = student.gender;
+    newNode->student.math_score = student.math_score;
+    newNode->student.language_usage_score = student.language_usage_score;
+    newNode->student.reading_score = student.reading_score;
+
+    //memcpy((void*)&(newNode->student), (void*)&student, sizeof(student));
+
     return newNode;
 }
 
