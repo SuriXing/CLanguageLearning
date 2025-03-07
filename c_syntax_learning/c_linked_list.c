@@ -28,14 +28,14 @@ typedef struct _IsbStudentList
 
 IsbStudentList* createNode(IsbStudent student)
 {
-    IsbStudentList* newNode = (IsbStudentList*)malloc(sizeof(IsbStudent));
+    IsbStudentList* newNode = (IsbStudentList*)malloc(sizeof(IsbStudentList));
 
-    newNode->prev = NULL:
+    newNode->prev = NULL;
     newNode->next = NULL;
     strncpy(newNode->student.first_name, student.first_name, sizeof(newNode->student.first_name)-1);
     newNode->student.first_name[sizeof(newNode->student.first_name)-1] = '\0';
 
-    strncpy(newNode->student.first_name, student.last_name, sizeof(newNode->student.last_name)-1);
+    strncpy(newNode->student.last_name, student.last_name, sizeof(newNode->student.last_name)-1);
     newNode->student.last_name[sizeof(newNode->student.last_name)-1] = '\0';
 
     newNode->student.gender = student.gender;
@@ -70,10 +70,20 @@ IsbStudentList* createNode2(IsbStudent student)
     return newNode;
 }
 
-/*
-// 创建新节点
-LinkedList* createNode(IsbStudent student);
+// 打印链表中的所有学生信息
+void printList(IsbStudentList* head)
+{
+    IsbStudentList* pIndex = head;
 
+    while (NULL != pIndex)
+    {
+        printf("%s\n", pIndex->student.first_name);
+
+        pIndex = pIndex->next;
+    }
+
+}
+/*
 // 在链表头部插入节点
 LinkedList* insertAtHead(LinkedList* head, IsbStudent student);
 
@@ -86,8 +96,7 @@ LinkedList* deleteNode(LinkedList* head, IsbStudent student);
 // 查找具有特定名字的学生节点
 LinkedList* findNode(LinkedList* head, const char* first_name, const char* last_name);
 
-// 打印链表中的所有学生信息
-void printList(LinkedList* head);
+
 
 // 释放链表占用的内存
 void freeList(LinkedList* head);
@@ -95,12 +104,11 @@ void freeList(LinkedList* head);
 int main(void)
 {
     IsbStudent Suri;
+    IsbStudent Maria;
+    IsbStudent Rachel;
 
     strncpy(Suri.first_name, "Suri", sizeof(Suri.first_name)-1);
     Suri.first_name[sizeof(Suri.first_name)-1] = '\0';
-
-    IsbStudent Maria;
-    IsbStudent Rachel;
 
     strncpy(Maria.first_name, "Maria", sizeof(Maria.first_name) - 1);
     Maria.first_name[sizeof(Maria.first_name)-1] = '\0';
@@ -108,43 +116,21 @@ int main(void)
     strncpy(Rachel.first_name, "Rachel", sizeof(Rachel.first_name)-1);
     Rachel.first_name[sizeof(Rachel.first_name)-1] = '\0';
 
+    IsbStudentList* pSuri = createNode(Suri);
+    IsbStudentList* pMaria = createNode(Maria);
+    IsbStudentList* pRachel = createNode(Rachel);
 
-    Suri.prev = NULL;
-    Suri.next = &Maria;
+    pSuri->prev = NULL;
 
-    Maria.prev = &Suri;
-    Maria.next = &Rachel;
+    pSuri->next = pMaria;
+    pMaria->prev = pSuri;
 
-    Rachel.prev = &Maria;
-    Rachel.next = NULL;
+    pMaria->next = pRachel;
+    pRachel->prev = pMaria;
 
-    IsbStudent* pIndex = NULL;
-    
-    pIndex = &Suri;
-    while (NULL != pIndex)
-    {
-        printf("%s\n", pIndex->first_name);
-    
-        pIndex = pIndex->next;
-    }
+    pRachel->next = NULL;
 
-    pIndex = &Rachel;
-    while (NULL != pIndex)
-    {
-        printf("%s\n", pIndex->first_name);
+    printList(pSuri);
 
-        pIndex = pIndex->prev;
-    }
-
-    Suri.next = &Rachel;
-    Rachel.prev = &Suri;
-
-    pIndex = &Suri;
-    while (NULL != pIndex)
-    {
-        printf("%s\n", pIndex->first_name);
-    
-        pIndex = pIndex->next;
-    }
     return 0;
 }
