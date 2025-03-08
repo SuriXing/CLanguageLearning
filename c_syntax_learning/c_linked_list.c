@@ -70,6 +70,19 @@ IsbStudentList* createNode2(IsbStudent student)
     return newNode;
 }
 
+IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
+{
+    if ((NULL == currentNode) || (NULL == newNode))
+    {
+        return currentNode;
+    }
+
+    currentNode->next = newNode;
+    newNode->prev = currentNode;
+
+    return currentNode;
+}
+
 // 打印链表中的所有学生信息
 void printList(IsbStudentList* head)
 {
@@ -120,17 +133,11 @@ int main(void)
     IsbStudentList* pMaria = createNode(Maria);
     IsbStudentList* pRachel = createNode(Rachel);
 
-    pSuri->prev = NULL;
-
-    pSuri->next = pMaria;
-    pMaria->prev = pSuri;
-
-    pMaria->next = pRachel;
-    pRachel->prev = pMaria;
-
-    pRachel->next = NULL;
+    insertNode(pSuri, pMaria);
+    insertNode(pMaria, pRachel);
 
     printList(pSuri);
-
+    
+    //printList(insertNode(pSuri, insertNode(pMaria, pRachel)));
     return 0;
 }
