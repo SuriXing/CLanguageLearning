@@ -83,6 +83,29 @@ IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
     return currentNode;
 }
 
+IsbStudentList* reverseNode(IsbStudentList* currentNode, IsbStudentList* reverseList)
+{
+    IsbStudentList* temp = NULL;
+
+    if ((NULL == currentNode) || (NULL == reverseList))
+    {
+        return currentNode;
+    }
+
+    reverseList = currentNode;
+
+    while (currentNode != NULL)
+    { 
+        currentNode = currentNode->next;
+        reverseList->prev = currentNode;
+        reverseList->next = temp;
+        temp = currentNode->next;
+    }
+
+    return reverseList;
+}
+
+
 // 打印链表中的所有学生信息
 void printList(IsbStudentList* head)
 {
@@ -109,11 +132,26 @@ LinkedList* deleteNode(LinkedList* head, IsbStudent student);
 // 查找具有特定名字的学生节点
 LinkedList* findNode(LinkedList* head, const char* first_name, const char* last_name);
 
-
-
 // 释放链表占用的内存
-void freeList(LinkedList* head);
+
 */
+
+void freeList(IsbStudentList* head)
+{
+    if (NULL == head)
+    {
+        return ;
+    }
+    
+    IsbStudentList* curr = head;
+    while (NULL != curr)
+    {   
+        IsbStudentList* temp = curr->next;
+        free(curr);
+        curr = temp;
+    }
+}
+
 int main(void)
 {
     IsbStudent Suri;
