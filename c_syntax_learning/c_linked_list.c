@@ -152,6 +152,23 @@ void freeList(IsbStudentList* head)
     }
 }
 
+void freeList2(IsbStudentList* head)
+{
+    if (NULL == head)
+    {
+        return ;
+    }
+    
+    IsbStudentList* curr = head;
+    while (NULL != curr)
+    {   
+        IsbStudentList* temp = curr->next;
+        free(curr);
+        curr = temp;
+    }
+}
+
+
 int main(void)
 {
     IsbStudent Suri;
