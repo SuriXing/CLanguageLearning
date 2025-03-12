@@ -126,15 +126,43 @@ LinkedList* insertAtHead(LinkedList* head, IsbStudent student);
 // 在链表尾部插入节点
 LinkedList* insertAtTail(LinkedList* head, IsbStudent student);
 
-// 删除指定学生信息的节点
-LinkedList* deleteNode(LinkedList* head, IsbStudent student);
-
 // 查找具有特定名字的学生节点
 LinkedList* findNode(LinkedList* head, const char* first_name, const char* last_name);
 
 // 释放链表占用的内存
 
 */
+
+/*IsbStudentList* deleteNode(IsbStudentList* head, IsbStudent student)
+{
+    //maria.next = rachel.next;
+    //rachel.next.prev = maria;
+    //freeList(rachel);
+
+    if (NULL == head)
+    {
+        return ;
+    }
+    
+    head->student.maria
+
+}*/
+
+IsbStudentList* findNode(IsbStudentList* head, const char* first_name)
+{
+    while (head != NULL)
+    {
+        if ((strcmp(head->student.first_name, first_name)) == 0)
+        {
+            return head;
+        }
+
+        head = head->next;
+    }
+
+    printf("not found\n");
+    return NULL;
+}
 
 void freeList(IsbStudentList* head)
 {
@@ -190,6 +218,8 @@ int main(void)
 
     insertNode(pSuri, pMaria);
     insertNode(pMaria, pRachel);
+
+    findNode(pSuri, "Jenny");
 
     printList(pSuri);
     
