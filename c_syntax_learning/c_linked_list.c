@@ -133,21 +133,6 @@ LinkedList* findNode(LinkedList* head, const char* first_name, const char* last_
 
 */
 
-/*IsbStudentList* deleteNode(IsbStudentList* head, IsbStudent student)
-{
-    //maria.next = rachel.next;
-    //rachel.next.prev = maria;
-    //freeList(rachel);
-
-    if (NULL == head)
-    {
-        return ;
-    }
-    
-    head->student.maria
-
-}*/
-
 IsbStudentList* findNode(IsbStudentList* head, const char* first_name)
 {
     while (head != NULL)
@@ -196,6 +181,44 @@ void freeList2(IsbStudentList* head)
     }
 }
 
+IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
+{
+    //maria.next = rachel.next;
+    //rachel.next.prev = maria;
+    //freeList(rachel);
+
+    if (NULL == head)
+    {
+        return NULL;
+    }
+    
+    IsbStudentList* student = findNode(head, first_name);
+    IsbStudentList* newhead = head;
+
+    if (student->next != NULL)
+    {
+        if (student->prev != NULL)
+        {
+            student->prev->next = student->next;
+            student->next->prev = student->prev;
+        }
+        else
+        {
+            student->next->prev = NULL;
+            newhead = student->next;
+        }
+    }
+    else
+    {
+        student->prev->next = NULL;
+    }
+
+    student->next = NULL;
+    student->prev = NULL;
+    freeList(student);
+
+    return newhead;
+}
 
 int main(void)
 {
@@ -220,6 +243,10 @@ int main(void)
     insertNode(pMaria, pRachel);
 
     findNode(pSuri, "Jenny");
+
+    printList(pSuri);
+
+    deleteNode(pSuri, "Maria");
 
     printList(pSuri);
     
