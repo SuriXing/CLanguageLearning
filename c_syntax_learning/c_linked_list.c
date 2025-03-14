@@ -220,6 +220,41 @@ IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
     return newhead;
 }
 
+IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
+{
+    if (NULL == head)
+    {
+        return NULL;
+    }
+    
+    IsbStudentList* student = findNode(head, first_name);
+    IsbStudentList* newhead = head;
+
+    if (student->next != NULL)
+    {
+        if (student->prev != NULL)
+        {
+            student->prev->next = student->next;
+            student->next->prev = student->prev;
+        }
+        else
+        {
+            student->next->prev = NULL;
+            newhead = student->next;
+        }
+    }
+    else
+    {
+        student->prev->next = NULL;
+    }
+
+    student->next = NULL;
+    student->prev = NULL;
+    freeList(student);
+
+    return newhead;
+}
+
 int main(void)
 {
     IsbStudent Suri;
@@ -246,7 +281,7 @@ int main(void)
 
     printList(pSuri);
 
-    deleteNode(pSuri, "Maria");
+    deleteNode(pSuri, "Rachel");
 
     printList(pSuri);
     
