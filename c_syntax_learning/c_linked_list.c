@@ -260,6 +260,8 @@ int main(void)
     IsbStudent Suri;
     IsbStudent Maria;
     IsbStudent Rachel;
+    IsbStudent Neinei;
+    IsbStudent Angelina;
 
     strncpy(Suri.first_name, "Suri", sizeof(Suri.first_name)-1);
     Suri.first_name[sizeof(Suri.first_name)-1] = '\0';
@@ -270,18 +272,28 @@ int main(void)
     strncpy(Rachel.first_name, "Rachel", sizeof(Rachel.first_name)-1);
     Rachel.first_name[sizeof(Rachel.first_name)-1] = '\0';
 
+    strncpy(Neinei.first_name, "Neinei", sizeof(Neinei.first_name)-1);
+    Neinei.first_name[sizeof(Neinei.first_name)-1] = '\0';
+
+    strncpy(Angelina.first_name, "Angelina", sizeof(Angelina.first_name)-1);
+    Angelina.first_name[sizeof(Angelina.first_name)-1] = '\0';
+
     IsbStudentList* pSuri = createNode(Suri);
     IsbStudentList* pMaria = createNode(Maria);
     IsbStudentList* pRachel = createNode(Rachel);
+    IsbStudentList* pNeinei = createNode(Neinei);
+    IsbStudentList* pAngelina = createNode(Angelina);
 
     insertNode(pSuri, pMaria);
     insertNode(pMaria, pRachel);
+    insertNode(pRachel, pNeinei);
+    insertNode(pNeinei, pAngelina);
 
     findNode(pSuri, "Jenny");
 
     printList(pSuri);
 
-    deleteNode(pSuri, "Rachel");
+    deleteNode(pSuri, "Maria");
 
     printList(pSuri);
     
