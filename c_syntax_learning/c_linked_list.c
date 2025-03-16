@@ -83,6 +83,29 @@ IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
     return currentNode;
 }
 
+IsbStudentList* insertNode2(IsbStudentList* currentNode, IsbStudentList* newNode)
+{
+    if ((NULL == currentNode) || (NULL == newNode))
+    {
+        return currentNode;
+    }
+
+    currentNode->next = newNode;
+    newNode->prev = currentNode;
+
+    return currentNode;
+}
+
+IsbStudentList* copyNode(IsbStudentList* cpyNode)
+{
+    if (NULL == cpyNode)
+    {
+        return NULL;
+    }
+
+    return createNode(cpyNode->student);
+}
+
 IsbStudentList* reverseNode(IsbStudentList* currentNode, IsbStudentList* reverseList)
 {
     IsbStudentList* temp = NULL;
@@ -291,9 +314,19 @@ int main(void)
 
     findNode(pSuri, "Jenny");
 
+    printf("\n");
+
     printList(pSuri);
 
     deleteNode(pSuri, "Maria");
+
+    printf("\n");
+
+    printList(pSuri);
+
+    copyNode(pSuri);
+
+    printf("\n");
 
     printList(pSuri);
     
