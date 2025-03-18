@@ -159,6 +159,33 @@ void printReverseList(IsbStudentList* head)
     }
 }
 
+IsbStudentList* createReverseList(IsbStudentList* head)
+{
+    printList(head);
+
+    IsbStudentList* pIndex = head;
+
+    while (NULL != pIndex->next)
+    {
+        pIndex = pIndex -> next;
+    }
+
+    IsbStudentList* pIndent = createNode(pIndex->student);
+    IsbStudentList* newHead = pIndent;
+
+    while (NULL != pIndex->prev)
+    {
+        IsbStudentList* node = createNode(pIndex->prev->student);
+        insertNode(pIndent, node);
+        pIndent = pIndent->next;
+        pIndex = pIndex->prev;
+    }
+
+    printList(newHead);
+
+    return newHead;
+}
+
 /*
 // 在链表头部插入节点
 LinkedList* insertAtHead(LinkedList* head, IsbStudent student);
@@ -344,9 +371,12 @@ int main(void)
     copyNode(pSuri);
 
     printf("\n");
-    */
+
     printList(pSuri);
     printReverseList(pSuri);
+    */
+
+    createReverseList(pSuri);
     
     //printList(insertNode(pSuri, insertNode(pMaria, pRachel)));
     return 0;
