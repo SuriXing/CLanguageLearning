@@ -24,7 +24,7 @@ typedef struct _IsbStudentList
     struct _IsbStudentList* next;
 
     IsbStudent student;
-} IsbStudentList;
+}IsbStudentList;
 
 IsbStudentList* createNode(IsbStudent student)
 {
@@ -128,6 +128,27 @@ IsbStudentList* reverseNode(IsbStudentList* currentNode, IsbStudentList* reverse
     return reverseList;
 }
 
+IsbStudentList* reverseNode2(IsbStudentList* currentNode, IsbStudentList* reverseList)
+{
+    IsbStudentList* temp = NULL;
+
+    if ((NULL == currentNode) || (NULL == reverseList))
+    {
+        return currentNode;
+    }
+
+    reverseList = currentNode;
+
+    while (currentNode != NULL)
+    { 
+        currentNode = currentNode->next;
+        reverseList->prev = currentNode;
+        reverseList->next = temp;
+        temp = currentNode->next;
+    }
+
+    return reverseList;
+}
 
 // 打印链表中的所有学生信息
 void printList(IsbStudentList* head)
