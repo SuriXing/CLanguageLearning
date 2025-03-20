@@ -343,6 +343,32 @@ IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
     return newhead;
 }
 
+IsbStudentList* connectTwoLists(IsbStudentList* dest, IsbStudentList* src)
+{
+    IsbStudentList* copy = dest;
+
+    if ((NULL == dest) || (NULL == src))
+    {
+        return NULL;
+    }
+
+    while (NULL != dest->next)
+    {
+        dest = dest->next;
+    }
+
+    dest->next = src;
+    src->prev = dest;
+ 
+    while (NULL != src->next)
+    {
+        src = src->next;
+    }
+
+    printList(copy);
+    return dest;
+}
+
 int main(void)
 {
     IsbStudent Suri;
@@ -377,8 +403,23 @@ int main(void)
     insertNode(pRachel, pNeinei);
     insertNode(pNeinei, pAngelina);
 
-    findNode(pSuri, "Jenny");
+    IsbStudent Alina;
+    IsbStudent Xiao;
+
+    strncpy(Alina.first_name, "Alina", sizeof(Alina.first_name)-1);
+    Alina.first_name[sizeof(Alina.first_name)-1] = '\0';
+
+    strncpy(Xiao.first_name, "Xiao", sizeof(Xiao.first_name) - 1);
+    Xiao.first_name[sizeof(Xiao.first_name)-1] = '\0';
+
+    IsbStudentList* pAlina = createNode(Alina);
+    IsbStudentList* pXiao = createNode(Xiao);
+
+    insertNode(pAlina, pXiao);
+
     /*
+    findNode(pSuri, "Jenny");
+    
     printf("\n");
 
     printList(pSuri);
@@ -395,9 +436,11 @@ int main(void)
 
     printList(pSuri);
     printReverseList(pSuri);
-    */
 
     createReverseList(pSuri);
+    */
+
+    connectTwoLists(pSuri, pAlina);
     
     //printList(insertNode(pSuri, insertNode(pMaria, pRachel)));
     return 0;
