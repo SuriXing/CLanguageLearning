@@ -207,20 +207,6 @@ IsbStudentList* createReverseList(IsbStudentList* head)
     return newHead;
 }
 
-/*
-// 在链表头部插入节点
-LinkedList* insertAtHead(LinkedList* head, IsbStudent student);
-
-// 在链表尾部插入节点
-LinkedList* insertAtTail(LinkedList* head, IsbStudent student);
-
-// 查找具有特定名字的学生节点
-LinkedList* findNode(LinkedList* head, const char* first_name, const char* last_name);
-
-// 释放链表占用的内存
-
-*/
-
 IsbStudentList* findNode(IsbStudentList* head, const char* first_name)
 {
     while (head != NULL)
