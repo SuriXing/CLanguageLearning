@@ -60,6 +60,16 @@ IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
     return currentNode;
 }
 
+IsbStudentList* copyNode(IsbStudentList* copyNode)
+{
+    if (NULL == copyNode)
+    {
+        return NULL;
+    }
+
+    return createNode(copyNode->student);
+}
+
 int main()
 {
     IsbStudent Suri;
@@ -105,6 +115,12 @@ int main()
     );
 
     printList(pSuri);
+
+    printf("\n");
+
+    IsbStudentList* copy = copyNode(pSuri);
+
+    printList(copy);
 
     return 0;
 }
