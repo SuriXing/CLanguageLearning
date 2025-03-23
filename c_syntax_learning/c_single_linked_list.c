@@ -23,7 +23,7 @@ typedef struct _IsbStudentList
     struct _IsbStudentList* next;
 
     IsbStudent student;
-}IsbStudentList;
+} IsbStudentList;
 
 IsbStudentList* createNode(IsbStudent student)
 {
@@ -34,6 +34,16 @@ IsbStudentList* createNode(IsbStudent student)
     memcpy((void*)&(newNode->student), (void*)&student, sizeof(student));
 
     return newNode;
+}
+
+void freeNode(IsbStudentList* node)
+{
+    if (NULL == node)
+    {
+        return;
+    }
+
+    free(node);
 }
 
 void printList(IsbStudentList* head)
@@ -68,6 +78,47 @@ IsbStudentList* copyNode(IsbStudentList* copyNode)
     }
 
     return createNode(copyNode->student);
+}
+
+IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
+{
+    if (NULL == head)
+    {
+        return NULL;
+    }
+
+    IsbStudentList* curr = head;
+    IsbStudentList* prev = curr;
+
+    while (curr->next != NULL)
+    {
+        if (strcmp(curr->student.first_name, first_name) == 0)
+        {
+            break;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+
+    // no match
+    if (curr->next == NULL)
+    {
+        return NULL;
+    }
+
+    // match first
+    if (prev == curr)
+    {
+        head = curr->next;
+    }
+    else
+    {
+        prev->next = curr->next;
+    }
+
+    freeNode(curr);
+
+    return head;
 }
 
 int main()
