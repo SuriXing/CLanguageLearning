@@ -90,7 +90,7 @@ IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
     IsbStudentList* curr = head;
     IsbStudentList* prev = curr;
 
-    while (curr->next != NULL)
+    while (curr != NULL)
     {
         if (strcmp(curr->student.first_name, first_name) == 0)
         {
@@ -101,13 +101,53 @@ IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
     }
 
     // no match
-    if (curr->next == NULL)
+    if (curr == NULL)
     {
         return NULL;
     }
 
     // match first
     if (prev == curr)
+    {
+        head = curr->next;
+    }
+    else
+    {
+        prev->next = curr->next;
+    }
+
+    freeNode(curr);
+
+    return head;
+}
+
+IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
+{
+    if (NULL == head)
+    {
+        return NULL;
+    }
+    
+    IsbStudentList* curr = head;
+    IsbStudentList* prev = curr;
+
+    while (curr != NULL)
+    {
+        if (strcmp(curr->student.first_name, first_name) == 0)
+        {
+            break;
+        }
+
+        prev = curr;
+        curr = curr->next;
+    }
+    
+    if (curr == NULL)
+    {
+        return NULL;
+    }
+
+    if (curr == prev)
     {
         head = curr->next;
     }
@@ -172,6 +212,14 @@ int main()
     IsbStudentList* copy = copyNode(pSuri);
 
     printList(copy);
+
+    pSuri = deleteNode(pSuri, "Maria");
+
+    printList(pSuri);
+
+    pSuri = deleteNode2(pSuri, "Alina");
+
+    printList(pSuri);
 
     return 0;
 }
