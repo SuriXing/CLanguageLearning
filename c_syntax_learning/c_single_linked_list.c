@@ -103,7 +103,7 @@ IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
     // no match
     if (curr == NULL)
     {
-        return NULL;
+        return head;
     }
 
     // match first
@@ -123,13 +123,16 @@ IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
 
 IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
 {
-    if (NULL == head)
+    if ((NULL == head) || (NULL == first_name)) 
     {
         return NULL;
     }
     
-    IsbStudentList* curr = head;
-    IsbStudentList* prev = curr;
+    IsbStudentList dummyHead;
+    dummyHead.next = head;
+
+    IsbStudentList *prev = head;
+    IsbStudentList *curr = head;
 
     while (curr != NULL)
     {
@@ -141,24 +144,46 @@ IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
         prev = curr;
         curr = curr->next;
     }
-    
-    if (curr == NULL)
-    {
-        return NULL;
-    }
 
-    if (curr == prev)
-    {
-        head = curr->next;
-    }
-    else
+    if (NULL != curr)
     {
         prev->next = curr->next;
     }
 
-    freeNode(curr);
+    return dummyHead.next;
+}
 
-    return head;
+IsbStudentList* deleteNode3(IsbStudentList* head, const char* first_name)
+{
+    if ((NULL == head) || (NULL == first_name)) 
+    {
+        return NULL;
+    }
+
+    IsbStudentList dummyHead;
+    dummyHead.next = head;
+
+    IsbStudentList *prev = head;
+    IsbStudentList *curr = head;
+
+    while (curr != NULL)
+    {
+        if (strcmp(curr->student.first_name, first_name) == 0)
+        {
+            break;
+        }
+
+        prev = &dummyHead;
+        curr = curr->next;
+    }
+
+    if (NULL != curr)
+    {
+        prev->next = curr->next;
+        freeNode(curr);
+    }
+
+    return dummyHead.next;
 }
 
 int main()
