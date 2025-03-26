@@ -52,7 +52,7 @@ void printList(IsbStudentList* head)
 
     while (NULL != pIndex)
     {
-        printf("%s\n", pIndex->student.first_name);
+        printf("%s %d\n", pIndex->student.first_name, pIndex->student.math_score);
 
         pIndex = pIndex->next;
     }
@@ -65,8 +65,9 @@ IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
         return currentNode;
     }
 
+    newNode->next = currentNode->next;
     currentNode->next = newNode;
-
+    
     return currentNode;
 }
 
@@ -186,6 +187,33 @@ IsbStudentList* deleteNode3(IsbStudentList* head, const char* first_name)
     return dummyHead.next;
 }
 
+IsbStudentList* listNode(IsbStudentList* head, IsbStudentList* student)
+{
+    if ((NULL == head) || (NULL == student))
+    {
+        return NULL;
+    }
+
+    IsbStudentList* copy = head;
+
+    while (copy->next != NULL)
+    {
+        if (student->student.math_score > copy->next->student.math_score)
+        {
+            /*
+            head->next = student;
+            student->next = head->next->next;
+            */
+           insertNode(copy, student);
+           break;
+        }
+        
+        copy = copy->next;
+    }
+
+    return head;
+}
+
 int main()
 {
     IsbStudent Suri;
@@ -194,24 +222,36 @@ int main()
     IsbStudent Angelina;
     IsbStudent Alina;
     IsbStudent Xiaoxiao;
+    
+    IsbStudent Jenny;
 
     strncpy(Suri.first_name, "Suri", sizeof(Suri.first_name)-1);
     Suri.first_name[sizeof(Suri.first_name)-1] = '\0';
+    Suri.math_score = 100;
 
     strncpy(Maria.first_name, "Maria", sizeof(Maria.first_name) - 1);
     Maria.first_name[sizeof(Maria.first_name)-1] = '\0';
+    Maria.math_score = 99;
 
     strncpy(Rachel.first_name, "Rachel", sizeof(Rachel.first_name)-1);
     Rachel.first_name[sizeof(Rachel.first_name)-1] = '\0';
+    Rachel.math_score = 98;
 
     strncpy(Alina.first_name, "Alina", sizeof(Alina.first_name)-1);
     Alina.first_name[sizeof(Alina.first_name)-1] = '\0';
+    Alina.math_score = 97;
 
     strncpy(Angelina.first_name, "Angelina", sizeof(Angelina.first_name)-1);
     Angelina.first_name[sizeof(Angelina.first_name)-1] = '\0';
+    Angelina.math_score = 96;
 
     strncpy(Xiaoxiao.first_name, "Xiaoxiao", sizeof(Xiaoxiao.first_name)-1);
     Xiaoxiao.first_name[sizeof(Xiaoxiao.first_name)-1] = '\0';
+    Xiaoxiao.math_score = 95;
+
+    strncpy(Jenny.first_name, "Jenny", sizeof(Jenny.first_name)-1);
+    Jenny.first_name[sizeof(Jenny.first_name)-1] = '\0';
+    Jenny.math_score = 96;
 
     IsbStudentList* pSuri = createNode(Suri);
     IsbStudentList* pMaria = createNode(Maria);
@@ -219,16 +259,21 @@ int main()
     IsbStudentList* pAlina = createNode(Alina);
     IsbStudentList* pAngelina = createNode(Angelina);
     IsbStudentList* pXiaoxiao = createNode(Xiaoxiao);
+    
+    IsbStudentList* pJenny = createNode(Jenny);
 
-    insertNode(pSuri,
-        insertNode(pMaria,
-            insertNode(pRachel,
-                insertNode(pAlina,
-                    insertNode(pAngelina, pXiaoxiao)
-                )
-            )
-        )
+    insertNode(
+        insertNode(
+            insertNode(
+                insertNode(
+                    insertNode(pAngelina, pXiaoxiao), pAlina
+                ), pRachel
+            ), pMaria
+        ),pSuri
     );
+
+
+    /*
 
     printList(pSuri);
 
@@ -243,6 +288,16 @@ int main()
     printList(pSuri);
 
     pSuri = deleteNode2(pSuri, "Alina");
+
+    printList(pSuri);
+
+    */
+
+    printList(pSuri);
+
+
+    printf("\n");
+    listNode(pSuri, pJenny);
 
     printList(pSuri);
 
