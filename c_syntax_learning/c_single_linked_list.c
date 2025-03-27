@@ -81,6 +81,28 @@ IsbStudentList* copyNode(IsbStudentList* copyNode)
     return createNode(copyNode->student);
 }
 
+IsbStudentList* copyList(IsbStudentList* copyList)
+{
+    if (NULL == copyList)
+    {
+        return NULL;
+    }
+
+    IsbStudentList dummyHead;
+    dummyHead.next = NULL;
+
+    IsbStudentList* newList = &dummyHead;
+    while (copyList != NULL)
+    {
+        insertNode(newList, copyNode(copyList));
+
+        copyList = copyList->next;
+        newList = newList->next;
+    }
+
+    return dummyHead.next;
+}
+
 IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
 {
     if (NULL == head)
@@ -272,34 +294,12 @@ int main()
         ),pSuri
     );
 
-
-    /*
-
     printList(pSuri);
+
+    IsbStudentList* copiedList = copyList(pSuri);
 
     printf("\n");
-
-    IsbStudentList* copy = copyNode(pSuri);
-
-    printList(copy);
-
-    pSuri = deleteNode(pSuri, "Maria");
-
-    printList(pSuri);
-
-    pSuri = deleteNode2(pSuri, "Alina");
-
-    printList(pSuri);
-
-    */
-
-    printList(pSuri);
-
-
-    printf("\n");
-    listNode(pSuri, pJenny);
-
-    printList(pSuri);
+    printList(copiedList);
 
     return 0;
 }
