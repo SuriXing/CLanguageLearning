@@ -194,6 +194,7 @@ IsbStudentList* deleteNode3(IsbStudentList* head, const char* first_name)
         if (strcmp(curr->student.first_name, first_name) == 0)
         {
             break;
+            printf("Is this thingy working?\n");
         }
 
         prev = &dummyHead;
@@ -210,6 +211,33 @@ IsbStudentList* deleteNode3(IsbStudentList* head, const char* first_name)
 }
 
 IsbStudentList* listNode(IsbStudentList* head, IsbStudentList* student)
+{
+    if ((NULL == head) || (NULL == student))
+    {
+        return NULL;
+    }
+
+    IsbStudentList* copy = head;
+
+    while (copy->next != NULL)
+    {
+        if (student->student.math_score > copy->next->student.math_score)
+        {
+            /*
+            head->next = student;
+            student->next = head->next->next;
+            */
+           insertNode(copy, student);
+           break;
+        }
+        
+        copy = copy->next;
+    }
+
+    return head;
+}
+
+IsbStudentList* listNode2(IsbStudentList* head, IsbStudentList* student)
 {
     if ((NULL == head) || (NULL == student))
     {
