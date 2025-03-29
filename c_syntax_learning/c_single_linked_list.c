@@ -83,6 +83,19 @@ IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
     return currentNode;
 }
 
+IsbStudentList* insertNode2(IsbStudentList* currentNode, IsbStudentList* newNode)
+{
+    if ((NULL == currentNode) || (NULL == newNode))
+    {
+        return currentNode;
+    }
+
+    newNode->next = currentNode->next;
+    currentNode->next = newNode;
+    
+    return currentNode;
+}
+
 IsbStudentList* copyNode(IsbStudentList* copyNode)
 {
     if (NULL == copyNode)
