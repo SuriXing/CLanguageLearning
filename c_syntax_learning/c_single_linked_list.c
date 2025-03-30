@@ -176,7 +176,41 @@ IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
     return dummyHead.next;
 }
 
-IsbStudentList* deleteNode3(IsbStudentList* head, const char* first_name)
+IsbStudentList* deleteNode2ndVersion(IsbStudentList* head, const char* first_name)
+{
+    if ((NULL == head) || (NULL == first_name)) 
+    {
+        return NULL;
+    }
+
+    IsbStudentList dummyHead;
+    dummyHead.next = head;
+
+    IsbStudentList *prev = head;
+    IsbStudentList *curr = head;
+
+    while (curr != NULL)
+    {
+        if (strcmp(curr->student.first_name, first_name) == 0)
+        {
+            break;
+            printf("Is this thingy working?\n");
+        }
+
+        prev = &dummyHead;
+        curr = curr->next;
+    }
+
+    if (NULL != curr)
+    {
+        prev->next = curr->next;
+        freeNode(curr);
+    }
+
+    return dummyHead.next;
+}
+
+IsbStudentList* deleteNode2ndVersion2(IsbStudentList* head, const char* first_name)
 {
     if ((NULL == head) || (NULL == first_name)) 
     {
