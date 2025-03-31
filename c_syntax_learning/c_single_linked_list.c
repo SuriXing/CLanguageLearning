@@ -103,6 +103,28 @@ IsbStudentList* copyList(IsbStudentList* copyList)
     return dummyHead.next;
 }
 
+IsbStudentList* copyList2(IsbStudentList* copyList)
+{
+    if (NULL == copyList)
+    {
+        return NULL;
+    }
+
+    IsbStudentList dummyHead;
+    dummyHead.next = NULL;
+
+    IsbStudentList* newList = &dummyHead;
+    while (copyList != NULL)
+    {
+        insertNode(newList, copyNode(copyList));
+
+        copyList = copyList->next;
+        newList = newList->next;
+    }
+
+    return dummyHead.next;
+}
+
 IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
 {
     if (NULL == head)
