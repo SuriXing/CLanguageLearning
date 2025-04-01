@@ -58,6 +58,18 @@ void printList(IsbStudentList* head)
     }
 }
 
+void printList2(IsbStudentList* head)
+{
+    IsbStudentList* pIndex = head;
+
+    while (NULL != pIndex)
+    {
+        printf("%s %d\n", pIndex->student.first_name, pIndex->student.math_score);
+
+        pIndex = pIndex->next;
+    }
+}
+
 IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
