@@ -1,34 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "c_isb_students.h"
 
-typedef enum _Gender
+typedef struct _IsbStudentDoubleList
 {
-	MALE,
-	FEMALE,
-} Gender;
-
-typedef struct _IsbStudent
-{
-	char first_name[32];
-	char last_name[32];
-	Gender gender;
-	unsigned int math_score;
-	unsigned int language_usage_score;
-	unsigned int reading_score;
-} IsbStudent;
-
-typedef struct _IsbStudentList
-{
-    struct _IsbStudentList* prev;
-    struct _IsbStudentList* next;
+    struct _IsbStudentDoubleList* prev;
+    struct _IsbStudentDoubleList* next;
 
     IsbStudent student;
-}IsbStudentList;
+} IsbStudentDoubleList;
 
-IsbStudentList* createNode(IsbStudent student)
+IsbStudentDoubleList* DLCreateNode(IsbStudent student)
 {
-    IsbStudentList* newNode = (IsbStudentList*)malloc(sizeof(IsbStudentList));
+    IsbStudentDoubleList* newNode = (IsbStudentDoubleList*)malloc(sizeof(IsbStudentDoubleList));
 
     newNode->prev = NULL;
     newNode->next = NULL;
@@ -47,9 +32,9 @@ IsbStudentList* createNode(IsbStudent student)
     return newNode;
 }
 
-IsbStudentList* createNode2(IsbStudent student)
+IsbStudentDoubleList* DLCreateNode2(IsbStudent student)
 {
-    IsbStudentList* newNode = (IsbStudentList*)malloc(sizeof(IsbStudent));
+    IsbStudentDoubleList* newNode = (IsbStudentDoubleList*)malloc(sizeof(IsbStudent));
 
     newNode->prev = NULL;
     newNode->next = NULL;
@@ -70,7 +55,7 @@ IsbStudentList* createNode2(IsbStudent student)
     return newNode;
 }
 
-IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
+IsbStudentDoubleList* DLinsertNode(IsbStudentDoubleList* currentNode, IsbStudentDoubleList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
     {
@@ -83,7 +68,7 @@ IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
     return currentNode;
 }
 
-IsbStudentList* insertNode2(IsbStudentList* currentNode, IsbStudentList* newNode)
+IsbStudentDoubleList* DLinsertNode2(IsbStudentDoubleList* currentNode, IsbStudentDoubleList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
     {
@@ -96,19 +81,19 @@ IsbStudentList* insertNode2(IsbStudentList* currentNode, IsbStudentList* newNode
     return currentNode;
 }
 
-IsbStudentList* copyNode(IsbStudentList* cpyNode)
+IsbStudentDoubleList* DLcopyNode(IsbStudentDoubleList* cpyNode)
 {
     if (NULL == cpyNode)
     {
         return NULL;
     }
 
-    return createNode(cpyNode->student);
+    return DLCreateNode(cpyNode->student);
 }
 
-IsbStudentList* reverseNode(IsbStudentList* currentNode, IsbStudentList* reverseList)
+IsbStudentDoubleList* DLreverseNode(IsbStudentDoubleList* currentNode, IsbStudentDoubleList* reverseList)
 {
-    IsbStudentList* temp = NULL;
+    IsbStudentDoubleList* temp = NULL;
 
     if ((NULL == currentNode) || (NULL == reverseList))
     {
@@ -128,9 +113,9 @@ IsbStudentList* reverseNode(IsbStudentList* currentNode, IsbStudentList* reverse
     return reverseList;
 }
 
-IsbStudentList* reverseNode2(IsbStudentList* currentNode, IsbStudentList* reverseList)
+IsbStudentDoubleList* DLreverseNode2(IsbStudentDoubleList* currentNode, IsbStudentDoubleList* reverseList)
 {
-    IsbStudentList* temp = NULL;
+    IsbStudentDoubleList* temp = NULL;
 
     if ((NULL == currentNode) || (NULL == reverseList))
     {
@@ -151,9 +136,9 @@ IsbStudentList* reverseNode2(IsbStudentList* currentNode, IsbStudentList* revers
 }
 
 // 打印链表中的所有学生信息
-void printList(IsbStudentList* head)
+void DLprintList(IsbStudentDoubleList* head)
 {
-    IsbStudentList* pIndex = head;
+    IsbStudentDoubleList* pIndex = head;
 
     while (NULL != pIndex)
     {
@@ -164,9 +149,9 @@ void printList(IsbStudentList* head)
 
 }
 
-void printReverseList(IsbStudentList* head)
+void printReverseList(IsbStudentDoubleList* head)
 {
-    IsbStudentList* pIndex = head;
+    IsbStudentDoubleList* pIndex = head;
 
     while (NULL != pIndex->next)
     {
@@ -180,34 +165,34 @@ void printReverseList(IsbStudentList* head)
     }
 }
 
-IsbStudentList* createReverseList(IsbStudentList* head)
+IsbStudentDoubleList* createReverseList(IsbStudentDoubleList* head)
 {
-    printList(head);
+    DLprintList(head);
 
-    IsbStudentList* pIndex = head;
+    IsbStudentDoubleList* pIndex = head;
 
     while (NULL != pIndex->next)
     {
         pIndex = pIndex -> next;
     }
 
-    IsbStudentList* pIndent = createNode(pIndex->student);
-    IsbStudentList* newHead = pIndent;
+    IsbStudentDoubleList* pIndent = DLCreateNode(pIndex->student);
+    IsbStudentDoubleList* newHead = pIndent;
 
     while (NULL != pIndex->prev)
     {
-        IsbStudentList* node = createNode(pIndex->prev->student);
-        insertNode(pIndent, node);
+        IsbStudentDoubleList* node = DLCreateNode(pIndex->prev->student);
+        DLinsertNode(pIndent, node);
         pIndent = pIndent->next;
         pIndex = pIndex->prev;
     }
 
-    printList(newHead);
+    DLprintList(newHead);
 
     return newHead;
 }
 
-IsbStudentList* findNode(IsbStudentList* head, const char* first_name)
+IsbStudentDoubleList* findNode(IsbStudentDoubleList* head, const char* first_name)
 {
     while (head != NULL)
     {
@@ -223,39 +208,39 @@ IsbStudentList* findNode(IsbStudentList* head, const char* first_name)
     return NULL;
 }
 
-void freeList(IsbStudentList* head)
+void freeList(IsbStudentDoubleList* head)
 {
     if (NULL == head)
     {
         return ;
     }
     
-    IsbStudentList* curr = head;
+    IsbStudentDoubleList* curr = head;
     while (NULL != curr)
     {   
-        IsbStudentList* temp = curr->next;
+        IsbStudentDoubleList* temp = curr->next;
         free(curr);
         curr = temp;
     }
 }
 
-void freeList2(IsbStudentList* head)
+void freeList2(IsbStudentDoubleList* head)
 {
     if (NULL == head)
     {
         return ;
     }
     
-    IsbStudentList* curr = head;
+    IsbStudentDoubleList* curr = head;
     while (NULL != curr)
     {   
-        IsbStudentList* temp = curr->next;
+        IsbStudentDoubleList* temp = curr->next;
         free(curr);
         curr = temp;
     }
 }
 
-IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
+IsbStudentDoubleList* DLdeleteNode(IsbStudentDoubleList* head, const char* first_name)
 {
     //maria.next = rachel.next;
     //rachel.next.prev = maria;
@@ -266,8 +251,8 @@ IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
         return NULL;
     }
     
-    IsbStudentList* student = findNode(head, first_name);
-    IsbStudentList* newhead = head;
+    IsbStudentDoubleList* student = findNode(head, first_name);
+    IsbStudentDoubleList* newhead = head;
 
     if (student->next != NULL)
     {
@@ -294,15 +279,15 @@ IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
     return newhead;
 }
 
-IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
+IsbStudentDoubleList* DLdeleteNode2(IsbStudentDoubleList* head, const char* first_name)
 {
     if (NULL == head)
     {
         return NULL;
     }
     
-    IsbStudentList* student = findNode(head, first_name);
-    IsbStudentList* newhead = head;
+    IsbStudentDoubleList* student = findNode(head, first_name);
+    IsbStudentDoubleList* newhead = head;
 
     if (student->next != NULL)
     {
@@ -329,9 +314,9 @@ IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
     return newhead;
 }
 
-IsbStudentList* connectTwoLists(IsbStudentList* dest, IsbStudentList* src)
+IsbStudentDoubleList* connectTwoLists(IsbStudentDoubleList* dest, IsbStudentDoubleList* src)
 {
-    IsbStudentList* copy = dest;
+    IsbStudentDoubleList* copy = dest;
 
     if ((NULL == dest) || (NULL == src))
     {
@@ -351,11 +336,11 @@ IsbStudentList* connectTwoLists(IsbStudentList* dest, IsbStudentList* src)
         src = src->next;
     }
 
-    printList(copy);
+    DLprintList(copy);
     return dest;
 }
 
-int main(void)
+int c_double_linked_list_main()
 {
     IsbStudent Suri;
     IsbStudent Maria;
@@ -378,16 +363,16 @@ int main(void)
     strncpy(Angelina.first_name, "Angelina", sizeof(Angelina.first_name)-1);
     Angelina.first_name[sizeof(Angelina.first_name)-1] = '\0';
 
-    IsbStudentList* pSuri = createNode(Suri);
-    IsbStudentList* pMaria = createNode(Maria);
-    IsbStudentList* pRachel = createNode(Rachel);
-    IsbStudentList* pNeinei = createNode(Neinei);
-    IsbStudentList* pAngelina = createNode(Angelina);
+    IsbStudentDoubleList* pSuri = DLCreateNode(Suri);
+    IsbStudentDoubleList* pMaria = DLCreateNode(Maria);
+    IsbStudentDoubleList* pRachel = DLCreateNode(Rachel);
+    IsbStudentDoubleList* pNeinei = DLCreateNode(Neinei);
+    IsbStudentDoubleList* pAngelina = DLCreateNode(Angelina);
 
-    insertNode(pSuri, pMaria);
-    insertNode(pMaria, pRachel);
-    insertNode(pRachel, pNeinei);
-    insertNode(pNeinei, pAngelina);
+    DLinsertNode(pSuri, pMaria);
+    DLinsertNode(pMaria, pRachel);
+    DLinsertNode(pRachel, pNeinei);
+    DLinsertNode(pNeinei, pAngelina);
 
     IsbStudent Alina;
     IsbStudent Xiao;
@@ -398,29 +383,29 @@ int main(void)
     strncpy(Xiao.first_name, "Xiao", sizeof(Xiao.first_name) - 1);
     Xiao.first_name[sizeof(Xiao.first_name)-1] = '\0';
 
-    IsbStudentList* pAlina = createNode(Alina);
-    IsbStudentList* pXiao = createNode(Xiao);
+    IsbStudentDoubleList* pAlina = DLCreateNode(Alina);
+    IsbStudentDoubleList* pXiao = DLCreateNode(Xiao);
 
-    insertNode(pAlina, pXiao);
+    DLinsertNode(pAlina, pXiao);
 
     /*
     findNode(pSuri, "Jenny");
     
     printf("\n");
 
-    printList(pSuri);
+    DLprintList(pSuri);
 
-    deleteNode(pSuri, "Maria");
-
-    printf("\n");
-
-    printList(pSuri);
-
-    copyNode(pSuri);
+    DLdeleteNode(pSuri, "Maria");
 
     printf("\n");
 
-    printList(pSuri);
+    DLprintList(pSuri);
+
+    DLcopyNode(pSuri);
+
+    printf("\n");
+
+    DLprintList(pSuri);
     printReverseList(pSuri);
 
     createReverseList(pSuri);
@@ -428,6 +413,6 @@ int main(void)
 
     connectTwoLists(pSuri, pAlina);
     
-    //printList(insertNode(pSuri, insertNode(pMaria, pRachel)));
+    //DLprintList(DLinsertNode(pSuri, DLinsertNode(pMaria, pRachel)));
     return 0;
 }

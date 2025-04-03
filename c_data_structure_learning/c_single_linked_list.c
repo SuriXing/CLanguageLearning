@@ -1,33 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "c_isb_students.h"
 
-typedef enum _Gender
+typedef struct _IsbStudentSingleList
 {
-	MALE,
-	FEMALE,
-} Gender;
-
-typedef struct _IsbStudent
-{
-	char first_name[32];
-	char last_name[32];
-	Gender gender;
-	unsigned int math_score;
-	unsigned int language_usage_score;
-	unsigned int reading_score;
-} IsbStudent;
-
-typedef struct _IsbStudentList
-{
-    struct _IsbStudentList* next;
+    struct _IsbStudentSingleList* next;
 
     IsbStudent student;
-} IsbStudentList;
+} IsbStudentSingleList;
 
-IsbStudentList* createNode(IsbStudent student)
+IsbStudentSingleList* createNode(IsbStudent student)
 {
-    IsbStudentList* newNode = (IsbStudentList*)malloc(sizeof(IsbStudentList));
+    IsbStudentSingleList* newNode = (IsbStudentSingleList*)malloc(sizeof(IsbStudentSingleList));
 
     newNode->next = NULL;
 
@@ -36,7 +21,7 @@ IsbStudentList* createNode(IsbStudent student)
     return newNode;
 }
 
-void freeNode(IsbStudentList* node)
+void freeNode(IsbStudentSingleList* node)
 {
     if (NULL == node)
     {
@@ -46,9 +31,9 @@ void freeNode(IsbStudentList* node)
     free(node);
 }
 
-void printList(IsbStudentList* head)
+void printList(IsbStudentSingleList* head)
 {
-    IsbStudentList* pIndex = head;
+    IsbStudentSingleList* pIndex = head;
 
     while (NULL != pIndex)
     {
@@ -58,9 +43,9 @@ void printList(IsbStudentList* head)
     }
 }
 
-void printList2(IsbStudentList* head)
+void printList2(IsbStudentSingleList* head)
 {
-    IsbStudentList* pIndex = head;
+    IsbStudentSingleList* pIndex = head;
 
     while (NULL != pIndex)
     {
@@ -70,7 +55,7 @@ void printList2(IsbStudentList* head)
     }
 }
 
-IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
+IsbStudentSingleList* insertNode(IsbStudentSingleList* currentNode, IsbStudentSingleList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
     {
@@ -83,7 +68,7 @@ IsbStudentList* insertNode(IsbStudentList* currentNode, IsbStudentList* newNode)
     return currentNode;
 }
 
-IsbStudentList* insertNode2(IsbStudentList* currentNode, IsbStudentList* newNode)
+IsbStudentSingleList* insertNode2(IsbStudentSingleList* currentNode, IsbStudentSingleList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
     {
@@ -96,7 +81,7 @@ IsbStudentList* insertNode2(IsbStudentList* currentNode, IsbStudentList* newNode
     return currentNode;
 }
 
-IsbStudentList* copyNode(IsbStudentList* copyNode)
+IsbStudentSingleList* copyNode(IsbStudentSingleList* copyNode)
 {
     if (NULL == copyNode)
     {
@@ -106,17 +91,17 @@ IsbStudentList* copyNode(IsbStudentList* copyNode)
     return createNode(copyNode->student);
 }
 
-IsbStudentList* copyList(IsbStudentList* copyList)
+IsbStudentSingleList* copyList(IsbStudentSingleList* copyList)
 {
     if (NULL == copyList)
     {
         return NULL;
     }
 
-    IsbStudentList dummyHead;
+    IsbStudentSingleList dummyHead;
     dummyHead.next = NULL;
 
-    IsbStudentList* newList = &dummyHead;
+    IsbStudentSingleList* newList = &dummyHead;
     while (copyList != NULL)
     {
         insertNode(newList, copyNode(copyList));
@@ -128,17 +113,17 @@ IsbStudentList* copyList(IsbStudentList* copyList)
     return dummyHead.next;
 }
 
-IsbStudentList* copyList2(IsbStudentList* copyList)
+IsbStudentSingleList* copyList2(IsbStudentSingleList* copyList)
 {
     if (NULL == copyList)
     {
         return NULL;
     }
 
-    IsbStudentList dummyHead;
+    IsbStudentSingleList dummyHead;
     dummyHead.next = NULL;
 
-    IsbStudentList* newList = &dummyHead;
+    IsbStudentSingleList* newList = &dummyHead;
     while (copyList != NULL)
     {
         insertNode(newList, copyNode(copyList));
@@ -150,15 +135,15 @@ IsbStudentList* copyList2(IsbStudentList* copyList)
     return dummyHead.next;
 }
 
-IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
+IsbStudentSingleList* deleteNode(IsbStudentSingleList* head, const char* first_name)
 {
     if (NULL == head)
     {
         return NULL;
     }
 
-    IsbStudentList* curr = head;
-    IsbStudentList* prev = curr;
+    IsbStudentSingleList* curr = head;
+    IsbStudentSingleList* prev = curr;
 
     while (curr != NULL)
     {
@@ -191,18 +176,18 @@ IsbStudentList* deleteNode(IsbStudentList* head, const char* first_name)
     return head;
 }
 
-IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
+IsbStudentSingleList* deleteNode2(IsbStudentSingleList* head, const char* first_name)
 {
     if ((NULL == head) || (NULL == first_name)) 
     {
         return NULL;
     }
     
-    IsbStudentList dummyHead;
+    IsbStudentSingleList dummyHead;
     dummyHead.next = head;
 
-    IsbStudentList *prev = head;
-    IsbStudentList *curr = head;
+    IsbStudentSingleList *prev = head;
+    IsbStudentSingleList *curr = head;
 
     while (curr != NULL)
     {
@@ -223,18 +208,18 @@ IsbStudentList* deleteNode2(IsbStudentList* head, const char* first_name)
     return dummyHead.next;
 }
 
-IsbStudentList* deleteNode2ndVersion(IsbStudentList* head, const char* first_name)
+IsbStudentSingleList* deleteNode2ndVersion(IsbStudentSingleList* head, const char* first_name)
 {
     if ((NULL == head) || (NULL == first_name)) 
     {
         return NULL;
     }
 
-    IsbStudentList dummyHead;
+    IsbStudentSingleList dummyHead;
     dummyHead.next = head;
 
-    IsbStudentList *prev = head;
-    IsbStudentList *curr = head;
+    IsbStudentSingleList *prev = head;
+    IsbStudentSingleList *curr = head;
 
     while (curr != NULL)
     {
@@ -257,18 +242,18 @@ IsbStudentList* deleteNode2ndVersion(IsbStudentList* head, const char* first_nam
     return dummyHead.next;
 }
 
-IsbStudentList* deleteNode2ndVersion2(IsbStudentList* head, const char* first_name)
+IsbStudentSingleList* deleteNode2ndVersion2(IsbStudentSingleList* head, const char* first_name)
 {
     if ((NULL == head) || (NULL == first_name)) 
     {
         return NULL;
     }
 
-    IsbStudentList dummyHead;
+    IsbStudentSingleList dummyHead;
     dummyHead.next = head;
 
-    IsbStudentList *prev = head;
-    IsbStudentList *curr = head;
+    IsbStudentSingleList *prev = head;
+    IsbStudentSingleList *curr = head;
 
     while (curr != NULL)
     {
@@ -291,14 +276,14 @@ IsbStudentList* deleteNode2ndVersion2(IsbStudentList* head, const char* first_na
     return dummyHead.next;
 }
 
-IsbStudentList* listNode(IsbStudentList* head, IsbStudentList* student)
+IsbStudentSingleList* listNode(IsbStudentSingleList* head, IsbStudentSingleList* student)
 {
     if ((NULL == head) || (NULL == student))
     {
         return NULL;
     }
 
-    IsbStudentList* copy = head;
+    IsbStudentSingleList* copy = head;
 
     while (copy->next != NULL)
     {
@@ -318,14 +303,14 @@ IsbStudentList* listNode(IsbStudentList* head, IsbStudentList* student)
     return head;
 }
 
-IsbStudentList* listNode2(IsbStudentList* head, IsbStudentList* student)
+IsbStudentSingleList* listNode2(IsbStudentSingleList* head, IsbStudentSingleList* student)
 {
     if ((NULL == head) || (NULL == student))
     {
         return NULL;
     }
 
-    IsbStudentList* copy = head;
+    IsbStudentSingleList* copy = head;
 
     while (copy->next != NULL)
     {
@@ -345,7 +330,7 @@ IsbStudentList* listNode2(IsbStudentList* head, IsbStudentList* student)
     return head;
 }
 
-int main()
+int c_single_linked_list_main()
 {
     IsbStudent Suri;
     IsbStudent Maria;
@@ -354,7 +339,7 @@ int main()
     IsbStudent Alina;
     IsbStudent Xiaoxiao;
     
-    IsbStudent Jenny;
+    //IsbStudent Jenny;
 
     strncpy(Suri.first_name, "Suri", sizeof(Suri.first_name)-1);
     Suri.first_name[sizeof(Suri.first_name)-1] = '\0';
@@ -380,18 +365,20 @@ int main()
     Xiaoxiao.first_name[sizeof(Xiaoxiao.first_name)-1] = '\0';
     Xiaoxiao.math_score = 95;
 
+    /*
     strncpy(Jenny.first_name, "Jenny", sizeof(Jenny.first_name)-1);
     Jenny.first_name[sizeof(Jenny.first_name)-1] = '\0';
     Jenny.math_score = 96;
+    */
 
-    IsbStudentList* pSuri = createNode(Suri);
-    IsbStudentList* pMaria = createNode(Maria);
-    IsbStudentList* pRachel = createNode(Rachel);
-    IsbStudentList* pAlina = createNode(Alina);
-    IsbStudentList* pAngelina = createNode(Angelina);
-    IsbStudentList* pXiaoxiao = createNode(Xiaoxiao);
+    IsbStudentSingleList* pSuri = createNode(Suri);
+    IsbStudentSingleList* pMaria = createNode(Maria);
+    IsbStudentSingleList* pRachel = createNode(Rachel);
+    IsbStudentSingleList* pAlina = createNode(Alina);
+    IsbStudentSingleList* pAngelina = createNode(Angelina);
+    IsbStudentSingleList* pXiaoxiao = createNode(Xiaoxiao);
     
-    IsbStudentList* pJenny = createNode(Jenny);
+    //IsbStudentSingleList* pJenny = createNode(Jenny);
 
     insertNode(
         insertNode(
@@ -405,7 +392,7 @@ int main()
 
     printList(pSuri);
 
-    IsbStudentList* copiedList = copyList(pSuri);
+    IsbStudentSingleList* copiedList = copyList(pSuri);
 
     printf("\n");
     printList(copiedList);
