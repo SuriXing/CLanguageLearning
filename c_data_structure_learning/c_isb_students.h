@@ -1,6 +1,8 @@
 #ifndef __C_ISB_STUDENT_H__
 #define __C_ISB_STUDENT_H__
 
+#pragma mark -- data structure declaration --
+
 typedef enum _Gender
 {
 	MALE,
@@ -16,9 +18,5 @@ typedef struct _IsbStudent
 	unsigned int language_usage_score;
 	unsigned int reading_score;
 } IsbStudent;
-
-
-
-#pragma mark -- data structure declaration --
 
 #endif // __C_ISB_STUDENT_H__

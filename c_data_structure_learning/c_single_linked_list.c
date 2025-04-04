@@ -10,7 +10,7 @@ typedef struct _IsbStudentSingleList
     IsbStudent student;
 } IsbStudentSingleList;
 
-IsbStudentSingleList* createNode(IsbStudent student)
+IsbStudentSingleList* SLCreateNode(IsbStudent student)
 {
     IsbStudentSingleList* newNode = (IsbStudentSingleList*)malloc(sizeof(IsbStudentSingleList));
 
@@ -21,7 +21,7 @@ IsbStudentSingleList* createNode(IsbStudent student)
     return newNode;
 }
 
-void freeNode(IsbStudentSingleList* node)
+void SLFreeNode(IsbStudentSingleList* node)
 {
     if (NULL == node)
     {
@@ -31,7 +31,7 @@ void freeNode(IsbStudentSingleList* node)
     free(node);
 }
 
-void printList(IsbStudentSingleList* head)
+void SLPrintList(IsbStudentSingleList* head)
 {
     IsbStudentSingleList* pIndex = head;
 
@@ -43,7 +43,7 @@ void printList(IsbStudentSingleList* head)
     }
 }
 
-void printList2(IsbStudentSingleList* head)
+void SLPrintList2(IsbStudentSingleList* head)
 {
     IsbStudentSingleList* pIndex = head;
 
@@ -55,7 +55,7 @@ void printList2(IsbStudentSingleList* head)
     }
 }
 
-IsbStudentSingleList* insertNode(IsbStudentSingleList* currentNode, IsbStudentSingleList* newNode)
+IsbStudentSingleList* SLInsertNode(IsbStudentSingleList* currentNode, IsbStudentSingleList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
     {
@@ -68,7 +68,7 @@ IsbStudentSingleList* insertNode(IsbStudentSingleList* currentNode, IsbStudentSi
     return currentNode;
 }
 
-IsbStudentSingleList* insertNode2(IsbStudentSingleList* currentNode, IsbStudentSingleList* newNode)
+IsbStudentSingleList* SLInsertNode2(IsbStudentSingleList* currentNode, IsbStudentSingleList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
     {
@@ -81,17 +81,17 @@ IsbStudentSingleList* insertNode2(IsbStudentSingleList* currentNode, IsbStudentS
     return currentNode;
 }
 
-IsbStudentSingleList* copyNode(IsbStudentSingleList* copyNode)
+IsbStudentSingleList* SLCopyNode(IsbStudentSingleList* copyNode)
 {
     if (NULL == copyNode)
     {
         return NULL;
     }
 
-    return createNode(copyNode->student);
+    return SLCreateNode(copyNode->student);
 }
 
-IsbStudentSingleList* copyList(IsbStudentSingleList* copyList)
+IsbStudentSingleList* SLCopyList(IsbStudentSingleList* copyList)
 {
     if (NULL == copyList)
     {
@@ -104,7 +104,7 @@ IsbStudentSingleList* copyList(IsbStudentSingleList* copyList)
     IsbStudentSingleList* newList = &dummyHead;
     while (copyList != NULL)
     {
-        insertNode(newList, copyNode(copyList));
+        SLInsertNode(newList, SLCopyNode(copyList));
 
         copyList = copyList->next;
         newList = newList->next;
@@ -113,7 +113,7 @@ IsbStudentSingleList* copyList(IsbStudentSingleList* copyList)
     return dummyHead.next;
 }
 
-IsbStudentSingleList* copyList2(IsbStudentSingleList* copyList)
+IsbStudentSingleList* SLCopyList2(IsbStudentSingleList* copyList)
 {
     if (NULL == copyList)
     {
@@ -126,7 +126,7 @@ IsbStudentSingleList* copyList2(IsbStudentSingleList* copyList)
     IsbStudentSingleList* newList = &dummyHead;
     while (copyList != NULL)
     {
-        insertNode(newList, copyNode(copyList));
+        SLInsertNode(newList, SLCopyNode(copyList));
 
         copyList = copyList->next;
         newList = newList->next;
@@ -135,7 +135,7 @@ IsbStudentSingleList* copyList2(IsbStudentSingleList* copyList)
     return dummyHead.next;
 }
 
-IsbStudentSingleList* deleteNode(IsbStudentSingleList* head, const char* first_name)
+IsbStudentSingleList* SLDeleteNode(IsbStudentSingleList* head, const char* first_name)
 {
     if (NULL == head)
     {
@@ -171,12 +171,12 @@ IsbStudentSingleList* deleteNode(IsbStudentSingleList* head, const char* first_n
         prev->next = curr->next;
     }
 
-    freeNode(curr);
+    SLFreeNode(curr);
 
     return head;
 }
 
-IsbStudentSingleList* deleteNode2(IsbStudentSingleList* head, const char* first_name)
+IsbStudentSingleList* SLDeleteNode2(IsbStudentSingleList* head, const char* first_name)
 {
     if ((NULL == head) || (NULL == first_name)) 
     {
@@ -208,7 +208,7 @@ IsbStudentSingleList* deleteNode2(IsbStudentSingleList* head, const char* first_
     return dummyHead.next;
 }
 
-IsbStudentSingleList* deleteNode2ndVersion(IsbStudentSingleList* head, const char* first_name)
+IsbStudentSingleList* SLDeleteNode2ndVersion(IsbStudentSingleList* head, const char* first_name)
 {
     if ((NULL == head) || (NULL == first_name)) 
     {
@@ -236,13 +236,13 @@ IsbStudentSingleList* deleteNode2ndVersion(IsbStudentSingleList* head, const cha
     if (NULL != curr)
     {
         prev->next = curr->next;
-        freeNode(curr);
+        SLFreeNode(curr);
     }
 
     return dummyHead.next;
 }
 
-IsbStudentSingleList* deleteNode2ndVersion2(IsbStudentSingleList* head, const char* first_name)
+IsbStudentSingleList* SLDeleteNode2ndVersion2(IsbStudentSingleList* head, const char* first_name)
 {
     if ((NULL == head) || (NULL == first_name)) 
     {
@@ -270,13 +270,13 @@ IsbStudentSingleList* deleteNode2ndVersion2(IsbStudentSingleList* head, const ch
     if (NULL != curr)
     {
         prev->next = curr->next;
-        freeNode(curr);
+        SLFreeNode(curr);
     }
 
     return dummyHead.next;
 }
 
-IsbStudentSingleList* listNode(IsbStudentSingleList* head, IsbStudentSingleList* student)
+IsbStudentSingleList* SLListNode(IsbStudentSingleList* head, IsbStudentSingleList* student)
 {
     if ((NULL == head) || (NULL == student))
     {
@@ -293,7 +293,7 @@ IsbStudentSingleList* listNode(IsbStudentSingleList* head, IsbStudentSingleList*
             head->next = student;
             student->next = head->next->next;
             */
-           insertNode(copy, student);
+           SLInsertNode(copy, student);
            break;
         }
         
@@ -303,7 +303,7 @@ IsbStudentSingleList* listNode(IsbStudentSingleList* head, IsbStudentSingleList*
     return head;
 }
 
-IsbStudentSingleList* listNode2(IsbStudentSingleList* head, IsbStudentSingleList* student)
+IsbStudentSingleList* SLListNode2(IsbStudentSingleList* head, IsbStudentSingleList* student)
 {
     if ((NULL == head) || (NULL == student))
     {
@@ -320,7 +320,7 @@ IsbStudentSingleList* listNode2(IsbStudentSingleList* head, IsbStudentSingleList
             head->next = student;
             student->next = head->next->next;
             */
-           insertNode(copy, student);
+           SLInsertNode(copy, student);
            break;
         }
         
@@ -371,31 +371,31 @@ int c_single_linked_list_main()
     Jenny.math_score = 96;
     */
 
-    IsbStudentSingleList* pSuri = createNode(Suri);
-    IsbStudentSingleList* pMaria = createNode(Maria);
-    IsbStudentSingleList* pRachel = createNode(Rachel);
-    IsbStudentSingleList* pAlina = createNode(Alina);
-    IsbStudentSingleList* pAngelina = createNode(Angelina);
-    IsbStudentSingleList* pXiaoxiao = createNode(Xiaoxiao);
+    IsbStudentSingleList* pSuri = SLCreateNode(Suri);
+    IsbStudentSingleList* pMaria = SLCreateNode(Maria);
+    IsbStudentSingleList* pRachel = SLCreateNode(Rachel);
+    IsbStudentSingleList* pAlina = SLCreateNode(Alina);
+    IsbStudentSingleList* pAngelina = SLCreateNode(Angelina);
+    IsbStudentSingleList* pXiaoxiao = SLCreateNode(Xiaoxiao);
     
-    //IsbStudentSingleList* pJenny = createNode(Jenny);
+    //IsbStudentSingleList* pJenny = SLCreateNode(Jenny);
 
-    insertNode(
-        insertNode(
-            insertNode(
-                insertNode(
-                    insertNode(pAngelina, pXiaoxiao), pAlina
+    SLInsertNode(
+        SLInsertNode(
+            SLInsertNode(
+                SLInsertNode(
+                    SLInsertNode(pAngelina, pXiaoxiao), pAlina
                 ), pRachel
             ), pMaria
         ),pSuri
     );
 
-    printList(pSuri);
+    SLPrintList(pSuri);
 
-    IsbStudentSingleList* copiedList = copyList(pSuri);
+    IsbStudentSingleList* copiedList = SLCopyList(pSuri);
 
     printf("\n");
-    printList(copiedList);
+    SLPrintList(copiedList);
 
     return 0;
 }
