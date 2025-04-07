@@ -78,6 +78,8 @@ IsbStudentDoubleList* DLinsertNode2(IsbStudentDoubleList* currentNode, IsbStuden
     currentNode->next = newNode;
     newNode->prev = currentNode;
 
+    //newNode->prev = currentnode;
+
     return currentNode;
 }
 
