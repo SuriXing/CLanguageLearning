@@ -2,14 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "c_isb_students.h"
-
-typedef struct _IsbStudentDoubleList
-{
-    struct _IsbStudentDoubleList* prev;
-    struct _IsbStudentDoubleList* next;
-
-    IsbStudent student;
-} IsbStudentDoubleList;
+#include "c_double_linked_list.h"
 
 IsbStudentDoubleList* DLCreateNode(IsbStudent student)
 {
@@ -55,7 +48,7 @@ IsbStudentDoubleList* DLCreateNode2(IsbStudent student)
     return newNode;
 }
 
-IsbStudentDoubleList* DLinsertNode(IsbStudentDoubleList* currentNode, IsbStudentDoubleList* newNode)
+IsbStudentDoubleList* DLInsertNode(IsbStudentDoubleList* currentNode, IsbStudentDoubleList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
     {
@@ -68,7 +61,7 @@ IsbStudentDoubleList* DLinsertNode(IsbStudentDoubleList* currentNode, IsbStudent
     return currentNode;
 }
 
-IsbStudentDoubleList* DLinsertNode2(IsbStudentDoubleList* currentNode, IsbStudentDoubleList* newNode)
+IsbStudentDoubleList* DLInsertNode2(IsbStudentDoubleList* currentNode, IsbStudentDoubleList* newNode)
 {
     if ((NULL == currentNode) || (NULL == newNode))
     {
@@ -184,7 +177,7 @@ IsbStudentDoubleList* createReverseList(IsbStudentDoubleList* head)
     while (NULL != pIndex->prev)
     {
         IsbStudentDoubleList* node = DLCreateNode(pIndex->prev->student);
-        DLinsertNode(pIndent, node);
+        DLInsertNode(pIndent, node);
         pIndent = pIndent->next;
         pIndex = pIndex->prev;
     }
@@ -194,7 +187,7 @@ IsbStudentDoubleList* createReverseList(IsbStudentDoubleList* head)
     return newHead;
 }
 
-IsbStudentDoubleList* findNode(IsbStudentDoubleList* head, const char* first_name)
+IsbStudentDoubleList* DLFindNode(IsbStudentDoubleList* head, const char* first_name)
 {
     while (head != NULL)
     {
@@ -210,7 +203,7 @@ IsbStudentDoubleList* findNode(IsbStudentDoubleList* head, const char* first_nam
     return NULL;
 }
 
-void freeList(IsbStudentDoubleList* head)
+void DLFreeList(IsbStudentDoubleList* head)
 {
     if (NULL == head)
     {
@@ -246,14 +239,14 @@ IsbStudentDoubleList* DLdeleteNode(IsbStudentDoubleList* head, const char* first
 {
     //maria.next = rachel.next;
     //rachel.next.prev = maria;
-    //freeList(rachel);
+    //(rachel);
 
     if (NULL == head)
     {
         return NULL;
     }
     
-    IsbStudentDoubleList* student = findNode(head, first_name);
+    IsbStudentDoubleList* student = DLFindNode(head, first_name);
     IsbStudentDoubleList* newhead = head;
 
     if (student->next != NULL)
@@ -276,7 +269,6 @@ IsbStudentDoubleList* DLdeleteNode(IsbStudentDoubleList* head, const char* first
 
     student->next = NULL;
     student->prev = NULL;
-    freeList(student);
 
     return newhead;
 }
@@ -288,7 +280,7 @@ IsbStudentDoubleList* DLdeleteNode2(IsbStudentDoubleList* head, const char* firs
         return NULL;
     }
     
-    IsbStudentDoubleList* student = findNode(head, first_name);
+    IsbStudentDoubleList* student = DLFindNode(head, first_name);
     IsbStudentDoubleList* newhead = head;
 
     if (student->next != NULL)
@@ -311,7 +303,6 @@ IsbStudentDoubleList* DLdeleteNode2(IsbStudentDoubleList* head, const char* firs
 
     student->next = NULL;
     student->prev = NULL;
-    freeList(student);
 
     return newhead;
 }
@@ -371,10 +362,10 @@ int c_double_linked_list_main()
     IsbStudentDoubleList* pNeinei = DLCreateNode(Neinei);
     IsbStudentDoubleList* pAngelina = DLCreateNode(Angelina);
 
-    DLinsertNode(pSuri, pMaria);
-    DLinsertNode(pMaria, pRachel);
-    DLinsertNode(pRachel, pNeinei);
-    DLinsertNode(pNeinei, pAngelina);
+    DLInsertNode(pSuri, pMaria);
+    DLInsertNode(pMaria, pRachel);
+    DLInsertNode(pRachel, pNeinei);
+    DLInsertNode(pNeinei, pAngelina);
 
     IsbStudent Alina;
     IsbStudent Xiao;
@@ -388,10 +379,10 @@ int c_double_linked_list_main()
     IsbStudentDoubleList* pAlina = DLCreateNode(Alina);
     IsbStudentDoubleList* pXiao = DLCreateNode(Xiao);
 
-    DLinsertNode(pAlina, pXiao);
+    DLInsertNode(pAlina, pXiao);
 
     /*
-    findNode(pSuri, "Jenny");
+    DLFindNode(pSuri, "Jenny");
     
     printf("\n");
 
@@ -415,6 +406,6 @@ int c_double_linked_list_main()
 
     connectTwoLists(pSuri, pAlina);
     
-    //DLprintList(DLinsertNode(pSuri, DLinsertNode(pMaria, pRachel)));
+    //DLprintList(DLInsertNode(pSuri, DLInsertNode(pMaria, pRachel)));
     return 0;
 }
