@@ -2,13 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "c_isb_students.h"
-
-typedef struct _IsbStudentSingleList
-{
-    struct _IsbStudentSingleList* next;
-
-    IsbStudent student;
-} IsbStudentSingleList;
+#include "c_single_linked_list.h"
 
 IsbStudentSingleList* SLCreateNode(IsbStudent student)
 {

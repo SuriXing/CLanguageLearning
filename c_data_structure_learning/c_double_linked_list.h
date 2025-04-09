@@ -10,7 +10,6 @@ typedef struct _IsbStudentDoubleList
     IsbStudent student;
 } IsbStudentDoubleList;
 
-
 int c_double_linked_list_main();
 
 IsbStudentDoubleList* DLCreateNode(IsbStudent student);

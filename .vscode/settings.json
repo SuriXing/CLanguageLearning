@@ -13,6 +13,7 @@
         "time.h": "c",
         "c_advanced_learning.h": "c",
         "stdlib.h": "c",
-        "c_double_linked_list.h": "c"
+        "c_double_linked_list.h": "c",
+        "c_isb_students.h": "c"
     }
 }
