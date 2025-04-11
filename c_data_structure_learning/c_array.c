@@ -3,7 +3,7 @@
 #include <string.h>
 #include "c_isb_students.h"
 
-IsbStudent* createStudentArray(IsbStudent* student)
+IsbStudent* copyStudentArray(IsbStudent* student)
 {
     char arr[265];
 
@@ -13,6 +13,21 @@ IsbStudent* createStudentArray(IsbStudent* student)
     }
 
     return arr;
+}
+
+IsbStudent* reverseArr(IsbStudent* student, int count)
+{
+    char copyArr[256] = *student;
+
+    for (int i = 0; i < count/2; i++)
+    {
+        for (int j = count; j > count/2; j++)
+        {
+            copyArr[i] = student[j];
+        }
+    }
+
+    return copyArr;
 }
 
 int array_main()
