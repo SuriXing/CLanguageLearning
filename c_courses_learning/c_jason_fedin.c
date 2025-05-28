@@ -31,6 +31,22 @@ void gcdOf2Nums(int a, int b)
     printf("The gcd of %d and %d is %d", a, b, gcd);
 }
 
+void gcdOf2Nums2(int a, int b)
+{
+    int gcd = 1;
+
+    int smaller = (a < b) ? a : b;
+    for (int i = 1; i <= smaller; i++) 
+    {
+        if (a % i == 0 && b % i == 0) 
+        {
+            gcd = i;
+        }
+    }
+
+    printf("The gcd of %d and %d is %d", a, b, gcd);
+}
+
 void weather()
 {
     float arr[5][12] = {
