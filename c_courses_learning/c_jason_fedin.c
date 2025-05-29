@@ -3,6 +3,18 @@
 #include <assert.h>
 #include <time.h>
 
+int pointerLearning()
+{
+    int count = 10, x;
+    int *int_pointer;
+
+    int_pointer = &count;
+    x = *int_pointer;
+
+    printf("count = %i, x = %i\n", count, x);
+    return 0;
+}
+
 void gcdOf2Nums(int a, int b)
 {
     int gcd = 1;
@@ -752,13 +764,16 @@ int main(int argc, char* argv[])
     printf("%d\n", company1);
     printf("%d\n", company2);
     printf("%d\n", company3);
-    */
+    
 
     //guessNum();
     //ifNumIsEvenOrOdd();
 
     gcdOf2Nums(123, 234);
     twoDimArray();
+    */
+   
+    pointerLearning();
 
     return 0;
 }
